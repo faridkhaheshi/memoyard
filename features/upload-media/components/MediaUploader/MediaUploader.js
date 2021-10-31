@@ -2,7 +2,6 @@ function MediaUploader() {
   const handleChange = async e => {
     try {
       console.log(e.target.files)
-      // const file = e.target.files[0]
       if (e.target.files.length <= 0) return
       const [file] = e.target.files
       const serverResponse = await fetch("/api/media/upload-permission", {

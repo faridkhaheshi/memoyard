@@ -20,7 +20,7 @@ const createUploadUrl = async ({ fileName, fileType, fileSize }) => {
   const fileExtension = fileName.match(/\.[0-9a-z]+$/i)[0]
   const url = await s3.getSignedUrlPromise("putObject", {
     Bucket: process.env.S3_BUCKET,
-    Key: `${fileId}${fileExtension}`,
+    Key: `dev/${fileId}${fileExtension}`,
     ContentType: fileType,
     Expires: signedUrlExpireSeconds,
   })
