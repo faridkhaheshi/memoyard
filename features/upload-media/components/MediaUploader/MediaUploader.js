@@ -16,15 +16,18 @@ function MediaUploader() {
           fileSize: file.size,
         }),
       })
-      const { url } = await serverResponse.json()
-      console.log(url)
-      await fetch(url, {
+      const { uploadUrl, viewUrl } = await serverResponse.json()
+      console.log(uploadUrl)
+      console.log(viewUrl)
+      await fetch(uploadUrl, {
         method: "PUT",
         headers: {
           "Content-Type": "multipart/form-data",
         },
         body: file,
       })
+      console.log("uploaded. view here:")
+      console.log(viewUrl)
     } catch (err) {
       console.error(err)
     }

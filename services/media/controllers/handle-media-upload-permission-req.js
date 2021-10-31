@@ -1,9 +1,10 @@
-import { createUploadUrl } from "../processors"
+import { createUploadUrl, allowMediaView } from "../processors"
 
 const handleMediaUploadPermissionReq = async (req, res) => {
   try {
-    const url = await createUploadUrl(req.body)
-    return res.json({ url })
+    const uploadUrl = await createUploadUrl(req.body)
+    const viewUrl = allowMediaView(uploadUrl)
+    return res.json({ uploadUrl, viewUrl })
   } catch (err) {
     return res
       .status(500)
