@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS yard.organizations (
   ex_id                       uuid NOT NULL DEFAULT uuid_generate_v4(),
   name                        varchar(200),
   slug                        text,
+  active                      boolean NOT NULL DEFAULT true,
   creator_id                  int NOT NULL,
   created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
