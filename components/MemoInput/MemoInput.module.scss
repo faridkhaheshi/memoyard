@@ -1,0 +1,40 @@
+@use "../../styles//variables" as v;
+
+.input {
+  min-height: v.$input-height;
+  font-size: 16px;
+  line-height: normal;
+  border: v.$border-gray solid 1px;
+  border-radius: 0;
+  padding: 0 10px;
+  color: v.$input-text-color;
+  margin: 10px 0;
+
+  &:focus {
+    outline: none !important;
+    border-color: v.$focus;
+    border-width: 4px;
+  }
+
+  &::-webkit-input-placeholder {
+    color: v.$input-placeholder-color;
+  }
+  &:-moz-placeholder {
+    color: v.$input-placeholder-color;
+  }
+  &::-moz-placeholder {
+    color: v.$input-placeholder-color;
+  }
+  &:-ms-input-placeholder {
+    color: v.$input-placeholder-color;
+  }
+
+  &[type="submit"] {
+    cursor: pointer;
+    background-color: v.$sharp-blue;
+    color: white;
+    &:hover {
+      background-color: darken(v.$sharp-blue, 10%);
+    }
+  }
+}
