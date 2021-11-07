@@ -36,5 +36,8 @@
     &:hover {
       background-color: darken(v.$sharp-blue, 10%);
     }
+    &:disabled {
+      background-color: lighten(v.$sharp-blue, 40%);
+    }
   }
 }
