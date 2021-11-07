@@ -1,0 +1,16 @@
+@use "../../styles/variables" as v;
+
+.fullPageContainer {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+:export {
+  skyBlue: v.$sky-blue;
+}

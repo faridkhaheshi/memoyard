@@ -1,7 +1,7 @@
 import { DefaultSeo } from "next-seo"
 import seoConfig from "../next-seo.config"
 
-import "../styles/globals.css"
+import "../styles/globals.scss"
 
 function MyApp({ Component, pageProps }) {
   return (
