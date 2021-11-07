@@ -1,7 +1,9 @@
 import { useState, useCallback } from "react"
+import { useAuth } from "../../../contexts/auth"
 import callApi from "../../../utilities/call-api"
 
 const useLogin = () => {
+  const { logIn } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState(null)
@@ -23,6 +25,7 @@ const useLogin = () => {
           method: "POST",
           body: { email, password },
         })
+        logIn(token)
       } catch (err) {
         setErrorMessage("Login Failed")
       } finally {
@@ -30,7 +33,7 @@ const useLogin = () => {
         resetForm()
       }
     },
-    [email, password, resetForm]
+    [email, password, resetForm, logIn]
   )
 
   return {
