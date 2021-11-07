@@ -23,9 +23,7 @@ const useLogin = () => {
           method: "POST",
           body: { email, password },
         })
-        console.log(token)
       } catch (err) {
-        console.error(err)
         setErrorMessage("Login Failed")
       } finally {
         setIsProcessing(false)

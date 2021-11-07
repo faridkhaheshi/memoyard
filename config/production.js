@@ -1,10 +1,11 @@
 const baseUrl = "https://www.memoyard.com"
 
 module.exports = {
+  env: "production",
   baseUrl,
   cookieOptions: {
     path: "/",
-    domain: "www.memoyard.com",
+    domain: ".memoyard.com",
     sameSite: "None",
     secure: true,
   },
