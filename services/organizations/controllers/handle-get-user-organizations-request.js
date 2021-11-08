@@ -7,9 +7,7 @@ const handleGetUserOrganizations = async (req, res) => {
       query,
     } = req
     const organizations = await findUserOrganizationsByUserExId(userExId, query)
-    return res.json({
-      organizations: organizations.map(({ id, ...rest }) => rest),
-    })
+    return res.json({ organizations })
   } catch (err) {
     return res
       .status(err.statusCode || err.status || 500)

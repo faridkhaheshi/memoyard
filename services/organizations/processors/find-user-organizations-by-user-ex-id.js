@@ -5,7 +5,13 @@ const findUserOrganizationsByUserExId = async (userExId, query = {}) => {
   const { records: organizations } = await db.query(
     `
     SELECT 
-      o.*
+      o.ex_id,
+      o.name,
+      o.slug,
+      o.active,
+      o.created_at,
+      o.updated_at,
+      u.ex_id as creator_ex_id
     FROM
       yard.organizations AS o 
         JOIN 
