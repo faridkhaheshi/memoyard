@@ -6,6 +6,7 @@ const handleLoginRequest = async (req, res) => {
       body: { email, password },
     } = req
     const user = await checkLoginInfo({ email, password })
+    delete user.id
     const token = await logInUser(user)
     return res.json({ token })
   } catch (err) {

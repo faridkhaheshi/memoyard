@@ -6,6 +6,7 @@ const handleGetTokenUserRequest = async (req, res) => {
       user: { ex_id: userExId },
     } = req
     const user = await findUserByExId(userExId)
+    delete user.id
     return res.json({ user })
   } catch (err) {
     return res
