@@ -1,0 +1,23 @@
+@use "../../../../styles/variables" as v;
+
+.card {
+  padding: 20px;
+
+  .loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .inputsContainer {
+      padding: 0;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .errorMessage {
+      font-weight: bold;
+      color: v.$error-red;
+    }
+  }
+}
