@@ -1,4 +1,4 @@
-import findUserOrganizationsByUserExId from "../processors/find-user-organizations-by-user-ex-id"
+import { findUserOrganizationsByUserExId } from "../processors"
 
 const handleGetUserOrganizations = async (req, res) => {
   try {
