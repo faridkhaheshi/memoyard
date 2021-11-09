@@ -1,0 +1,19 @@
+@use "../../../../styles/variables" as v;
+
+.addButtonContainer {
+  input {
+    display: none;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    color: lighten(v.$input-text-color, 40%);
+    border: 4px solid v.$border-gray;
+    border-radius: 50%;
+    font-size: 36px;
+  }
+}
