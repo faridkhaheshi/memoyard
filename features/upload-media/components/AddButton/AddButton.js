@@ -4,7 +4,7 @@ const AddButton = () => {
   return (
     <form className={styles.addButtonContainer}>
       <label htmlFor="add-input">+</label>
-      <input type="file" id="add-input" />
+      <input type="file" id="add-input" accept="image/*, video/*" />
     </form>
   )
 }
