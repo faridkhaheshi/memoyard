@@ -1,10 +1,35 @@
 import styles from "./AddButton.module.scss"
 
-const AddButton = () => {
+const AddButton = ({ dispatch }) => {
+  const addNewFiles = e => {
+    const { files } = e.target
+    if (files && files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files.item(i)
+        dispatch({
+          type: "ADD_FILE",
+          payload: {
+            file,
+            objectUrl: URL.createObjectURL(file),
+            name: file.name,
+            type: file.type,
+            size: file.size,
+          },
+        })
+      }
+    }
+  }
+
   return (
     <form className={styles.addButtonContainer}>
       <label htmlFor="add-input">+</label>
-      <input type="file" id="add-input" accept="image/*, video/*" />
+      <input
+        type="file"
+        id="add-input"
+        accept="image/*, video/*"
+        multiple
+        onChange={addNewFiles}
+      />
     </form>
   )
 }
