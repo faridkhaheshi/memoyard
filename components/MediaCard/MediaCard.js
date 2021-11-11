@@ -5,7 +5,7 @@ import styles from "./MediaCard.module.scss"
 const MediaCard = ({ file, onClose }) => {
   return (
     <div className={styles.gridCell}>
-      <CloseButton onClick={onClose} />
+      <CloseButton onClick={onClose} styles={styles} />
       <img src={file.objectUrl} className={styles.media} />
     </div>
   )

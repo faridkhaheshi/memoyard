@@ -1,6 +1,4 @@
-import styles from "./CloseButton.module.scss"
-
-const CloseButton = ({ onClick }) => (
+const CloseButton = ({ onClick, styles }) => (
   <a
     href="#"
     className={styles.closeButton}

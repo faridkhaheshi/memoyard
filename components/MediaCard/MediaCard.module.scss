@@ -1,15 +1,8 @@
+@use "../../styles/variables" as v;
+
 .gridCell {
   position: relative;
   border-radius: 0.5rem;
-
-  .closeButton {
-    position: absolute;
-    z-index: 1;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-  }
 
   .media {
     width: 100%;
@@ -17,5 +10,45 @@
     margin: 0;
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     object-fit: contain;
+
+    &:hover {
+      filter: brightness(25%);
+      -webkit-filter: brightness(25%);
+    }
+  }
+
+  .closeButton {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background-color: v.$close-button-color;
+      transform: rotate(45deg) translate(-50%, -50%);
+      transform-origin: top left;
+      transition: all 420ms;
+      content: "";
+    }
+    &:after {
+      transform: rotate(-45deg) translate(-50%, -50%);
+    }
+
+    &:hover,
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
   }
 }
