@@ -1,11 +1,21 @@
-.cardContainer {
+.gridCell {
+  position: relative;
   border-radius: 0.5rem;
+
+  .closeButton {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+  }
 
   .media {
     width: 100%;
     height: auto;
     margin: 0;
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-    object-fit: cover;
+    object-fit: contain;
   }
 }

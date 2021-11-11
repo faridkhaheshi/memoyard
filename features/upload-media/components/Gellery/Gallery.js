@@ -29,7 +29,7 @@ const Gallery = ({ files }) => {
       className={styles.masonryGrid}
       columnClassName={styles.masonryGridColumn}
     >
-      {files.map(file => (
+      {staticPhotos.map(file => (
         <MediaCard key={file.objectUrl} file={file} />
       ))}
     </Masonry>
