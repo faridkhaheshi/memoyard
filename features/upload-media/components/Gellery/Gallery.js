@@ -4,19 +4,6 @@ import config from "../../../../config"
 
 import styles from "./Gallery.module.scss"
 
-// const staticPhotos = [
-//   { objectUrl: "https://picsum.photos/600/500" },
-//   { objectUrl: "https://picsum.photos/536/354" },
-//   { objectUrl: "https://picsum.photos/seed/picsum/400/600" },
-//   { objectUrl: "https://picsum.photos/536/354" },
-//   { objectUrl: "https://picsum.photos/seed/picsum/400/600" },
-//   { objectUrl: "https://picsum.photos/600/500" },
-//   { objectUrl: "https://picsum.photos/seed/picsum/400/600" },
-//   { objectUrl: "https://picsum.photos/600/500" },
-//   { objectUrl: "https://picsum.photos/536/354" },
-//   { objectUrl: "https://picsum.photos/seed/picsum/400/600" },
-// ]
-
 const {
   gallery: { breakpointCols },
 } = config
