@@ -10,6 +10,7 @@ module.exports = {
       1100: 2,
       500: 1,
     },
+    supportedMediaFiles: ["photo", "video"],
   },
   cookieOptions: {
     path: "/",
