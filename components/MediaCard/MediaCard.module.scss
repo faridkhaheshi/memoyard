@@ -1,15 +1,13 @@
 @use "../../styles/variables" as v;
 
-.gridCell {
+.cardContainer {
   position: relative;
-  border-radius: 0.5rem;
+  border-radius: v.$media-card-border-radius;
 
   .media {
     width: 100%;
     height: auto;
     margin: 0;
-    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-    object-fit: contain;
 
     &:hover {
       filter: brightness(25%);
