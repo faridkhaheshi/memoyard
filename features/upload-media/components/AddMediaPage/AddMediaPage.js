@@ -14,7 +14,7 @@ const AddMediaPage = ({ organization }) => {
       <p>
         Add new photos to <strong>{organization.name}</strong>
       </p>
-      <Gallery files={files} />
+      <Gallery files={files} dispatch={dispatch} />
       <AddButton dispatch={dispatch} />
     </FullPageCentered>
   )

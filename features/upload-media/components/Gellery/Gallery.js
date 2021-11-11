@@ -22,15 +22,22 @@ const breakpointColumnsObj = {
   500: 1,
 }
 
-const Gallery = ({ files }) => {
+const Gallery = ({ files, dispatch }) => {
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className={styles.masonryGrid}
       columnClassName={styles.masonryGridColumn}
     >
-      {staticPhotos.map(file => (
-        <MediaCard key={file.objectUrl} file={file} />
+      {files.map(file => (
+        <MediaCard
+          key={file.objectUrl}
+          file={file}
+          onClose={dispatch.bind(null, {
+            type: "REMOVE_FILE",
+            payload: file.objectUrl,
+          })}
+        />
       ))}
     </Masonry>
   )
