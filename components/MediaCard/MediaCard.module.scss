@@ -4,49 +4,36 @@
   position: relative;
   border-radius: v.$media-card-border-radius;
 
+  &:hover .closeButton {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
   .media {
     width: 100%;
     height: auto;
     margin: 0;
 
-    &:hover {
-      filter: brightness(25%);
-      -webkit-filter: brightness(25%);
-    }
+    // &:hover {
+    //   filter: brightness(25%);
+    //   -webkit-filter: brightness(25%);
+    //   transition: all 0.3s ease-in-out;
+    // }
   }
 
   .closeButton {
-    cursor: pointer;
     position: absolute;
+    top: 5px;
+    right: 5px;
     z-index: 1;
-    top: 0px;
-    right: 0px;
+    background: none;
+    width: v.$media-card-close-button-box-size;
+    height: v.$media-card-close-button-box-size;
+    border: none;
+    border-radius: v.$media-card-border-radius;
+    outline: none;
+    cursor: pointer;
+    color: white;
     display: block;
-    width: 40px;
-    height: 40px;
-    font-size: 0;
-    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-
-    &:before,
-    &:after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 2px;
-      height: 20px;
-      background-color: v.$close-button-color;
-      transform: rotate(45deg) translate(-50%, -50%);
-      transform-origin: top left;
-      transition: all 420ms;
-      content: "";
-    }
-    &:after {
-      transform: rotate(-45deg) translate(-50%, -50%);
-    }
-
-    &:hover,
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.25);
-    }
+    font-size: v.$media-card-close-button-size;
   }
 }

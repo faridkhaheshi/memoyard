@@ -9,10 +9,10 @@ const MediaCard = ({ file, onClose }) => {
   return (
     <div className={styles.cardContainer}>
       <CloseButton onClick={onClose} styles={styles} />
-      {mediaType === "photo" ? (
-        <img src={file.objectUrl} className={styles.media} />
-      ) : (
+      {mediaType === "video" ? (
         <MemoVideo src={file.objectUrl} type={file.type} />
+      ) : (
+        <img src={file.objectUrl} className={styles.media} />
       )}
     </div>
   )
