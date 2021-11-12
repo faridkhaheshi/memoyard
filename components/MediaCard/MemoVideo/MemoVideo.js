@@ -1,18 +1,10 @@
 import useVideoPlayer from "./use-video-player"
 
 import styles from "./MemoVideo.module.scss"
+import MemoVideoControllers from "./MemoVideoControllers"
 
 const MemoVideo = ({ src, type, videoPreviewFrameSec = 0.2 }) => {
-  const {
-    videoRef,
-    isMute,
-    isPlaying,
-    videoPlayProgress,
-    toggleMute,
-    togglePlay,
-    handleOnTimeUpdate,
-    handleProgressHandleChange,
-  } = useVideoPlayer()
+  const { videoRef, handleOnTimeUpdate, ...videoControllers } = useVideoPlayer()
   return (
     <div className={styles.videoWrapper}>
       <video
@@ -25,32 +17,7 @@ const MemoVideo = ({ src, type, videoPreviewFrameSec = 0.2 }) => {
         <source src={`${src}#t=${videoPreviewFrameSec}`} type={type} />
         Sorry, your browser doesn$apos;t support embedded videos.
       </video>
-      <div className={styles.controls}>
-        <div className={styles.actions}>
-          <button onClick={togglePlay}>
-            {isPlaying ? (
-              <i className="fas fa-pause" />
-            ) : (
-              <i className="fas fa-play" />
-            )}
-          </button>
-        </div>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={videoPlayProgress}
-          onChange={handleProgressHandleChange}
-          className={styles.progressBar}
-        />
-        <button className={styles.muteButton} onClick={toggleMute}>
-          {isMute ? (
-            <i className="fas fa-volume-up" />
-          ) : (
-            <i className="fas fa-volume-mute" />
-          )}
-        </button>
-      </div>
+      <MemoVideoControllers styles={styles} {...videoControllers} />
     </div>
   )
 }
