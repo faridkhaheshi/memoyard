@@ -1,0 +1,9 @@
+@use "./../../../styles/variables" as v;
+
+.image {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: v.$media-card-border-radius;
+  object-fit: contain;
+}

@@ -2,6 +2,7 @@ import CloseButton from "./CloseButton"
 import MemoVideo from "./MemoVideo"
 
 import styles from "./MediaCard.module.scss"
+import MemoImage from "./MemoImage"
 
 const MediaCard = ({ file, onClose }) => {
   const { mediaType } = file
@@ -12,7 +13,7 @@ const MediaCard = ({ file, onClose }) => {
       {mediaType === "video" ? (
         <MemoVideo src={file.objectUrl} type={file.type} />
       ) : (
-        <img src={file.objectUrl} className={styles.media} />
+        <MemoImage file={file} />
       )}
     </div>
   )

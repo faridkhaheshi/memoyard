@@ -5,19 +5,9 @@
   border-radius: v.$media-card-border-radius;
 
   &:hover .closeButton {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  .media {
-    width: 100%;
-    height: auto;
-    margin: 0;
-
-    // &:hover {
-    //   filter: brightness(25%);
-    //   -webkit-filter: brightness(25%);
-    //   transition: all 0.3s ease-in-out;
-    // }
+    background-color: rgba(2, 1, 1, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   .closeButton {
@@ -33,7 +23,9 @@
     outline: none;
     cursor: pointer;
     color: white;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: v.$media-card-close-button-size;
   }
 }
