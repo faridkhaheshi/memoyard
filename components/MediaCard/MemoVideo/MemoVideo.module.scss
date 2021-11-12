@@ -28,21 +28,28 @@ $memo-video-track-base-color: rgba(255, 255, 255, 0.2);
     position: absolute;
     bottom: 0;
     width: 100%;
-    min-height: 30px;
+    min-height: 25px;
     flex-wrap: wrap;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     // border-radius: 2px;
     // border: 1px solid rgba(255, 255, 255, 0.18);
-    // transform: translateY(150%);
+    transform: translateY(150%);
     transition: all 0.3s ease-in-out;
+    button {
+      width: 30px;
+    }
 
     .actions button {
       background: none;
       border: none;
       outline: none;
       cursor: pointer;
+    }
+
+    i {
+      color: white;
     }
 
     .progressBar {

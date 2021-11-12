@@ -27,7 +27,13 @@ const MemoVideo = ({ src, type, videoPreviewFrameSec = 0.2 }) => {
       </video>
       <div className={styles.controls}>
         <div className={styles.actions}>
-          <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
+          <button onClick={togglePlay}>
+            {isPlaying ? (
+              <i className="fas fa-pause" />
+            ) : (
+              <i className="fas fa-play" />
+            )}
+          </button>
         </div>
         <input
           type="range"
@@ -38,7 +44,11 @@ const MemoVideo = ({ src, type, videoPreviewFrameSec = 0.2 }) => {
           className={styles.progressBar}
         />
         <button className={styles.muteButton} onClick={toggleMute}>
-          {isMute ? "unmute" : "mute"}
+          {isMute ? (
+            <i className="fas fa-volume-up" />
+          ) : (
+            <i className="fas fa-volume-mute" />
+          )}
         </button>
       </div>
     </div>
