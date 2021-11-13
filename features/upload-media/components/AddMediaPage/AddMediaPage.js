@@ -88,7 +88,12 @@ const AddMediaPage = ({ organization }) => {
       <p>
         Add new photos/videos to <strong>{organization.name}</strong>
       </p>
-      <GeneralTagSelector tags={tags} />
+      <GeneralTagSelector
+        tags={tags}
+        onTagToggled={tagId =>
+          dispatch({ type: "TOGGLE_TAG_FOR_ALL", payload: tagId })
+        }
+      />
       <Gallery files={files} tags={tags} dispatch={dispatch} />
       <AddButton dispatch={dispatch} />
     </FullPageCentered>
