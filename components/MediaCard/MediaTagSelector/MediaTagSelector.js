@@ -1,10 +1,10 @@
 import MediaTag from "./MediaTag"
 
-import styles from "./TagSelector.module.scss"
+import styles from "./MediaTagSelector.module.scss"
 
-const TagSelector = ({ file, tags, parentStyles, dispatch }) => (
+const MediaTagSelector = ({ file, tags, parentStyles, dispatch }) => (
   <div className={`${parentStyles.tagsContainer} ${styles.tagsContainer}`}>
-    <p>Will be sent to:</p>
+    <p>This item will be sent to:</p>
     <ul>
       {tags.map(tag => (
         <MediaTag
@@ -22,4 +22,4 @@ const TagSelector = ({ file, tags, parentStyles, dispatch }) => (
   </div>
 )
 
-export default TagSelector
+export default MediaTagSelector

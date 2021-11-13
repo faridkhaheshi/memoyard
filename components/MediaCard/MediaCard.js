@@ -1,7 +1,7 @@
 import CloseButton from "./CloseButton"
 import MemoVideo from "./MemoVideo"
 import MemoImage from "./MemoImage"
-import TagSelector from "./TagSelector/TagSelector"
+import MediaTagSelector from "./MediaTagSelector"
 
 import styles from "./MediaCard.module.scss"
 
@@ -21,7 +21,7 @@ const MediaCard = ({ file, tags, dispatch }) => {
       ) : (
         <MemoImage file={file} />
       )}
-      <TagSelector
+      <MediaTagSelector
         tags={tags}
         file={file}
         parentStyles={styles}
