@@ -8,7 +8,12 @@ $sharp: #f07c42;
 $focus: #ffcc5c;
 $close-button-color: #f0f0f0;
 $input-height: 48px;
-$media-card-border-radius: 0.5rem;
+$media-card-border-radius: 0rem;
 $media-card-close-button-size: 20px;
 $media-card-close-button-box-size: 30px;
 $media-card-controls-bg-color: rgba(255, 255, 255, 0.25);
+$media-grid-gutter-size: 20px;
+$media-gallery-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+  0 6px 6px rgba(0, 0, 0, 0.23);
+$unselected-tag-color: #d6dbdf;
+$selected-tag-color: #3d3b8e;

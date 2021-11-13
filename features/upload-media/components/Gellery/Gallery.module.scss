@@ -1,17 +1,19 @@
+@use "../../../../styles/variables" as v;
+
 .masonryGrid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -10px; /* gutter size offset */
+  margin-left: -1 * v.$media-grid-gutter-size; /* gutter size offset */
   width: auto;
   max-width: 1400px;
 }
 
 .masonryGridColumn {
-  padding-left: 10px; /* gutter size */
+  padding-left: v.$media-grid-gutter-size; /* gutter size */
   background-clip: padding-box;
 }
 
 .masonryGridColumn > div {
-  margin-bottom: 10px;
+  margin-bottom: v.$media-grid-gutter-size;
 }

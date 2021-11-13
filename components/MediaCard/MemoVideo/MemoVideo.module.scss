@@ -14,7 +14,7 @@ $memo-video-progress-bar-max-width: 1000px;
   video {
     width: 100%;
     height: auto;
-    border-radius: v.$media-card-border-radius;
+    border-radius: v.$media-card-border-radius v.$media-card-border-radius 0 0;
     object-fit: contain;
     margin: 0;
   }

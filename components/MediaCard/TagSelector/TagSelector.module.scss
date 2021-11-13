@@ -1,0 +1,36 @@
+@use "../../../styles/variables" as v;
+
+.tagsContainer {
+  width: 100%;
+  padding: 0 15px 10px 15px;
+
+  ul {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style-type: none;
+
+    li {
+      margin: 5px;
+      button {
+        cursor: pointer;
+        border: 2px dashed v.$unselected-tag-color;
+        color: v.$unselected-tag-color;
+        background: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+
+        &.active {
+          border: 2px solid v.$selected-tag-color;
+          color: white;
+          background: v.$selected-tag-color;
+        }
+      }
+    }
+  }
+}
