@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useReducer, useState } from "react"
 import FullPageCentered from "../../../../components/FullPageCentered"
 import AddButton from "../AddButton"
 import Gallery from "../Gellery"
@@ -82,6 +82,9 @@ const staticFiles = [
 
 const AddMediaPage = ({ organization }) => {
   const [files, dispatch] = useReducer(mediaReducer, staticFiles)
+  const [isGeneralSelectorActive, setIsGeneralSelectorActive] = useState(false)
+
+  const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
 
   return (
     <FullPageCentered maxWidth>
@@ -89,12 +92,19 @@ const AddMediaPage = ({ organization }) => {
         Add new photos/videos to <strong>{organization.name}</strong>
       </p>
       <GeneralTagSelector
+        isActive={isGeneralSelectorActive}
+        setIsActive={setIsGeneralSelectorActive}
         tags={tags}
         onTagToggled={tagId =>
           dispatch({ type: "TOGGLE_TAG_FOR_ALL", payload: tagId })
         }
       />
-      <Gallery files={files} tags={tags} dispatch={dispatch} />
+      <Gallery
+        files={files}
+        tags={tags}
+        dispatch={dispatch}
+        disableGeneralSelector={disableGeneralSelector}
+      />
       <AddButton dispatch={dispatch} />
     </FullPageCentered>
   )

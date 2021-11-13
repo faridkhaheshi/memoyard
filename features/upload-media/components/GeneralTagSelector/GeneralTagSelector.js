@@ -1,9 +1,8 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 
 import MediaTagSelector from "../../../../components/MediaCard/MediaTagSelector"
 
-const GeneralTagSelector = ({ tags, onTagToggled }) => {
-  const [isActive, setIsActive] = useState(false)
+const GeneralTagSelector = ({ isActive, setIsActive, tags, onTagToggled }) => {
   const [selectedTags, setSelectedTags] = useState([])
 
   const toggleSelectedGeneralTag = useCallback(
@@ -14,11 +13,15 @@ const GeneralTagSelector = ({ tags, onTagToggled }) => {
         }
         return [...oldTags, tagId]
       })
-      setIsActive(true)
       onTagToggled(tagId)
+      setIsActive(true)
     },
     [setSelectedTags, setIsActive, onTagToggled]
   )
+
+  useEffect(() => {
+    if (!isActive) setSelectedTags([])
+  }, [isActive, setSelectedTags])
 
   return (
     <MediaTagSelector

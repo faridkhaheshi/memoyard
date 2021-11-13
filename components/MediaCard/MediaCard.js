@@ -1,3 +1,4 @@
+import { useCallback } from "react"
 import CloseButton from "./CloseButton"
 import MemoVideo from "./MemoVideo"
 import MemoImage from "./MemoImage"
@@ -5,8 +6,18 @@ import MediaTagSelector from "./MediaTagSelector"
 
 import styles from "./MediaCard.module.scss"
 
-const MediaCard = ({ file, tags, dispatch }) => {
+const MediaCard = ({ file, tags, dispatch, disableGeneralSelector }) => {
   const { mediaType } = file
+  const onTagToggled = useCallback(
+    tagId => {
+      dispatch({
+        type: "TOGGLE_FILE_TAG",
+        payload: { fileObjectUrl: file.objectUrl, tagId },
+      })
+      disableGeneralSelector()
+    },
+    [file.objectUrl, disableGeneralSelector, dispatch]
+  )
 
   return (
     <div className={styles.cardContainer}>
@@ -26,12 +37,7 @@ const MediaCard = ({ file, tags, dispatch }) => {
         selectedTags={file.tags}
         containerStyle={styles.tagsContainer}
         title="This item will be sent to:"
-        onToggle={tagId =>
-          dispatch({
-            type: "TOGGLE_FILE_TAG",
-            payload: { fileObjectUrl: file.objectUrl, tagId },
-          })
-        }
+        onToggle={onTagToggled}
       />
     </div>
   )

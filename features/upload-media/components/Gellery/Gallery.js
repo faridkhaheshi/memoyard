@@ -8,23 +8,22 @@ const {
   gallery: { breakpointCols },
 } = config
 
-const Gallery = ({ files, tags, dispatch }) => {
-  return (
-    <Masonry
-      breakpointCols={breakpointCols}
-      className={styles.masonryGrid}
-      columnClassName={styles.masonryGridColumn}
-    >
-      {files.map(file => (
-        <MediaCard
-          key={file.objectUrl}
-          file={file}
-          tags={tags}
-          dispatch={dispatch}
-        />
-      ))}
-    </Masonry>
-  )
-}
+const Gallery = ({ files, tags, dispatch, disableGeneralSelector }) => (
+  <Masonry
+    breakpointCols={breakpointCols}
+    className={styles.masonryGrid}
+    columnClassName={styles.masonryGridColumn}
+  >
+    {files.map(file => (
+      <MediaCard
+        key={file.objectUrl}
+        file={file}
+        tags={tags}
+        dispatch={dispatch}
+        disableGeneralSelector={disableGeneralSelector}
+      />
+    ))}
+  </Masonry>
+)
 
 export default Gallery
