@@ -2,6 +2,7 @@ import { useReducer } from "react"
 import FullPageCentered from "../../../../components/FullPageCentered"
 import AddButton from "../AddButton"
 import Gallery from "../Gellery"
+import GeneralTagSelector from "../GeneralTagSelector"
 import mediaReducer from "./media-reducer"
 
 import styles from "./AddMediaPage.module.scss"
@@ -11,6 +12,22 @@ const tags = [
   { name: "toddlers", type: "group", id: "2" },
   { name: "Shila", type: "subject", id: "3" },
   { name: "all", type: "group", id: "4" },
+  { name: "miscgroup1", type: "group", id: "5" },
+  { name: "miscgroup2", type: "group", id: "6" },
+  { name: "miscgroup3", type: "group", id: "7" },
+  { name: "miscgroup4", type: "group", id: "8" },
+  { name: "miscgroup5", type: "group", id: "9" },
+  // { name: "miscgroup6", type: "group", id: "10" },
+  // { name: "miscgroup7", type: "group", id: "11" },
+  // { name: "miscgroup8", type: "group", id: "12" },
+  // { name: "miscgroup9", type: "group", id: "13" },
+  // { name: "miscgroup10", type: "group", id: "14" },
+  // { name: "miscgroup11", type: "group", id: "15" },
+  // { name: "miscgroup12", type: "group", id: "16" },
+  // { name: "miscgroup13", type: "group", id: "17" },
+  // { name: "miscgroup14", type: "group", id: "18" },
+  // { name: "miscgroup15", type: "group", id: "19" },
+  // { name: "miscgroup16", type: "group", id: "20" },
 ]
 
 const staticFiles = [
@@ -67,10 +84,11 @@ const AddMediaPage = ({ organization }) => {
   const [files, dispatch] = useReducer(mediaReducer, staticFiles)
 
   return (
-    <FullPageCentered>
+    <FullPageCentered maxWidth>
       <p>
-        Add new photos to <strong>{organization.name}</strong>
+        Add new photos/videos to <strong>{organization.name}</strong>
       </p>
+      <GeneralTagSelector tags={tags} />
       <Gallery files={files} tags={tags} dispatch={dispatch} />
       <AddButton dispatch={dispatch} />
     </FullPageCentered>

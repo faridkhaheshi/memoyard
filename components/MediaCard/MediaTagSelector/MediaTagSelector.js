@@ -2,20 +2,29 @@ import MediaTag from "./MediaTag"
 
 import styles from "./MediaTagSelector.module.scss"
 
-const MediaTagSelector = ({ file, tags, parentStyles, dispatch }) => (
-  <div className={`${parentStyles.tagsContainer} ${styles.tagsContainer}`}>
-    <p>This item will be sent to:</p>
+const MediaTagSelector = ({
+  selectedTags,
+  tags,
+  containerStyle,
+  onToggle,
+  title,
+}) => (
+  <div
+    className={
+      containerStyle
+        ? `${containerStyle} ${styles.tagsContainer}`
+        : styles.tagsContainer
+    }
+  >
+    {title && <p>{title}</p>}
     <ul>
       {tags.map(tag => (
         <MediaTag
           key={tag.id}
           tag={tag}
-          fileTags={file.tags}
+          selectedTags={selectedTags}
           styles={styles}
-          onClick={dispatch.bind(null, {
-            type: "TOGGLE_FILE_TAG",
-            payload: { fileObjectUrl: file.objectUrl, tagId: tag.id },
-          })}
+          onClick={onToggle.bind(null, tag.id)}
         />
       ))}
     </ul>

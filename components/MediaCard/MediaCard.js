@@ -23,9 +23,15 @@ const MediaCard = ({ file, tags, dispatch }) => {
       )}
       <MediaTagSelector
         tags={tags}
-        file={file}
-        parentStyles={styles}
-        dispatch={dispatch}
+        selectedTags={file.tags}
+        containerStyle={styles.tagsContainer}
+        title="This item will be sent to:"
+        onToggle={tagId =>
+          dispatch({
+            type: "TOGGLE_FILE_TAG",
+            payload: { fileObjectUrl: file.objectUrl, tagId },
+          })
+        }
       />
     </div>
   )
