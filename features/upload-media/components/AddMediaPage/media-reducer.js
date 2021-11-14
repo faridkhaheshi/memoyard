@@ -23,8 +23,6 @@ function toggleFileTag(state, action) {
 }
 
 function applyTagForAll(state, action) {
-  console.log(action.type)
-  console.log(action.payload)
   const {
     payload: { add, tagId, selectedTags, resetAll },
   } = action
