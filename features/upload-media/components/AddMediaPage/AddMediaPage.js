@@ -25,43 +25,45 @@ const staticFiles = [
     mediaType: "video",
     tags: [],
   },
-  {
-    objectUrl: "https://picsum.photos/seed/pic3/1080/1280",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl: "https://picsum.photos/seed/picsum4/600/400",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl: "https://picsum.photos/seed/pic5/800/800",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl:
-      "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-    mediaType: "video",
-    tags: [],
-  },
-  {
-    objectUrl: "https://picsum.photos/seed/pic6/2100/3000",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl: "https://picsum.photos/seed/pic7/1200/800",
-    mediaType: "photo",
-    tags: [],
-  },
+  // {
+  //   objectUrl: "https://picsum.photos/seed/pic3/1080/1280",
+  //   mediaType: "photo",
+  //   tags: [],
+  // },
+  // {
+  //   objectUrl: "https://picsum.photos/seed/picsum4/600/400",
+  //   mediaType: "photo",
+  //   tags: [],
+  // },
+  // {
+  //   objectUrl: "https://picsum.photos/seed/pic5/800/800",
+  //   mediaType: "photo",
+  //   tags: [],
+  // },
+  // {
+  //   objectUrl:
+  //     "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+  //   mediaType: "video",
+  //   tags: [],
+  // },
+  // {
+  //   objectUrl: "https://picsum.photos/seed/pic6/2100/3000",
+  //   mediaType: "photo",
+  //   tags: [],
+  // },
+  // {
+  //   objectUrl: "https://picsum.photos/seed/pic7/1200/800",
+  //   mediaType: "photo",
+  //   tags: [],
+  // },
 ]
 
 const AddMediaPage = ({ organization }) => {
-  const [files, dispatch] = useReducer(mediaReducer, staticFiles)
+  const [files, dispatch] = useReducer(mediaReducer, [])
   const [isGeneralSelectorActive, setIsGeneralSelectorActive] = useState(false)
   const { tags, tagsLoading, tagsError } = useTags(organization.slug)
+  // console.log(files)
+  // console.log(tags)
 
   const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
 

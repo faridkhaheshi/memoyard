@@ -17,7 +17,9 @@ const Gallery = ({
   disableGeneralSelector,
 }) => (
   <Masonry
-    breakpointCols={breakpointCols}
+    breakpointCols={
+      files.length <= breakpointCols.default ? files.length : breakpointCols
+    }
     className={styles.masonryGrid}
     columnClassName={styles.masonryGridColumn}
   >

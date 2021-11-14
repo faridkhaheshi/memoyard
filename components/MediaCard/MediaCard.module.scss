@@ -6,6 +6,7 @@
   box-shadow: v.$media-gallery-box-shadow;
   -moz-box-shadow: v.$media-gallery-box-shadow;
   -webkit-box-shadow: v.$media-gallery-box-shadow;
+  max-width: v.$media-card-max-width;
 
   &:hover .closeButton {
     background-color: rgba(2, 1, 1, 0.2);
