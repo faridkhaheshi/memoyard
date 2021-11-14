@@ -3,7 +3,7 @@ import isMediaTypeSupported from "../../utilities/is-media-type-supported"
 
 import styles from "./AddButton.module.scss"
 
-const AddButton = ({ dispatch }) => {
+const AddButton = ({ dispatch, showMoreText = false }) => {
   const addNewFiles = e => {
     const { files } = e.target
     if (files && files.length > 0) {
@@ -30,6 +30,7 @@ const AddButton = ({ dispatch }) => {
 
   return (
     <form className={styles.addButtonContainer}>
+      {showMoreText && <p>or add more photos/videos</p>}
       <label htmlFor="add-input">+</label>
       <input
         type="file"

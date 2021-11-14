@@ -1,10 +1,11 @@
 import { useReducer, useState } from "react"
 import FullPageCentered from "../../../../components/FullPageCentered"
-import AddButton from "../AddButton"
 import Gallery from "../Gellery"
 import GeneralTagSelector from "../GeneralTagSelector"
 import mediaReducer from "./media-reducer"
 import useTags from "../../../../hooks/use-tags"
+import UploadButton from "../UploadButton/UploadButton"
+import AddButton from "../AddButton"
 
 import styles from "./AddMediaPage.module.scss"
 
@@ -92,7 +93,8 @@ const AddMediaPage = ({ organization }) => {
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
       />
-      <AddButton dispatch={dispatch} />
+      <UploadButton files={files} />
+      <AddButton showMoreText={files.length > 0} dispatch={dispatch} />
     </FullPageCentered>
   )
 }

@@ -1,6 +1,10 @@
 @use "../../../../styles/variables" as v;
 
 .addButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   input {
     display: none;
   }
@@ -15,5 +19,11 @@
     border: 4px solid v.$border-gray;
     border-radius: 50%;
     font-size: 36px;
+
+    &:hover {
+      border-color: v.$sharp-blue;
+      color: white;
+      background-color: v.$sharp-blue;
+    }
   }
 }
