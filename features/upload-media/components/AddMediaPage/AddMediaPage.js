@@ -95,8 +95,8 @@ const AddMediaPage = ({ organization }) => {
         isActive={isGeneralSelectorActive}
         setIsActive={setIsGeneralSelectorActive}
         tags={tags}
-        onTagToggled={tagId =>
-          dispatch({ type: "TOGGLE_TAG_FOR_ALL", payload: tagId })
+        onTagToggled={payload =>
+          dispatch({ type: "APPLY_TAG_FOR_ALL", payload })
         }
       />
       <Gallery

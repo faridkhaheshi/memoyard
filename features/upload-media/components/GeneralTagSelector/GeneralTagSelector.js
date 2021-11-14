@@ -8,15 +8,21 @@ const GeneralTagSelector = ({ isActive, setIsActive, tags, onTagToggled }) => {
   const toggleSelectedGeneralTag = useCallback(
     tagId => {
       setSelectedTags(oldTags => {
-        if (oldTags.indexOf(tagId) > -1) {
-          return oldTags.filter(tId => tId !== tagId)
-        }
-        return [...oldTags, tagId]
+        const newTags =
+          oldTags.indexOf(tagId) > -1
+            ? oldTags.filter(tId => tId !== tagId)
+            : [...oldTags, tagId]
+        onTagToggled({
+          tagId,
+          add: oldTags.indexOf(tagId) === -1,
+          selectedTags: newTags,
+          resetAll: !isActive,
+        })
+        return newTags
       })
-      onTagToggled(tagId)
       setIsActive(true)
     },
-    [setSelectedTags, setIsActive, onTagToggled]
+    [setSelectedTags, setIsActive, onTagToggled, isActive]
   )
 
   useEffect(() => {

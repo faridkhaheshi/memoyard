@@ -6,8 +6,8 @@ const mediaReducer = (state = [], action) => {
       return [action.payload, ...state]
     case "TOGGLE_FILE_TAG":
       return toggleFileTag(state, action)
-    case "TOGGLE_TAG_FOR_ALL":
-      return toggleTagForAll(state, action)
+    case "APPLY_TAG_FOR_ALL":
+      return applyTagForAll(state, action)
     default:
       return state
   }
@@ -22,8 +22,27 @@ function toggleFileTag(state, action) {
   })
 }
 
-function toggleTagForAll(state, action) {
-  return state.map(file => toggleTagForFile(action.payload, file))
+function applyTagForAll(state, action) {
+  console.log(action.type)
+  console.log(action.payload)
+  const {
+    payload: { add, tagId, selectedTags, resetAll },
+  } = action
+  if (resetAll) {
+    return state.map(file => ({ ...file, tags: selectedTags }))
+  }
+  return state.map(file => {
+    const tagExistsForFile = file.tags.indexOf(tagId) > -1
+    if (tagExistsForFile && add) {
+      return file
+    } else if (tagExistsForFile) {
+      return { ...file, tags: file.tags.filter(tId => tId !== tagId) }
+    } else if (add) {
+      return { ...file, tags: [...file.tags, tagId] }
+    } else {
+      return file
+    }
+  })
 }
 
 function toggleTagForFile(tagId, file) {
