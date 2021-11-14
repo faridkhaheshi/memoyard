@@ -8,7 +8,14 @@ const {
   gallery: { breakpointCols },
 } = config
 
-const Gallery = ({ files, tags, dispatch, disableGeneralSelector }) => (
+const Gallery = ({
+  files,
+  tags,
+  tagsLoading,
+  tagsError,
+  dispatch,
+  disableGeneralSelector,
+}) => (
   <Masonry
     breakpointCols={breakpointCols}
     className={styles.masonryGrid}
@@ -19,6 +26,8 @@ const Gallery = ({ files, tags, dispatch, disableGeneralSelector }) => (
         key={file.objectUrl}
         file={file}
         tags={tags}
+        tagsLoading={tagsLoading}
+        tagsError={tagsError}
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
       />

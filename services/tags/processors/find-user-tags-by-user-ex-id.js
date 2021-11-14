@@ -4,6 +4,7 @@ const findUserTagsByUserExId = async ({ userExId, slug }) => {
   const { records: tags } = await db.query(
     `
     SELECT
+      g.ex_id as id,
       g.name as name,
       'group' as type,
       g.ex_id as group_ex_id,
@@ -26,6 +27,7 @@ const findUserTagsByUserExId = async ({ userExId, slug }) => {
       UNION ALL
 
       SELECT
+        s.ex_id as id,
         s.name as name,
         'subject' as type,
         null as group_ex_id,

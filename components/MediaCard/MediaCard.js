@@ -6,7 +6,14 @@ import MediaTagSelector from "./MediaTagSelector"
 
 import styles from "./MediaCard.module.scss"
 
-const MediaCard = ({ file, tags, dispatch, disableGeneralSelector }) => {
+const MediaCard = ({
+  file,
+  tags,
+  tagsLoading,
+  tagsError,
+  dispatch,
+  disableGeneralSelector,
+}) => {
   const { mediaType } = file
   const onTagToggled = useCallback(
     tagId => {
@@ -34,6 +41,8 @@ const MediaCard = ({ file, tags, dispatch, disableGeneralSelector }) => {
       )}
       <MediaTagSelector
         tags={tags}
+        tagsLoading={tagsLoading}
+        tagsError={tagsError}
         selectedTags={file.tags}
         containerStyle={styles.tagsContainer}
         title="This item will be sent to:"

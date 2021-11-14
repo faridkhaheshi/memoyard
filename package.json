@@ -26,6 +26,7 @@
     "react-masonry-css": "1.0.16",
     "restify-errors": "8.0.2",
     "sass": "1.43.4",
+    "swr": "1.0.1",
     "uuid": "3.3.2"
   },
   "devDependencies": {

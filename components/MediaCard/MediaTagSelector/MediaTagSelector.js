@@ -6,6 +6,8 @@ const MediaTagSelector = ({
   disabled,
   selectedTags,
   tags,
+  tagsLoading,
+  tagsError,
   containerStyle,
   onToggle,
   title,
@@ -19,15 +21,19 @@ const MediaTagSelector = ({
   >
     {title && <p className={disabled ? styles.disabledTitle : ""}>{title}</p>}
     <ul>
-      {tags.map(tag => (
-        <MediaTag
-          key={tag.id}
-          tag={tag}
-          selectedTags={selectedTags}
-          styles={styles}
-          onClick={onToggle.bind(null, tag.id)}
-        />
-      ))}
+      {tagsLoading && (
+        <small className={styles.loadingText}>Loading Tags...</small>
+      )}
+      {tags &&
+        tags.map(tag => (
+          <MediaTag
+            key={tag.id}
+            tag={tag}
+            selectedTags={selectedTags}
+            styles={styles}
+            onClick={onToggle.bind(null, tag.id)}
+          />
+        ))}
     </ul>
   </div>
 )
