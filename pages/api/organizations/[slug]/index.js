@@ -1,4 +1,4 @@
-import { handleGetOrganizationBySlugRequest } from "../../../services/organizations/controllers"
+import { handleGetOrganizationBySlugRequest } from "../../../../services/organizations/controllers"
 
 export default function handler(req, res) {
   const { method } = req

@@ -91,14 +91,16 @@ const AddMediaPage = ({ organization }) => {
       <p>
         Add new photos/videos to <strong>{organization.name}</strong>
       </p>
-      <GeneralTagSelector
-        isActive={isGeneralSelectorActive}
-        setIsActive={setIsGeneralSelectorActive}
-        tags={tags}
-        onTagToggled={payload =>
-          dispatch({ type: "APPLY_TAG_FOR_ALL", payload })
-        }
-      />
+      {files.length > 1 && (
+        <GeneralTagSelector
+          isActive={isGeneralSelectorActive}
+          setIsActive={setIsGeneralSelectorActive}
+          tags={tags}
+          onTagToggled={payload =>
+            dispatch({ type: "APPLY_TAG_FOR_ALL", payload })
+          }
+        />
+      )}
       <Gallery
         files={files}
         tags={tags}
