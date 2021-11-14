@@ -20,6 +20,7 @@ const AddButton = ({ dispatch }) => {
               type: file.type,
               size: file.size,
               mediaType: detectMediaType(file.type),
+              tags: [],
             },
           })
         }
