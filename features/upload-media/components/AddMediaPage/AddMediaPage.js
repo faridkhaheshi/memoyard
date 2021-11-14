@@ -93,7 +93,7 @@ const AddMediaPage = ({ organization }) => {
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
       />
-      <UploadButton files={files} />
+      <UploadButton files={files} organization={organization} tags={tags} />
       <AddButton showMoreText={files.length > 0} dispatch={dispatch} />
     </FullPageCentered>
   )
