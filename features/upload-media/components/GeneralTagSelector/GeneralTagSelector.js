@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react"
 
 import MediaTagSelector from "../../../../components/MediaCard/MediaTagSelector"
+import styles from "./GeneralTagSelector.module.scss"
 
 const GeneralTagSelector = ({
   isActive,
@@ -44,6 +45,7 @@ const GeneralTagSelector = ({
           ? `Apply "recipient tags" to all items:`
           : `Apply "recipient tags" to all items (click on a tag to use):`
       }
+      containerStyle={styles.generalTagSelectors}
       selectedTags={selectedTags}
       tags={tags}
       tagsLoading={tagsLoading}

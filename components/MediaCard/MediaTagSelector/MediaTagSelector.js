@@ -15,7 +15,7 @@ const MediaTagSelector = ({
   <div
     className={
       containerStyle
-        ? `${containerStyle} ${styles.tagsContainer}`
+        ? `${styles.tagsContainer} ${containerStyle}`
         : styles.tagsContainer
     }
   >
