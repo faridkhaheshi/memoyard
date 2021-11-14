@@ -65,8 +65,6 @@ const AddMediaPage = ({ organization }) => {
 
   const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
 
-  console.log(tags)
-
   return (
     <FullPageCentered maxWidth>
       <p>
