@@ -31,7 +31,12 @@ const GeneralTagSelector = ({ isActive, setIsActive, tags, onTagToggled }) => {
 
   return (
     <MediaTagSelector
-      title="Send all items to:"
+      disabled={!isActive}
+      title={
+        isActive
+          ? `Apply "recipient tags" to all items:`
+          : `Apply "recipient tags" to all items (click on a tag to use):`
+      }
       selectedTags={selectedTags}
       tags={tags}
       onToggle={toggleSelectedGeneralTag}

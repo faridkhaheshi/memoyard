@@ -4,6 +4,10 @@
   width: 100%;
   padding: 0 15px 10px 15px;
 
+  .disabledTitle {
+    color: darken(v.$unselected-tag-color, 20%);
+  }
+
   ul {
     margin: 0;
     height: 100%;

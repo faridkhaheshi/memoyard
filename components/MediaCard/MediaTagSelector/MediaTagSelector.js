@@ -3,6 +3,7 @@ import MediaTag from "./MediaTag"
 import styles from "./MediaTagSelector.module.scss"
 
 const MediaTagSelector = ({
+  disabled,
   selectedTags,
   tags,
   containerStyle,
@@ -16,7 +17,7 @@ const MediaTagSelector = ({
         : styles.tagsContainer
     }
   >
-    {title && <p>{title}</p>}
+    {title && <p className={disabled ? styles.disabledTitle : ""}>{title}</p>}
     <ul>
       {tags.map(tag => (
         <MediaTag
