@@ -21,6 +21,7 @@ const AddButton = ({ dispatch, showMoreText = false }) => {
               size: file.size,
               mediaType: detectMediaType(file.type),
               tags: [],
+              uploadInfo: undefined,
             },
           })
         }

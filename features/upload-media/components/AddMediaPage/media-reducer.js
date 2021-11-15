@@ -1,3 +1,18 @@
+/*
+const sampleState = [
+  {
+    nativeFile: 'file',
+    objectUrl: 'URL.createObjectURL(file)',
+    name: 'file.name',
+    type: 'file.type',
+    size: 'file.size',
+    mediaType: 'video|photo',
+    tags: [],
+    uploadInfo: undefined,
+  },
+]
+*/
+
 const mediaReducer = (state = [], action) => {
   switch (action.type) {
     case "REMOVE_FILE":
@@ -8,12 +23,30 @@ const mediaReducer = (state = [], action) => {
       return toggleFileTag(state, action)
     case "APPLY_TAG_FOR_ALL":
       return applyTagForAll(state, action)
+    case "ADD_UPLOAD_URLS":
+      return addUploadUrls(state, action)
     default:
       return state
   }
 }
 
 export default mediaReducer
+
+function addUploadUrls(state, action) {
+  const { payload: uploadUrls } = action
+  const fileMap = uploadUrls.reduce(
+    (acc, { uploadUrl, viewUrl, fileObjectUrl }) => ({
+      ...acc,
+      [fileObjectUrl]: { uploadUrl, viewUrl },
+    }),
+    {}
+  )
+  const newState = state.map(file => ({
+    ...file,
+    uploadInfo: fileMap[file.objectUrl],
+  }))
+  return state
+}
 
 function toggleFileTag(state, action) {
   return state.map(file => {
