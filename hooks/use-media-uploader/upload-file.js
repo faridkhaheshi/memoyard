@@ -1,8 +1,7 @@
-const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) =>
-  new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    const formData = new FormData()
-    formData.append("file", file)
+import axios from "axios"
+
+const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) => {
+  return new Promise((resolve, reject) => {
     xhr.upload.addEventListener("progress", event => {
       if (event.lengthComputable) {
         onProgress(event.loaded / event.total)
@@ -19,9 +18,10 @@ const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) =>
     })
     xhr.addEventListener("error", reject)
     xhr.addEventListener("abort", reject)
-    xhr.open("PUT", uploadUrl, true)
+    xhr.open("PUT", uploadUrl)
     xhr.setRequestHeader("Content-Type", "multipart/form-data")
-    xhr.send(formData)
+    xhr.send(file)
   })
+}
 
 export default uploadFile
