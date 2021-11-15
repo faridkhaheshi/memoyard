@@ -45,7 +45,7 @@ function addUploadUrls(state, action) {
     ...file,
     uploadInfo: fileMap[file.objectUrl],
   }))
-  return state
+  return newState
 }
 
 function toggleFileTag(state, action) {

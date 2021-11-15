@@ -2,6 +2,7 @@ import { useCallback } from "react"
 import CloseButton from "./CloseButton"
 import MemoVideo from "./MemoVideo"
 import MemoImage from "./MemoImage"
+import MediaUploader from "./MediaUploader"
 import MediaTagSelector from "./MediaTagSelector"
 
 import styles from "./MediaCard.module.scss"
@@ -39,6 +40,7 @@ const MediaCard = ({
       ) : (
         <MemoImage file={file} />
       )}
+      <MediaUploader file={file} />
       <MediaTagSelector
         tags={tags}
         tagsLoading={tagsLoading}
