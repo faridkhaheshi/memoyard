@@ -1,5 +1,3 @@
-import axios from "axios"
-
 const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) => {
   return new Promise((resolve, reject) => {
     xhr.upload.addEventListener("progress", event => {

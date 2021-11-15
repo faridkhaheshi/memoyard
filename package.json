@@ -16,7 +16,6 @@
     "@fortawesome/react-fontawesome": "0.1.16",
     "aws-cloudfront-sign": "2.2.0",
     "aws-sdk": "2.1018.0",
-    "axios": "0.24.0",
     "classnames": "2.2.6",
     "data-api-client": "1.2.0",
     "js-cookie": "3.0.1",
