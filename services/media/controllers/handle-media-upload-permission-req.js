@@ -1,12 +1,27 @@
-import { createUploadUrl, allowMediaView } from "../processors"
+import { checkUserAccessToOrganization } from "../../organizations/processors"
+import { checkUserAccessToTags } from "../../tags/processors"
+import { allowMediaView, createUploadUrls } from "../processors"
 
 const handleMediaUploadPermissionReq = async (req, res) => {
   try {
-    // const uploadUrl = await createUploadUrl(req.body)
-    // const viewUrl = allowMediaView(uploadUrl)
-    // return res.json({ uploadUrl, viewUrl })
-    console.log(req.body)
-    return res.json({ done: true, uploadUrls: [] })
+    const {
+      user,
+      body: { organization, files },
+    } = req
+    const [theOrg] = await Promise.all([
+      checkUserAccessToOrganization({ user, organization }),
+      checkUserAccessToTags({
+        user,
+        organization,
+        tags: files.reduce((acc, file) => [...acc, ...file.tags], []),
+      }),
+    ])
+    const uploadUrls = await createUploadUrls({ files, organization: theOrg })
+    const viewUrls = uploadUrls.map(allowMediaView)
+    return res.json({
+      done: true,
+      urls: { upload: uploadUrls, view: viewUrls },
+    })
   } catch (err) {
     return res
       .status(500)
