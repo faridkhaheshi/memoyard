@@ -20,7 +20,11 @@ const handleMediaUploadPermissionReq = async (req, res) => {
     const viewUrls = uploadUrls.map(allowMediaView)
     return res.json({
       done: true,
-      urls: { upload: uploadUrls, view: viewUrls },
+      urls: uploadUrls.map((uploadUrl, index) => ({
+        fileObjectUrl: files[index].objectUrl,
+        uploadUrl,
+        viewUrl: viewUrls[index],
+      })),
     })
   } catch (err) {
     return res
