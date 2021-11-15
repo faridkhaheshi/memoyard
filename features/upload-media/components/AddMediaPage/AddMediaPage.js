@@ -63,8 +63,6 @@ const AddMediaPage = ({ organization }) => {
   const [files, dispatch] = useReducer(mediaReducer, [])
   const [isGeneralSelectorActive, setIsGeneralSelectorActive] = useState(false)
   const { tags, tagsLoading, tagsError } = useTags(organization.slug)
-  // console.log(files)
-  // console.log(tags)
 
   const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
 
@@ -93,7 +91,12 @@ const AddMediaPage = ({ organization }) => {
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
       />
-      <UploadButton files={files} organization={organization} tags={tags} />
+      <UploadButton
+        files={files}
+        organization={organization}
+        tags={tags}
+        dispatch={dispatch}
+      />
       <AddButton showMoreText={files.length > 0} dispatch={dispatch} />
     </FullPageCentered>
   )

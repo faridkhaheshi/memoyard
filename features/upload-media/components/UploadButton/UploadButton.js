@@ -1,11 +1,15 @@
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import MemoButton from "../../../../components/MemoButton"
 import callApi from "../../../../utilities/call-api"
 
-const UploadButton = ({ files, organization, tags }) => {
+const UploadButton = ({ files, organization, tags, dispatch }) => {
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(null)
+
   const startUpload = useCallback(async () => {
     try {
-      console.log(files)
+      setIsProcessing(true)
+      setErrorMessage(null)
       const { urls } = await callApi("/api/media/upload-permission", {
         method: "POST",
         body: {
@@ -22,17 +26,23 @@ const UploadButton = ({ files, organization, tags }) => {
           organization,
         },
       })
-      console.log(urls)
+      dispatch({ type: "ADD_UPLOAD_URLS", payload: urls })
     } catch (err) {
-      console.error(err)
+      setErrorMessage(err.message || "Request Failed")
     } finally {
-      console.log("done")
+      setIsProcessing(false)
     }
-  }, [files, organization])
+  }, [files, tags, organization, setIsProcessing, setErrorMessage, dispatch])
 
   if (files.length === 0) return null
   return (
-    <MemoButton large onClick={startUpload}>
+    <MemoButton
+      large
+      withMargins
+      onClick={startUpload}
+      disabled={isProcessing}
+      error={errorMessage}
+    >
       Upload
     </MemoButton>
   )
