@@ -9,56 +9,6 @@ import AddButton from "../AddButton"
 
 import styles from "./AddMediaPage.module.scss"
 
-const staticFiles = [
-  {
-    objectUrl: "https://picsum.photos/seed/pic1/200/300",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl: "https://picsum.photos/seed/pic2/1280/1080",
-    mediaType: "photo",
-    tags: [],
-  },
-  {
-    objectUrl:
-      "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4",
-    mediaType: "video",
-    tags: [],
-  },
-  // {
-  //   objectUrl: "https://picsum.photos/seed/pic3/1080/1280",
-  //   mediaType: "photo",
-  //   tags: [],
-  // },
-  // {
-  //   objectUrl: "https://picsum.photos/seed/picsum4/600/400",
-  //   mediaType: "photo",
-  //   tags: [],
-  // },
-  // {
-  //   objectUrl: "https://picsum.photos/seed/pic5/800/800",
-  //   mediaType: "photo",
-  //   tags: [],
-  // },
-  // {
-  //   objectUrl:
-  //     "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   mediaType: "video",
-  //   tags: [],
-  // },
-  // {
-  //   objectUrl: "https://picsum.photos/seed/pic6/2100/3000",
-  //   mediaType: "photo",
-  //   tags: [],
-  // },
-  // {
-  //   objectUrl: "https://picsum.photos/seed/pic7/1200/800",
-  //   mediaType: "photo",
-  //   tags: [],
-  // },
-]
-
 const AddMediaPage = ({ organization }) => {
   const [files, dispatch] = useReducer(mediaReducer, [])
   const [isGeneralSelectorActive, setIsGeneralSelectorActive] = useState(false)
@@ -66,24 +16,26 @@ const AddMediaPage = ({ organization }) => {
 
   const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
 
+  const showControls = files.every(file => !file.uploadStatus)
+
   return (
     <FullPageCentered maxWidth>
       <p>
         Add new photos/videos to <strong>{organization.name}</strong>
       </p>
-      {files.length > 1 && (
-        <GeneralTagSelector
-          isActive={isGeneralSelectorActive}
-          setIsActive={setIsGeneralSelectorActive}
-          tags={tags}
-          tagsLoading={tagsLoading}
-          tagsError={tagsError}
-          onTagToggled={payload =>
-            dispatch({ type: "APPLY_TAG_FOR_ALL", payload })
-          }
-        />
-      )}
+      <GeneralTagSelector
+        hide={files.length <= 1 || !showControls}
+        isActive={isGeneralSelectorActive}
+        setIsActive={setIsGeneralSelectorActive}
+        tags={tags}
+        tagsLoading={tagsLoading}
+        tagsError={tagsError}
+        onTagToggled={payload =>
+          dispatch({ type: "APPLY_TAG_FOR_ALL", payload })
+        }
+      />
       <Gallery
+        showControls={showControls}
         files={files}
         tags={tags}
         tagsLoading={tagsLoading}
@@ -92,12 +44,17 @@ const AddMediaPage = ({ organization }) => {
         disableGeneralSelector={disableGeneralSelector}
       />
       <UploadButton
+        hide={!showControls}
         files={files}
         organization={organization}
         tags={tags}
         dispatch={dispatch}
       />
-      <AddButton showMoreText={files.length > 0} dispatch={dispatch} />
+      <AddButton
+        showMoreText={files.length > 0}
+        dispatch={dispatch}
+        hide={!showControls}
+      />
     </FullPageCentered>
   )
 }

@@ -1,5 +1,6 @@
 const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) => {
   return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
     xhr.upload.addEventListener("progress", event => {
       if (event.lengthComputable) {
         onProgress(event.loaded / event.total)

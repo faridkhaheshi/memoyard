@@ -8,10 +8,10 @@ import uploadFile from "./upload-file"
     'UPLOADING'
     'UPLOADED'
 */
-const useMediaUploader = ({
-  nativeFile,
-  uploadInfo: { uploadUrl, viewUrl } = {},
-}) => {
+const useMediaUploader = (
+  { objectUrl, nativeFile, uploadInfo: { uploadUrl, viewUrl } = {} },
+  dispatch
+) => {
   const [status, setStatus] = useState("NO_UPLOAD_URL")
   const [progress, setProgress] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -19,18 +19,37 @@ const useMediaUploader = ({
   useEffect(() => {
     if (uploadUrl && status === "NO_UPLOAD_URL") {
       setStatus("READY_TO_UPLOAD")
+      dispatch({
+        type: "UPDATE_UPLOAD_STATUS",
+        payload: { fileObjectUrl: objectUrl, status: "READY_TO_UPLOAD" },
+      })
     }
-  }, [uploadUrl, status])
+  }, [uploadUrl, status, dispatch, objectUrl])
 
   useEffect(() => {
     if (status === "READY_TO_UPLOAD") {
       setStatus("UPLOADING")
+      dispatch({
+        type: "UPDATE_UPLOAD_STATUS",
+        payload: { fileObjectUrl: objectUrl, status: "UPLOADING" },
+      })
       uploadFile({ file: nativeFile, uploadUrl, onProgress: setProgress })
         .then(result => {
-          result && setStatus("UPLOADED")
-          console.log(viewUrl)
+          if (result) {
+            setStatus("UPLOADED")
+            dispatch({
+              type: "UPDATE_UPLOAD_STATUS",
+              payload: { fileObjectUrl: objectUrl, status: "UPLOADED" },
+            })
+          }
         })
-        .catch(e => setErrorMessage(e.message || "upload failed"))
+        .catch(e => {
+          setErrorMessage(e.message || "upload failed")
+          dispatch({
+            type: "UPDATE_UPLOAD_STATUS",
+            payload: { fileObjectUrl: objectUrl, status: "FAILED" },
+          })
+        })
     }
   }, [
     status,
@@ -40,6 +59,8 @@ const useMediaUploader = ({
     nativeFile,
     uploadUrl,
     viewUrl,
+    objectUrl,
+    dispatch,
   ])
 
   return { status, progress, errorMessage }

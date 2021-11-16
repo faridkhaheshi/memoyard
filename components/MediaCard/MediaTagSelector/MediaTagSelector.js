@@ -1,3 +1,4 @@
+import classes from "classnames"
 import MediaTag from "./MediaTag"
 
 import styles from "./MediaTagSelector.module.scss"
@@ -11,14 +12,9 @@ const MediaTagSelector = ({
   containerStyle,
   onToggle,
   title,
+  uploadStatus,
 }) => (
-  <div
-    className={
-      containerStyle
-        ? `${styles.tagsContainer} ${containerStyle}`
-        : styles.tagsContainer
-    }
-  >
+  <div className={classes(styles.tagsContainer, containerStyle)}>
     {title && <p className={disabled ? styles.disabledTitle : ""}>{title}</p>}
     <ul>
       {tagsLoading && (
@@ -27,6 +23,7 @@ const MediaTagSelector = ({
       {tags &&
         tags.map(tag => (
           <MediaTag
+            disabled={uploadStatus}
             key={tag.id}
             tag={tag}
             selectedTags={selectedTags}

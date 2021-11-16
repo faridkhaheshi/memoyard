@@ -3,7 +3,7 @@ import isMediaTypeSupported from "../../utilities/is-media-type-supported"
 
 import styles from "./AddButton.module.scss"
 
-const AddButton = ({ dispatch, showMoreText = false }) => {
+const AddButton = ({ hide = false, dispatch, showMoreText = false }) => {
   const addNewFiles = e => {
     const { files } = e.target
     if (files && files.length > 0) {
@@ -28,6 +28,8 @@ const AddButton = ({ dispatch, showMoreText = false }) => {
       }
     }
   }
+
+  if (hide) return null
 
   return (
     <form className={styles.addButtonContainer}>

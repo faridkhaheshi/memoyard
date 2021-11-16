@@ -1,7 +1,18 @@
-const MediaTag = ({ styles, tag, selectedTags = [], onClick }) => (
+import classes from "classnames"
+
+const MediaTag = ({
+  styles,
+  tag,
+  selectedTags = [],
+  onClick,
+  disabled = false,
+}) => (
   <li>
     <button
-      className={selectedTags.indexOf(tag.id) > -1 ? styles.active : ""}
+      disabled={disabled}
+      className={classes({
+        [styles.active]: selectedTags.indexOf(tag.id) > -1,
+      })}
       onClick={onClick}
     >
       {tag.name}

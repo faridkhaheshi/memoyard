@@ -25,12 +25,22 @@ const mediaReducer = (state = [], action) => {
       return applyTagForAll(state, action)
     case "ADD_UPLOAD_URLS":
       return addUploadUrls(state, action)
+    case "UPDATE_UPLOAD_STATUS":
+      return updateUploadStatus(state, action)
     default:
       return state
   }
 }
 
 export default mediaReducer
+
+function updateUploadStatus(state, action) {
+  return state.map(file =>
+    file.objectUrl !== action.payload.fileObjectUrl
+      ? file
+      : { ...file, uploadStatus: action.payload.status }
+  )
+}
 
 function addUploadUrls(state, action) {
   const { payload: uploadUrls } = action

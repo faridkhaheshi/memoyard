@@ -1,12 +1,13 @@
-const CloseButton = ({ onClick, styles }) => (
-  <button
-    className={styles.closeButton}
-    tabIndex="0"
-    role="button"
-    onClick={onClick}
-  >
-    <i className="fas fa-times"></i>
-  </button>
-)
+const CloseButton = ({ hide, onClick, styles }) =>
+  hide ? null : (
+    <button
+      className={styles.closeButton}
+      tabIndex="0"
+      role="button"
+      onClick={onClick}
+    >
+      <i className="fas fa-times" />
+    </button>
+  )
 
 export default CloseButton

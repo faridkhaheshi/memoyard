@@ -15,6 +15,7 @@ const Gallery = ({
   tagsError,
   dispatch,
   disableGeneralSelector,
+  showControls,
 }) => (
   <Masonry
     breakpointCols={
@@ -32,6 +33,7 @@ const Gallery = ({
         tagsError={tagsError}
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
+        showControls={showControls}
       />
     ))}
   </Masonry>

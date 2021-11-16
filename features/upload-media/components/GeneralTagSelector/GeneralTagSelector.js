@@ -4,6 +4,7 @@ import MediaTagSelector from "../../../../components/MediaCard/MediaTagSelector"
 import styles from "./GeneralTagSelector.module.scss"
 
 const GeneralTagSelector = ({
+  hide = false,
   isActive,
   setIsActive,
   tags,
@@ -36,6 +37,8 @@ const GeneralTagSelector = ({
   useEffect(() => {
     if (!isActive) setSelectedTags([])
   }, [isActive, setSelectedTags])
+
+  if (hide) return null
 
   return (
     <MediaTagSelector

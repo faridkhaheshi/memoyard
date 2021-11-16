@@ -4,6 +4,7 @@ import MemoVideo from "./MemoVideo"
 import MemoImage from "./MemoImage"
 import MediaUploader from "./MediaUploader"
 import MediaTagSelector from "./MediaTagSelector"
+import UploadDoneIcon from "./UploadDoneIcon"
 
 import styles from "./MediaCard.module.scss"
 
@@ -14,6 +15,7 @@ const MediaCard = ({
   tagsError,
   dispatch,
   disableGeneralSelector,
+  showControls,
 }) => {
   const { mediaType } = file
   const onTagToggled = useCallback(
@@ -34,13 +36,14 @@ const MediaCard = ({
           dispatch({ type: "REMOVE_FILE", payload: file.objectUrl })
         }
         styles={styles}
+        hide={!showControls}
       />
       {mediaType === "video" ? (
         <MemoVideo src={file.objectUrl} type={file.type} />
       ) : (
         <MemoImage file={file} />
       )}
-      <MediaUploader file={file} />
+      <MediaUploader file={file} dispatch={dispatch} />
       <MediaTagSelector
         tags={tags}
         tagsLoading={tagsLoading}
@@ -49,7 +52,9 @@ const MediaCard = ({
         containerStyle={styles.tagsContainer}
         title="This item will be sent to:"
         onToggle={onTagToggled}
+        uploadStatus={file.uploadStatus}
       />
+      <UploadDoneIcon show={file.uploadStatus === "UPLOADED"} />
     </div>
   )
 }

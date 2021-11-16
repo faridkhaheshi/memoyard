@@ -2,6 +2,9 @@
 
 .cardContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: v.$media-card-border-radius;
   box-shadow: v.$media-gallery-box-shadow;
   -moz-box-shadow: v.$media-gallery-box-shadow;

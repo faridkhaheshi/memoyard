@@ -38,6 +38,10 @@
           color: white;
           background: v.$selected-tag-color;
         }
+
+        &:disabled {
+          cursor: auto;
+        }
       }
     }
   }

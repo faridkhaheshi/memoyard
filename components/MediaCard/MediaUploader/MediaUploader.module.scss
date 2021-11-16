@@ -1,0 +1,6 @@
+@use "../../../styles/variables" as v;
+
+.progressBar {
+  height: 5px;
+  background-color: v.$media-uploader-progress-color;
+}
