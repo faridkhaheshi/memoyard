@@ -16,6 +16,7 @@ const MediaCard = ({
   dispatch,
   disableGeneralSelector,
   showControls,
+  organization,
 }) => {
   const { mediaType } = file
   const onTagToggled = useCallback(
@@ -43,7 +44,12 @@ const MediaCard = ({
       ) : (
         <MemoImage file={file} />
       )}
-      <MediaUploader file={file} dispatch={dispatch} />
+      <MediaUploader
+        file={file}
+        dispatch={dispatch}
+        organization={organization}
+        tags={tags}
+      />
       <MediaTagSelector
         tags={tags}
         tagsLoading={tagsLoading}

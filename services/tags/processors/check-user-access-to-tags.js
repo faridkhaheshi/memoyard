@@ -17,7 +17,12 @@ const checkUserAccessToTags = async ({ user, organization, tags }) => {
     throw new NotAuthorizedError(
       "User does not have access to all tags requested"
     )
-  return hasAccessToAllTags
+
+  return tags.map(({ id, type }) =>
+    type === "group"
+      ? userTags.find(({ group_ex_id }) => group_ex_id === id)
+      : userTags.find(({ subject_ex_id }) => subject_ex_id === id)
+  )
 }
 
 export default checkUserAccessToTags

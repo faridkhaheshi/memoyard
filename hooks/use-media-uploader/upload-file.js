@@ -13,7 +13,8 @@ const uploadFile = ({ file, uploadUrl, onProgress = () => {} }) => {
     })
     xhr.addEventListener("loadstart", () => onProgress(0))
     xhr.addEventListener("loadend", () => {
-      resolve(xhr.readyState === 4 && xhr.status === 200)
+      if (xhr.readyState === 4 && xhr.status === 200) resolve(true)
+      reject(new Error("upload failed"))
     })
     xhr.addEventListener("error", reject)
     xhr.addEventListener("abort", reject)

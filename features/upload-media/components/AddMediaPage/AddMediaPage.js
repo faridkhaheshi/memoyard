@@ -42,6 +42,7 @@ const AddMediaPage = ({ organization }) => {
         tagsError={tagsError}
         dispatch={dispatch}
         disableGeneralSelector={disableGeneralSelector}
+        organization={organization}
       />
       <UploadButton
         hide={!showControls}
