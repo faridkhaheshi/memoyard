@@ -3,4 +3,7 @@
 .progressBar {
   height: 5px;
   background-color: v.$media-uploader-progress-color;
+  &.success {
+    background-color: v.$success !important;
+  }
 }

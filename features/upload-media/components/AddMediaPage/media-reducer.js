@@ -8,7 +8,8 @@ const sampleState = [
     size: 'file.size',
     mediaType: 'video|photo',
     tags: [],
-    uploadInfo: undefined,
+    uploadInfo: undefined | { uploadUrl, viewUrl },
+    uploadStatus: undefined | 'READY_TO_UPLOAD' | 'UPLOADING' | 'UPLOADED'
   },
 ]
 */
@@ -38,7 +39,11 @@ function updateUploadStatus(state, action) {
   return state.map(file =>
     file.objectUrl !== action.payload.fileObjectUrl
       ? file
-      : { ...file, uploadStatus: action.payload.status }
+      : {
+          ...file,
+          uploadStatus: action.payload.status,
+          mediaExId: action.payload.mediaExId || undefined,
+        }
   )
 }
 
