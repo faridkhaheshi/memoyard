@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react"
+import { useReducer, useState, useCallback } from "react"
 import FullPageCentered from "../../../../components/FullPageCentered"
 import Gallery from "../Gellery"
 import GeneralTagSelector from "../GeneralTagSelector"
@@ -14,7 +14,10 @@ const AddMediaPage = ({ organization }) => {
   const [isGeneralSelectorActive, setIsGeneralSelectorActive] = useState(false)
   const { tags, tagsLoading, tagsError } = useTags(organization.slug)
 
-  const disableGeneralSelector = () => setIsGeneralSelectorActive(false)
+  const disableGeneralSelector = useCallback(
+    () => setIsGeneralSelectorActive(false),
+    [setIsGeneralSelectorActive]
+  )
 
   const showControls = files.every(file => !file.uploadStatus)
 
@@ -45,7 +48,7 @@ const AddMediaPage = ({ organization }) => {
         organization={organization}
       />
       <UploadButton
-        hide={!showControls}
+        showUploadInfo={!showControls}
         files={files}
         organization={organization}
         tags={tags}

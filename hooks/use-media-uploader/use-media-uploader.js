@@ -52,7 +52,7 @@ const useMediaUploader = (file, dispatch, organization, tags) => {
           mediaExId,
         },
       })
-    } catch (err) {
+    } catch (e) {
       console.error(e)
       setErrorMessage(e.message || "upload failed")
       dispatch({

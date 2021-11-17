@@ -28,6 +28,8 @@ const mediaReducer = (state = [], action) => {
       return addUploadUrls(state, action)
     case "UPDATE_UPLOAD_STATUS":
       return updateUploadStatus(state, action)
+    case "RESET":
+      return []
     default:
       return state
   }

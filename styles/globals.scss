@@ -21,10 +21,16 @@ body {
   #__next {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   a {
     // color: inherit;
     text-decoration: none;
+    color: v.$sharp;
+    &:hover {
+      color: v.$sky-blue;
+    }
   }
 
   * {

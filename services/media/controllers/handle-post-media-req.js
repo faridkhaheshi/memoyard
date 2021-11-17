@@ -12,10 +12,11 @@ const handlePostMediaReq = async (req, res) => {
         fileType,
         url: fileUrl,
         organization,
-        tags,
+        tags = [],
       },
       user,
     } = req
+
     const [theOrg, internalTags] = await Promise.all([
       checkUserAccessToOrganization({ user, organization }),
       checkUserAccessToTags({ user, organization, tags }),

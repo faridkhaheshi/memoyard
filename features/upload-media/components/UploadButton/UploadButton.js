@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react"
 import MemoButton from "../../../../components/MemoButton"
+import UploadInfo from "./UploadInfo"
 import callApi from "../../../../utilities/call-api"
 
 const UploadButton = ({
-  hide = false,
+  showUploadInfo = false,
   files,
   organization,
   tags,
@@ -40,7 +41,17 @@ const UploadButton = ({
     }
   }, [files, tags, organization, setIsProcessing, setErrorMessage, dispatch])
 
-  if (files.length === 0 || hide) return null
+  if (files.length === 0) return null
+
+  if (showUploadInfo)
+    return (
+      <UploadInfo
+        files={files}
+        organization={organization}
+        dispatch={dispatch}
+      />
+    )
+
   return (
     <MemoButton
       large

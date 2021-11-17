@@ -10,6 +10,7 @@ const addMediaWithTags = async ({
     userExId,
     orgExId,
   },
+  media,
   tags = [],
 }) => {
   const results = await db
@@ -53,8 +54,10 @@ const addMediaWithTags = async ({
         fileUrl,
       }
     )
-    .query(({ records }) => [
-      `
+    .query(({ records }) =>
+      tags.length > 0
+        ? [
+            `
       INSERT INTO 
         yard.media_tags (
           creator_id,
@@ -75,23 +78,25 @@ const addMediaWithTags = async ({
       RETURNING
         id
     `,
-      tags.map(
-        ({
-          type: mediaTagType,
-          group_ex_id: groupExId,
-          subject_ex_id: subjectExId,
-        }) => [
-          {
-            mediaTagType,
-            groupExId,
-            subjectExId,
-            userExId,
-            orgExId,
-            mediaId: records[0].id,
-          },
-        ]
-      ),
-    ])
+            tags.map(
+              ({
+                type: mediaTagType,
+                group_ex_id: groupExId,
+                subject_ex_id: subjectExId,
+              }) => [
+                {
+                  mediaTagType,
+                  groupExId,
+                  subjectExId,
+                  userExId,
+                  orgExId,
+                  mediaId: records[0].id,
+                },
+              ]
+            ),
+          ]
+        : "SELECT 1"
+    )
     .commit()
   return results[0].records[0]
 }
