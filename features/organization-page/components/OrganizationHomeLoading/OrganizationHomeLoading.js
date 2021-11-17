@@ -1,9 +1,9 @@
 import { NextSeo } from "next-seo"
 import FullPageCentered from "../../../../components/FullPageCentered"
 
-const OrganizationHomeLoading = ({ organization }) => (
+const OrganizationHomeLoading = () => (
   <FullPageCentered bgColor="skyBlue">
-    <NextSeo title={organization.name} />
+    <NextSeo title="Memoyard | Loading" />
     Loading...
   </FullPageCentered>
 )

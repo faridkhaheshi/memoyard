@@ -1,3 +1,5 @@
+import { useRouter } from "next/router"
+import OrganizationHomeLoading from "../../features/organization-page/components/OrganizationHomeLoading"
 import {
   fillOrganizationInfo,
   getStaticOrganizationPaths,
@@ -5,6 +7,8 @@ import {
 import AddMediaPage from "../../features/upload-media/components/AddMediaPage"
 
 export default function AddPage({ organization }) {
+  const router = useRouter()
+  if (router.isFallback) return <OrganizationHomeLoading />
   return <AddMediaPage organization={organization} />
 }
 

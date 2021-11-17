@@ -7,7 +7,7 @@ import OrganizationHomeLoading from "../OrganizationHomeLoading"
 import styles from "./OrganizationHomePage.module.scss"
 
 const OrganizationHomePage = ({ organization, loading = false }) => {
-  if (loading) return <OrganizationHomeLoading organization={organization} />
+  if (loading) return <OrganizationHomeLoading />
 
   return (
     <FullPageCentered bgColor="skyBlue">
