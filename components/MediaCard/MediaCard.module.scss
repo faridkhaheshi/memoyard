@@ -1,0 +1,42 @@
+@use "../../styles/variables" as v;
+
+.cardContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: v.$media-card-border-radius;
+  box-shadow: v.$media-gallery-box-shadow;
+  -moz-box-shadow: v.$media-gallery-box-shadow;
+  -webkit-box-shadow: v.$media-gallery-box-shadow;
+  max-width: v.$media-card-max-width;
+
+  &:hover .closeButton {
+    background-color: rgba(2, 1, 1, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .tagsContainer {
+    display: block;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    background: none;
+    width: v.$media-card-close-button-box-size;
+    height: v.$media-card-close-button-box-size;
+    border: none;
+    border-radius: v.$media-card-border-radius;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: v.$media-card-close-button-size;
+  }
+}

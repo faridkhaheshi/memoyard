@@ -1,0 +1,42 @@
+@use "../../styles/variables" as v;
+
+.memoButton {
+  color: v.$sharp-blue;
+  background: none;
+  cursor: pointer;
+  border: 2px solid;
+
+  &.large {
+    min-width: 250px;
+    min-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &.withMargins {
+    margin: 20px 0;
+  }
+
+  &.withError {
+    margin-bottom: 10px !important;
+  }
+
+  &:hover {
+    background-color: v.$sharp-blue;
+    color: white;
+  }
+
+  &:disabled {
+    color: lighten(v.$sharp-blue, 40%);
+    cursor: not-allowed;
+    &:hover {
+      color: lighten(v.$sharp-blue, 40%);
+      background: none;
+    }
+  }
+}
+
+.errorMessage {
+  color: v.$error-red;
+  font-weight: bold;
+}

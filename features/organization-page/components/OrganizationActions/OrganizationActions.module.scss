@@ -1,0 +1,13 @@
+@use "../../../../styles/variables" as v;
+
+.navLinksContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  color: v.$sharp;
+  list-style: none;
+  padding-left: 0;
+  li {
+    margin: 0 10px;
+  }
+}

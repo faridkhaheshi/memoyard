@@ -1,0 +1,7 @@
+@use "../../../../styles/variables" as v;
+
+.generalTagSelectors {
+  min-height: 120px;
+  border: solid 2px v.$border-gray;
+  margin-bottom: 25px;
+}

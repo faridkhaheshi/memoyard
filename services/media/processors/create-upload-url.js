@@ -2,7 +2,7 @@ import S3 from "aws-sdk/clients/s3"
 import { Credentials } from "aws-sdk"
 import { v4 as uuid } from "uuid"
 
-const signedUrlExpireSeconds = 60 * 15
+const signedUrlExpireSeconds = 60 * 60
 
 const access = new Credentials({
   accessKeyId: process.env.MEM_AWS_ACCESS_KEY_ID,

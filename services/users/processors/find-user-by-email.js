@@ -3,7 +3,8 @@ import db from "../../../adapters/db"
 const findUserByEmail = async normalizedEmail => {
   try {
     const { records } = await db.query(
-      `SELECT 
+      `SELECT
+          id, 
           ex_id,
           first_name,
           last_name,

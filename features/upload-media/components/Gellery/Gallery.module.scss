@@ -1,0 +1,18 @@
+@use "../../../../styles/variables" as v;
+
+.masonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -1 * v.$media-grid-gutter-size; /* gutter size offset */
+  width: auto;
+}
+
+.masonryGridColumn {
+  padding-left: v.$media-grid-gutter-size; /* gutter size */
+  background-clip: padding-box;
+}
+
+.masonryGridColumn > div {
+  margin-bottom: v.$media-grid-gutter-size;
+}

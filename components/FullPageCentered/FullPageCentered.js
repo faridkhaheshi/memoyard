@@ -1,8 +1,11 @@
+import classes from "classnames"
 import styles from "./FullPageCentered.module.scss"
 
-const FullPageCentered = ({ children, bgColor }) => (
+const FullPageCentered = ({ children, bgColor, maxWidth = false }) => (
   <div
-    className={styles.fullPageContainer}
+    className={classes(styles.fullPageContainer, {
+      [styles.maxWidth]: maxWidth,
+    })}
     style={{ backgroundColor: bgColor in styles ? styles[bgColor] : bgColor }}
   >
     {children}

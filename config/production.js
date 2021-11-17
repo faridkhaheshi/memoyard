@@ -3,6 +3,15 @@ const baseUrl = "https://www.memoyard.com"
 module.exports = {
   env: "production",
   baseUrl,
+  gallery: {
+    breakpointCols: {
+      default: 4,
+      1800: 3,
+      1100: 2,
+      500: 1,
+    },
+    supportedMediaFiles: ["photo", "video"],
+  },
   cookieOptions: {
     path: "/",
     domain: ".memoyard.com",
