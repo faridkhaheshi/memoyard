@@ -1,7 +1,6 @@
 @use "../../../../styles/variables" as v;
 
 .albumContainer {
-  background-color: yellow;
   width: 100%;
   max-width: v.$album-max-width;
   display: flex;

@@ -1,4 +1,5 @@
 import { MemoImage, MemoVideo } from "../../../../components"
+import MediaController from "./MediaController"
 
 import styles from "./MediaViewer.module.scss"
 
@@ -10,6 +11,7 @@ const MediaViewer = ({ src, alt, type, fileType, mediaExId, createdAt }) => {
       ) : (
         <MemoVideo src={src} fileType={fileType} />
       )}
+      <MediaController date={createdAt} src={src} />
     </div>
   )
 }
