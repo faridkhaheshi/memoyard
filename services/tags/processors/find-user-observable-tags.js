@@ -32,12 +32,13 @@ const findUserObservableTags = async ({ userExId, slug = null }) => {
         s.id,
         s.ex_id,
         s.name,
-      s.creator_id,
+        s.creator_id,
         s.org_id
       FROM
         yard.subjects s
           LEFT JOIN yard.subject_listeners sl on sl.subject_id=s.id
           LEFT JOIN yard.users u on sl.user_id=u.id
+          LEFT JOIN yard.organizations o on s.org_id=o.id
       WHERE
         (
           u.ex_id::text=:userExId
@@ -50,6 +51,13 @@ const findUserObservableTags = async ({ userExId, slug = null }) => {
         sl.active=true
           AND
         s.active=true
+          AND
+        1 = 
+          CASE
+            WHEN :slug::text is null THEN 1
+            WHEN :slug::text=o.slug THEN 1
+            ELSE 0
+          END
     ),
     user_groups AS (
         SELECT
@@ -62,6 +70,7 @@ const findUserObservableTags = async ({ userExId, slug = null }) => {
           yard.groups g
             LEFT JOIN yard.subject_groups sg ON g.id=sg.group_id
             LEFT JOIN user_subjects us ON sg.subject_id=us.id
+            LEFT JOIN yard.organizations o ON g.org_id=o.id
         WHERE
           (
               g.org_id IN (SELECT uo.id from user_organizations uo)
@@ -70,6 +79,13 @@ const findUserObservableTags = async ({ userExId, slug = null }) => {
             )
             AND
           g.active=true
+            AND
+          1 = 
+              CASE
+                WHEN :slug::text is null THEN 1
+                WHEN :slug::text=o.slug THEN 1
+                ELSE 0
+              END
     )
     SELECT
       ug.ex_id as id,
