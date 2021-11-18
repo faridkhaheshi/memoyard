@@ -7,8 +7,6 @@ const handleGetObservableTags = async (req, res) => {
       query: { slug },
     } = req
 
-    // For now let's just return the tags for the organization creator
-    // TODO: list tags based on observability and not just for the org owner
     const tags = await findUserObservableTags({ userExId, slug })
 
     return res.json({ tags })
