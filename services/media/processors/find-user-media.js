@@ -66,14 +66,13 @@ const findUserMedia = async ({ userExId, slug }) => {
         o.slug=:slug
     )
     SELECT
-      om.id,
-        om.ex_id,
-        om.original_file_name,
-        om.original_file_size,
-        om.media_type,
-        om.file_type,
-        om.file_url,
-        om.created_at
+      om.ex_id,
+      om.original_file_size,
+      om.media_type,
+      om.file_type,
+      om.file_url,
+      om.created_at,
+      om.updated_at
     FROM
       (
         SELECT DISTINCT m.id

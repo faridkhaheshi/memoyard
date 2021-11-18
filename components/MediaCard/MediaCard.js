@@ -42,7 +42,7 @@ const MediaCard = ({
       {mediaType === "video" ? (
         <MemoVideo src={file.objectUrl} type={file.type} />
       ) : (
-        <MemoImage file={file} />
+        <MemoImage src={file.objectUrl} fileType={file.type} alt={file.name} />
       )}
       <MediaUploader
         file={file}

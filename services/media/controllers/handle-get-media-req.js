@@ -1,4 +1,4 @@
-import { findUserMedia } from "../processors"
+import { allowMediaView, findUserMedia } from "../processors"
 
 const handleGetMediaReq = async (req, res) => {
   try {
@@ -7,7 +7,12 @@ const handleGetMediaReq = async (req, res) => {
       query: { slug },
     } = req
     const media = await findUserMedia({ userExId, slug })
-    return res.json({ media })
+    return res.json({
+      media: media.map(({ file_url, ...rest }) => ({
+        ...rest,
+        view_url: allowMediaView(file_url),
+      })),
+    })
   } catch (err) {
     return res
       .status(err.statusCode || err.status || 500)
