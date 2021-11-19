@@ -1,5 +1,4 @@
 import classes from "classnames"
-import { MemoButton } from "../../../../../components"
 import styles from "./MediaController.module.scss"
 
 const MediaController = ({ src, date }) => (
