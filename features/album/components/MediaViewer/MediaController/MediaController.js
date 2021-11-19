@@ -1,3 +1,5 @@
+import classes from "classnames"
+import { MemoButton } from "../../../../../components"
 import styles from "./MediaController.module.scss"
 
 const MediaController = ({ src, date }) => (
@@ -9,7 +11,9 @@ const MediaController = ({ src, date }) => (
         day: "numeric",
       })}
     </small>
-    <i className="fas fa-download"></i>
+    <a href={src} download rel="noreferrer">
+      <i className={classes("fas fa-download", styles.downloadButton)} />
+    </a>
   </div>
 )
 

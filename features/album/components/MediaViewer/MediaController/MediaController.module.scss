@@ -6,8 +6,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-
-  .mediaDate {
+  color: v.$media-card-date-color;
+  .downloadButton {
+    font-size: 20px;
     color: v.$media-card-date-color;
   }
 }
