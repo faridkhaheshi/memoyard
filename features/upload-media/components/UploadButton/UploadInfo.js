@@ -12,7 +12,7 @@ const UploadInfo = ({ files, organization, dispatch }) => {
       <p>{`${uploadedFiles} of ${totalFiles} items uploaded`}</p>
       {uploadedFiles === totalFiles && (
         <div className={styles.linksContainer}>
-          <Link href={`/${organization.slug}/albums`}>
+          <Link href={`/${organization.slug}/album`}>
             <a>Visit albums</a>
           </Link>
           |
