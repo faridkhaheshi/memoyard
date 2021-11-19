@@ -1,6 +1,7 @@
 import { useAlbums } from "../../contexts"
 import AlbumHeader from "../AlbumHeader"
 import MediaViewer from "../MediaViewer"
+import TagSelector from "../TagSelector/TagSelector"
 
 import styles from "./AlbumsViewer.module.scss"
 
@@ -9,6 +10,7 @@ const AlbumsViewer = () => {
   return (
     <>
       <AlbumHeader />
+      <TagSelector />
       <main className={styles.albumContainer}>
         {media.map(m => (
           <MediaViewer

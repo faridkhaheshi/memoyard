@@ -3,10 +3,16 @@ import { useContext, createContext } from "react"
 const AlbumsContext = createContext()
 export const useAlbums = () => useContext(AlbumsContext)
 
-export const AlbumsContextProvider = ({ children, organization, media }) => {
+export const AlbumsContextProvider = ({
+  children,
+  organization,
+  media,
+  tags,
+}) => {
   const albumsContextValues = {
     organization,
     media,
+    tags,
   }
 
   return (
