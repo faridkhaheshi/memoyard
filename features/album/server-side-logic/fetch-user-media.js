@@ -2,15 +2,20 @@ import config from "../../../config"
 
 const { baseUrl } = config
 
-const fetchUserMedia = async ({ params, req }) => {
-  const { slug } = params
+const fetchUserMedia = async ({ params, req, query }) => {
+  const { slug, tag, tagType } = query
   const reqHeaders = {
     method: "GET",
     headers: req ? { cookie: req.headers.cookie } : undefined,
   }
   const [orgRes, mediaRes, tagRes] = await Promise.all([
     fetch(`${baseUrl}/api/organizations/${slug}`, reqHeaders),
-    fetch(`${baseUrl}/api/media?slug=${slug}`, reqHeaders),
+    fetch(
+      `${baseUrl}/api/media?slug=${slug}${
+        tag && tagType ? `&tag=${tag}&tagType=${tagType}` : ""
+      }`,
+      reqHeaders
+    ),
     fetch(`${baseUrl}/api/tags?slug=${slug}`, reqHeaders),
   ])
 

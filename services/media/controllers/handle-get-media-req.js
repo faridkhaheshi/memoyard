@@ -4,9 +4,13 @@ const handleGetMediaReq = async (req, res) => {
   try {
     const {
       user: { ex_id: userExId },
-      query: { slug },
+      query: { slug, tag, tagType },
+      query,
     } = req
-    const media = await findUserMedia({ userExId, slug })
+    const media = await findUserMedia({
+      userExId,
+      ...query,
+    })
     return res.json({
       media: media.map(({ file_url, ...rest }) => ({
         ...rest,
