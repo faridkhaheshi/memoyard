@@ -1,0 +1,19 @@
+@use "../../../../styles/variables" as v;
+
+.tagsCardContainer {
+  max-width: v.$album-max-width;
+  min-height: 50px;
+  width: 100%;
+  padding: v.$album-padding;
+  margin: 20px 0 10px 0;
+  p {
+    margin: 0;
+  }
+  .tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

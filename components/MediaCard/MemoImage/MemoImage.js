@@ -1,11 +1,7 @@
 import styles from "./MemoImage.module.scss"
 
-const MemoImage = ({ file }) => (
-  <img
-    className={styles.image}
-    src={file.objectUrl}
-    alt={file.name || "memo image"}
-  />
+const MemoImage = ({ src, alt = "memoyard image", fileType }) => (
+  <img className={styles.image} src={src} alt={alt} />
 )
 
 export default MemoImage

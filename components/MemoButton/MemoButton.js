@@ -6,32 +6,27 @@ const MemoButton = ({
   className,
   withMargins = false,
   large = false,
+  transparent = false,
   error,
   ...rest
-}) =>
-  error ? (
+}) => {
+  const classNames = cs(className, styles.memoButton, styles.withError, {
+    [styles.large]: large,
+    [styles.withMargins]: withMargins,
+    [styles.transparent]: transparent,
+  })
+  return error ? (
     <>
-      <button
-        className={cs(className, styles.memoButton, styles.withError, {
-          [styles.large]: large,
-          [styles.withMargins]: withMargins,
-        })}
-        {...rest}
-      >
+      <button className={classNames} {...rest}>
         {children}
       </button>
       <small className={styles.errorMessage}>{error}</small>
     </>
   ) : (
-    <button
-      className={cs(className, styles.memoButton, {
-        [styles.large]: large,
-        [styles.withMargins]: withMargins,
-      })}
-      {...rest}
-    >
+    <button className={classNames} {...rest}>
       {children}
     </button>
   )
+}
 
 export default MemoButton

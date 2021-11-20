@@ -1,0 +1,14 @@
+@use "../../../../styles/variables" as v;
+
+.albumCard {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  border-radius: v.$media-card-border-radius;
+  box-shadow: v.$media-gallery-box-shadow;
+  -moz-box-shadow: v.$media-gallery-box-shadow;
+  -webkit-box-shadow: v.$media-gallery-box-shadow;
+  max-width: v.$media-card-max-width;
+}

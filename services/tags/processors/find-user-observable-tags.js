@@ -1,6 +1,6 @@
 import db from "../../../adapters/db"
 
-const findUserObservableTags = async ({ userExId }) => {
+const findUserObservableTags = async ({ userExId, slug = null }) => {
   const { records: tags } = await db.query(
     `
     WITH user_organizations AS (
@@ -18,19 +18,28 @@ const findUserObservableTags = async ({ userExId }) => {
         u.active=true
           AND
         o.active=true
+          AND
+        1 = 
+          CASE
+            WHEN :slug::text is null then 1
+            WHEN :slug::text=o.slug then 1
+            ELSE 0
+          END
+
     ),
     user_subjects AS (
       SELECT
         s.id,
         s.ex_id,
         s.name,
-      s.creator_id,
+        s.creator_id,
         s.org_id
       FROM
         yard.subjects s
           LEFT JOIN yard.subject_listeners sl on sl.subject_id=s.id
           LEFT JOIN yard.users u on sl.user_id=u.id
-      WHERE 
+          LEFT JOIN yard.organizations o on s.org_id=o.id
+      WHERE
         (
           u.ex_id::text=:userExId
           OR
@@ -42,6 +51,13 @@ const findUserObservableTags = async ({ userExId }) => {
         sl.active=true
           AND
         s.active=true
+          AND
+        1 = 
+          CASE
+            WHEN :slug::text is null THEN 1
+            WHEN :slug::text=o.slug THEN 1
+            ELSE 0
+          END
     ),
     user_groups AS (
         SELECT
@@ -54,6 +70,7 @@ const findUserObservableTags = async ({ userExId }) => {
           yard.groups g
             LEFT JOIN yard.subject_groups sg ON g.id=sg.group_id
             LEFT JOIN user_subjects us ON sg.subject_id=us.id
+            LEFT JOIN yard.organizations o ON g.org_id=o.id
         WHERE
           (
               g.org_id IN (SELECT uo.id from user_organizations uo)
@@ -62,6 +79,13 @@ const findUserObservableTags = async ({ userExId }) => {
             )
             AND
           g.active=true
+            AND
+          1 = 
+              CASE
+                WHEN :slug::text is null THEN 1
+                WHEN :slug::text=o.slug THEN 1
+                ELSE 0
+              END
     )
     SELECT
       ug.ex_id as id,
@@ -70,9 +94,9 @@ const findUserObservableTags = async ({ userExId }) => {
         ug.ex_id as group_ex_id,
         null as subject_ex_id
     FROM user_groups ug
-    
+
     UNION ALL
-    
+
     SELECT
       us.ex_id as id,
         us.name as name,
@@ -81,7 +105,7 @@ const findUserObservableTags = async ({ userExId }) => {
         us.ex_id as subject_ex_id
     FROM user_subjects us
   `,
-    { userExId }
+    { userExId, slug }
   )
   return tags
 }

@@ -10,7 +10,7 @@ const OrganizationActions = ({ organization }) => (
     </li>
     |
     <li>
-      <Link href={`/${organization.slug}/albums`}>
+      <Link href={`/${organization.slug}/album`}>
         <a>View albums</a>
       </Link>
     </li>

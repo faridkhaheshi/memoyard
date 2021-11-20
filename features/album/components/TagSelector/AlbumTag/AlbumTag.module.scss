@@ -1,0 +1,21 @@
+@use "../../../../../styles/variables" as v;
+
+.albumTag {
+  border: 2px dashed lighten(v.$albug-tag-color, 30%);
+  border-radius: 20px;
+  padding: 7px 20px;
+  margin: 5px;
+  background-color: transparent;
+  color: lighten(v.$albug-tag-color, 30%);
+
+  &:hover {
+    border: 2px solid lighten(v.$albug-tag-color, 30%);
+    color: v.$albug-tag-color;
+  }
+
+  &.active {
+    border: 2px solid v.$albug-tag-color;
+    background-color: v.$albug-tag-color;
+    color: white;
+  }
+}
