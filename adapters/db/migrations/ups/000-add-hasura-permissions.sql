@@ -1,0 +1,19 @@
+CREATE USER hasurauser WITH PASSWORD 'env.HASURA_PASSWORD';
+CREATE SCHEMA IF NOT EXISTS hdb_catalog;
+ALTER SCHEMA hdb_catalog OWNER TO hasurauser;
+
+GRANT hasurauser to postgres;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO hasurauser;
+GRANT SELECT ON ALL TABLES IN SCHEMA pg_catalog TO hasurauser;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+GRANT USAGE ON SCHEMA public TO hasurauser;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO hasurauser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO hasurauser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO hasurauser;
+
+
+GRANT USAGE ON SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL TABLES IN SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA yard TO hasurauser;

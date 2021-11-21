@@ -35,4 +35,34 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Accessing the dev db
 
-To give access to new users, the admin must add that user's ARN to the policis for notj the AWS CMK and the AWS secret.
+To give access to new users, the admin must add that user's ARN to the policis for the AWS CMK and the AWS secret.
+
+## Creating the databases
+
+We use AWS's RDS Aurora with Web Data API. No connection pooling is required.
+To manage migrations, metadata and seeds we use Hasura (https://hasura.io).
+After creating the databases we should create a user for Hasura and give necessary permissions to it.
+
+```
+CREATE USER hasurauser WITH PASSWORD 'env.HASURA_PASSWORD';
+CREATE SCHEMA IF NOT EXISTS hdb_catalog;
+ALTER SCHEMA hdb_catalog OWNER TO hasurauser;
+
+GRANT hasurauser to postgres;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO hasurauser;
+GRANT SELECT ON ALL TABLES IN SCHEMA pg_catalog TO hasurauser;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+GRANT USAGE ON SCHEMA public TO hasurauser;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO hasurauser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO hasurauser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO hasurauser;
+
+
+GRANT USAGE ON SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL TABLES IN SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA yard TO hasurauser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA yard TO hasurauser;
+```
+
+You can get the password for the hasura user from the `.env` file of the environmnt.
