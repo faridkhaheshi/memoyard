@@ -6,12 +6,15 @@ GRANT hasurauser to postgres;
 
 GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO hasurauser;
 GRANT SELECT ON ALL TABLES IN SCHEMA pg_catalog TO hasurauser;
+
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 GRANT USAGE ON SCHEMA public TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO hasurauser;
 
+
+CREATE SCHEMA IF NOT EXISTS yard;
 
 GRANT USAGE ON SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA yard TO hasurauser;

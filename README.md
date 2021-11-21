@@ -66,3 +66,15 @@ GRANT ALL ON ALL FUNCTIONS IN SCHEMA yard TO hasurauser;
 ```
 
 You can get the password for the hasura user from the `.env` file of the environmnt.
+
+This is the command to update local migrations from a server:
+
+```
+hasura migrate create "start" --from-server --envfile ../.env.development.local --project database --database-name default
+```
+
+To update the metadata from the server:
+
+```
+hasura metadata export --envfile ../.env.development.local --project database
+```
