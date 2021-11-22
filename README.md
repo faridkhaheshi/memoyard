@@ -78,3 +78,9 @@ To update the metadata from the server:
 ```
 hasura metadata export --envfile ../.env.development.local --project database
 ```
+
+To open the hasura console and see the state of the database:
+
+```
+hasura console --envfile ../.env.development.local --project database
+```
