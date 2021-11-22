@@ -1,3 +1,11 @@
 table:
   name: media_types
   schema: yard
+array_relationships:
+- name: media
+  using:
+    foreign_key_constraint_on:
+      column: media_type
+      table:
+        name: media
+        schema: yard

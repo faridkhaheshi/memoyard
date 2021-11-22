@@ -1,3 +1,16 @@
 table:
   name: subject_groups
   schema: yard
+object_relationships:
+- name: group
+  using:
+    foreign_key_constraint_on: group_id
+- name: organization
+  using:
+    foreign_key_constraint_on: org_id
+- name: subject
+  using:
+    foreign_key_constraint_on: subject_id
+- name: user
+  using:
+    foreign_key_constraint_on: creator_id

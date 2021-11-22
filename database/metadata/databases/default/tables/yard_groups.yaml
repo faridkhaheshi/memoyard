@@ -1,3 +1,25 @@
 table:
   name: groups
   schema: yard
+object_relationships:
+- name: organization
+  using:
+    foreign_key_constraint_on: org_id
+- name: user
+  using:
+    foreign_key_constraint_on: creator_id
+array_relationships:
+- name: media_tags
+  using:
+    foreign_key_constraint_on:
+      column: group_id
+      table:
+        name: media_tags
+        schema: yard
+- name: subject_groups
+  using:
+    foreign_key_constraint_on:
+      column: group_id
+      table:
+        name: subject_groups
+        schema: yard
