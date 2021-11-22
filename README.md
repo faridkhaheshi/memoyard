@@ -45,21 +45,24 @@ After creating the databases we should create a user for Hasura and give necessa
 
 ```
 CREATE USER hasurauser WITH PASSWORD 'env.HASURA_PASSWORD';
+
+CREATE EXTENSION IF NOT EXISTS citext;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE SCHEMA IF NOT EXISTS hdb_catalog;
 ALTER SCHEMA hdb_catalog OWNER TO hasurauser;
 
-GRANT hasurauser to postgres;
 
-GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO hasurauser;
-GRANT SELECT ON ALL TABLES IN SCHEMA pg_catalog TO hasurauser;
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
 GRANT USAGE ON SCHEMA public TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO hasurauser;
 
 
+CREATE SCHEMA IF NOT EXISTS yard;
+
 GRANT USAGE ON SCHEMA yard TO hasurauser;
+GRANT CREATE ON SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL FUNCTIONS IN SCHEMA yard TO hasurauser;
@@ -83,4 +86,12 @@ To open the hasura console and see the state of the database:
 
 ```
 hasura console --envfile ../.env.development.local --project database
+```
+
+To apply the migrations to the production:
+
+```
+hasura metadata apply --envfile ../.env.production.local --project database
+hasura migrate apply --envfile ../.env.production.local --project database --all-databases
+hasura metadata reload --envfile ../.env.production.local --project database
 ```
