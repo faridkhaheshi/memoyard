@@ -1,5 +1,5 @@
 const getStaticOrganizationPaths = async () => ({
-  paths: [{ params: { slug: "fantasy" } }],
+  paths: [],
   fallback: true,
 })
 
