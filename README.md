@@ -95,3 +95,84 @@ hasura metadata apply --envfile ../.env.production.local --project database
 hasura migrate apply --envfile ../.env.production.local --project database --all-databases
 hasura metadata reload --envfile ../.env.production.local --project database
 ```
+
+To check the status of the migrations on the dev database:
+
+```
+hasura migrate status --envfile ../.env.development.local --project database --database-name default
+```
+
+To add a seed file:
+
+```
+hasura seed create initial_user_types --envfile ../.env.development.local --project database --database-name default
+```
+
+To apply the seeds to development:
+
+```
+hasura seed apply --envfile ../.env.development.local --project database --database-name default
+```
+
+## NPM commands to work with db migrations
+
+To see the migration status on development:
+
+```
+  npm run migration-status-dev
+```
+
+To see the migration status on production:
+
+```
+  npm run migration-status-prod
+```
+
+To initiate db migration from scratch run the following command:
+
+```
+npm run db-migration-init
+```
+
+This will create an initial migration folder called "start" and produces the necessary code to reproduce the state of your dev database.
+\*\*\* This command should only be run once.
+
+To start the hasura console for the development database run:
+
+```
+npm run hasura-console-dev
+```
+
+To start the hasura console for the production database run:
+
+```
+npm run hasura-console-prod
+```
+
+\*\*\* You should never apply changes directly to the production server. Apply all changes to the development server and then apply to the production by running the migration commands (below).
+
+To fetch the metedata from the development server and save it to the migration files run:
+
+```
+npm run hasura-fetch-metadata-dev
+```
+
+To deploy your changes to the production run the following commands:
+
+```
+npm run db-update-metadata-prod
+npm run db-migrate-prod
+npm run db-reload-metadata-prod
+```
+
+To apply seed data to the development database run:
+
+```
+npm run seed-dev
+```
+
+To apply seed data to the production database run:
+
+```
+npm run seed-prod
+```
