@@ -1,1 +1,2 @@
-[]
+- "!include yard_user_types.yaml"
+- "!include yard_users.yaml"
