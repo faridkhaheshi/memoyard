@@ -1,0 +1,1 @@
+CREATE TABLE "yard"."media_types" ("name" text NOT NULL, "description" text, PRIMARY KEY ("name") , UNIQUE ("name"));COMMENT ON TABLE "yard"."media_types" IS E'This tables contains all the media types allowed in memoyard.';

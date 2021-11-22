@@ -45,24 +45,134 @@ After creating the databases we should create a user for Hasura and give necessa
 
 ```
 CREATE USER hasurauser WITH PASSWORD 'env.HASURA_PASSWORD';
+
+CREATE EXTENSION IF NOT EXISTS citext;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE SCHEMA IF NOT EXISTS hdb_catalog;
 ALTER SCHEMA hdb_catalog OWNER TO hasurauser;
 
-GRANT hasurauser to postgres;
 
-GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO hasurauser;
-GRANT SELECT ON ALL TABLES IN SCHEMA pg_catalog TO hasurauser;
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
 GRANT USAGE ON SCHEMA public TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO hasurauser;
 GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO hasurauser;
 
 
+CREATE SCHEMA IF NOT EXISTS yard;
+
 GRANT USAGE ON SCHEMA yard TO hasurauser;
+GRANT CREATE ON SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL TABLES IN SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA yard TO hasurauser;
 GRANT ALL ON ALL FUNCTIONS IN SCHEMA yard TO hasurauser;
 ```
 
 You can get the password for the hasura user from the `.env` file of the environmnt.
+
+This is the command to update local migrations from a server:
+
+```
+hasura migrate create "start" --from-server --envfile ../.env.development.local --project database --database-name default
+```
+
+To update the metadata from the server:
+
+```
+hasura metadata export --envfile ../.env.development.local --project database
+```
+
+To open the hasura console and see the state of the database:
+
+```
+hasura console --envfile ../.env.development.local --project database
+```
+
+To apply the migrations to the production:
+
+```
+hasura metadata apply --envfile ../.env.production.local --project database
+hasura migrate apply --envfile ../.env.production.local --project database --all-databases
+hasura metadata reload --envfile ../.env.production.local --project database
+```
+
+To check the status of the migrations on the dev database:
+
+```
+hasura migrate status --envfile ../.env.development.local --project database --database-name default
+```
+
+To add a seed file:
+
+```
+hasura seed create initial_user_types --envfile ../.env.development.local --project database --database-name default
+```
+
+To apply the seeds to development:
+
+```
+hasura seed apply --envfile ../.env.development.local --project database --database-name default
+```
+
+## NPM commands to work with db migrations
+
+To see the migration status on development:
+
+```
+  npm run migration-status-dev
+```
+
+To see the migration status on production:
+
+```
+  npm run migration-status-prod
+```
+
+To initiate db migration from scratch run the following command:
+
+```
+npm run db-migration-init
+```
+
+This will create an initial migration folder called "start" and produces the necessary code to reproduce the state of your dev database.
+\*\*\* This command should only be run once.
+
+To start the hasura console for the development database run:
+
+```
+npm run hasura-console-dev
+```
+
+To start the hasura console for the production database run:
+
+```
+npm run hasura-console-prod
+```
+
+\*\*\* You should never apply changes directly to the production server. Apply all changes to the development server and then apply to the production by running the migration commands (below).
+
+To fetch the metedata from the development server and save it to the migration files run:
+
+```
+npm run hasura-fetch-metadata-dev
+```
+
+To deploy your changes to the production run the following commands:
+
+```
+npm run db-update-metadata-prod
+npm run db-migrate-prod
+npm run db-reload-metadata-prod
+```
+
+To apply seed data to the development database run:
+
+```
+npm run seed-dev
+```
+
+To apply seed data to the production database run:
+
+```
+npm run seed-prod
+```

@@ -1,0 +1,11 @@
+table:
+  name: media_tag_types
+  schema: yard
+array_relationships:
+- name: media_tags
+  using:
+    foreign_key_constraint_on:
+      column: media_tag_type
+      table:
+        name: media_tags
+        schema: yard

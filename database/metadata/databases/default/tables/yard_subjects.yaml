@@ -1,0 +1,32 @@
+table:
+  name: subjects
+  schema: yard
+object_relationships:
+- name: organization
+  using:
+    foreign_key_constraint_on: org_id
+- name: user
+  using:
+    foreign_key_constraint_on: creator_id
+array_relationships:
+- name: media_tags
+  using:
+    foreign_key_constraint_on:
+      column: subject_id
+      table:
+        name: media_tags
+        schema: yard
+- name: subject_groups
+  using:
+    foreign_key_constraint_on:
+      column: subject_id
+      table:
+        name: subject_groups
+        schema: yard
+- name: subject_listeners
+  using:
+    foreign_key_constraint_on:
+      column: subject_id
+      table:
+        name: subject_listeners
+        schema: yard

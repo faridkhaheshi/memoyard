@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migration-status-dev": "hasura migrate status --envfile ../.env.development.local --project database --database-name default",
+    "migration-status-prod": "hasura migrate status --envfile ../.env.production.local --project database --database-name default",
+    "db-migration-init": "hasura migrate create 'start' --from-server --envfile ../.env.development.local --project database --database-name default",
+    "hasura-console-dev": "hasura console --envfile ../.env.development.local --project database",
+    "hasura-console-prod": "hasura console --envfile ../.env.production.local --project database",
+    "hasura-fetch-metadata-dev": "hasura metadata export --envfile ../.env.development.local --project database",
+    "db-update-metadata-prod": "hasura metadata apply --envfile ../.env.production.local --project database",
+    "db-migrate-prod": "hasura migrate apply --envfile ../.env.production.local --project database --all-databases",
+    "db-reload-metadata-prod": "hasura metadata reload --envfile ../.env.production.local --project database",
+    "seed-dev": "hasura seed apply --envfile ../.env.development.local --project database --database-name default",
+    "seed-prod": "hasura seed apply --envfile ../.env.production.local --project database --database-name default"
   },
   "dependencies": {
     "@aws-sdk/client-rds": "3.39.0",

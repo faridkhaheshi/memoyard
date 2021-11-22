@@ -1,0 +1,1 @@
+CREATE TABLE "yard"."user_types" ("name" text NOT NULL, "description" text, PRIMARY KEY ("name") , UNIQUE ("name"));COMMENT ON TABLE "yard"."user_types" IS E'This table contains all the types a user can assume';

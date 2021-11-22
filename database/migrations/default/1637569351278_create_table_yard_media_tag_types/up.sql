@@ -1,0 +1,1 @@
+CREATE TABLE "yard"."media_tag_types" ("name" text NOT NULL, "description" Text, PRIMARY KEY ("name") , UNIQUE ("name"));COMMENT ON TABLE "yard"."media_tag_types" IS E'These are all the media tag types available';
