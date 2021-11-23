@@ -1,15 +1,19 @@
-import { Admin, Resource } from "react-admin"
-import useDataProvider from "../../hooks/use-data-provider"
-import jsonServerProvider from "ra-data-json-server"
+import { Admin, Resource, ListGuesser } from "react-admin"
+import { useDataProvider, useAuthProvider } from "../../hooks"
 import styles from "./AdminPage.module.scss"
 
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com")
-
 const AdminPage = () => {
-  // const dataProvider = useDataProvider()
+  const dataProvider = useDataProvider()
+  const authProvider = useAuthProvider()
 
-  // if (!dataProvider) return <p>Loading...</p>
-  return <Admin dataProvider={dataProvider} />
+  if (!dataProvider) return <p>Loading...</p>
+  return (
+    <div className={styles.adminContainer}>
+      <Admin dataProvider={dataProvider} authProvider={authProvider}>
+        <Resource name="users" list={ListGuesser} />
+      </Admin>
+    </div>
+  )
 }
 
 export default AdminPage
