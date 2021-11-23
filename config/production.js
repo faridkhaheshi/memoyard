@@ -18,6 +18,9 @@ module.exports = {
     sameSite: "None",
     secure: true,
   },
+  admin: {
+    hasuraGraphUrl: `${process.env.NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT}/v1/graphql`,
+  },
   google: {
     // gaTrackingId: "UA-150353421-6",
     // authClientId:
