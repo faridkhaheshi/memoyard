@@ -1,14 +1,10 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from "react-admin"
+import { login } from "./services"
 
 const authProvider = (type, params) => {
-  console.log("auth")
-  console.log(type)
   // called when the user attempts to log in
   if (type === AUTH_LOGIN) {
-    const { username } = params
-    // localStorage.setItem("username", username)
-    // accept all username/password combinations
-    return Promise.resolve()
+    return login(params)
   }
   // called when the user clicks on the logout button
   if (type === AUTH_LOGOUT) {
@@ -26,9 +22,7 @@ const authProvider = (type, params) => {
   }
   // called when the user navigates to a new location
   if (type === AUTH_CHECK) {
-    console.log(localStorage.getItem("username"))
-    return Promise.reject()
-    return !!localStorage.getItem("username")
+    return localStorage.getItem("adminToken")
       ? Promise.resolve()
       : Promise.reject()
   }
