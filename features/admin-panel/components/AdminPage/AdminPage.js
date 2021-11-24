@@ -1,5 +1,6 @@
 import { Admin, Resource, ListGuesser } from "react-admin"
 import { useDataProvider, useAuthProvider } from "../../hooks"
+import ProductList from "../ProductList"
 import styles from "./AdminPage.module.scss"
 
 const AdminPage = () => {
@@ -10,7 +11,7 @@ const AdminPage = () => {
   return (
     <div className={styles.adminContainer}>
       <Admin dataProvider={dataProvider} authProvider={authProvider}>
-        <Resource name="users" list={ListGuesser} />
+        <Resource name="yard_users" list={ProductList} />
       </Admin>
     </div>
   )
