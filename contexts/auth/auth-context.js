@@ -1,7 +1,7 @@
 import { useContext, createContext, useCallback } from "react"
 import { useRouter } from "next/router"
 
-import { saveToken, removeToken } from "../../utilities/cookies"
+import { saveToken, removeToken, getToken } from "../../utilities/cookies"
 
 const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
@@ -20,14 +20,15 @@ export const AuthContextProvider = ({ children }) => {
     [router]
   )
 
-  const logOut = useCallback((ref = "/") => {
+  const logOut = useCallback((ref = "/", doNotForward = false) => {
     removeToken()
-    window.location.replace(ref)
+    if (!doNotForward) window.location.replace(ref)
   }, [])
 
   const authContextValues = {
     logIn,
     logOut,
+    getToken,
   }
 
   return (
