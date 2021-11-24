@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 
 const AdminPage = dynamic(
-  () => import("../../features/admin-panel/compnents/AdminPage"),
+  () => import("../../features/admin-panel/components/AdminPage"),
   {
     ssr: false,
   }

@@ -4,7 +4,7 @@ const { cookieOptions, env } = config
 
 const saveToken = token => {
   if (env === "production") return Cookies.set("token", token, cookieOptions)
-  Cookies.set("token", token)
+  return Cookies.set("token", token)
 }
 
 export default saveToken
