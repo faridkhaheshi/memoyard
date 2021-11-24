@@ -1,6 +1,13 @@
 import { Admin, Resource } from "react-admin"
 import { useDataProvider, useAuthProvider } from "../../hooks"
-import { UserCreate, UserEdit, UserList } from "../entities"
+import {
+  OrganizationCreate,
+  OrganizationEdit,
+  OrganizationList,
+  UserCreate,
+  UserEdit,
+  UserList,
+} from "../entities"
 import styles from "./AdminPage.module.scss"
 
 const AdminPage = () => {
@@ -16,6 +23,12 @@ const AdminPage = () => {
           list={UserList}
           create={UserCreate}
           edit={UserEdit}
+        />
+        <Resource
+          name="yard_organizations"
+          list={OrganizationList}
+          create={OrganizationCreate}
+          edit={OrganizationEdit}
         />
       </Admin>
     </div>
