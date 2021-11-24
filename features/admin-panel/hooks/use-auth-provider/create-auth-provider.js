@@ -1,12 +1,10 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from "react-admin"
 import { login } from "./services"
 
-const authProvider = (type, params) => {
-  // called when the user attempts to log in
+const createAuthProvider = authContext => (type, params) => {
   if (type === AUTH_LOGIN) {
-    return login(params)
+    return login(authContext, params)
   }
-  // called when the user clicks on the logout button
   if (type === AUTH_LOGOUT) {
     // localStorage.removeItem("username")
     return Promise.resolve()
@@ -29,4 +27,4 @@ const authProvider = (type, params) => {
   return Promise.reject("Unknown method")
 }
 
-export default authProvider
+export default createAuthProvider

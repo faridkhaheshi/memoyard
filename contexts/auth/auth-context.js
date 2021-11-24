@@ -10,10 +10,12 @@ export const AuthContextProvider = ({ children }) => {
   const router = useRouter()
 
   const logIn = useCallback(
-    (token, ref = "/") => {
+    (token, ref = "/", doNotForward = false) => {
       saveToken(token)
-      window.location.replace(ref)
-      router.push(ref)
+      if (!doNotForward) {
+        window.location.replace(ref)
+        router.push(ref)
+      }
     },
     [router]
   )

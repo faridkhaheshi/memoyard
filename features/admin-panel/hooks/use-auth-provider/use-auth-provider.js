@@ -1,5 +1,10 @@
-import authProvider from "./auth-provider"
+import { useAuth } from "../../../../contexts/auth"
+import createAuthProvider from "./create-auth-provider"
 
-const useAuthProvider = () => authProvider
+const useAuthProvider = () => {
+  const authContext = useAuth()
+
+  return createAuthProvider(authContext)
+}
 
 export default useAuthProvider
