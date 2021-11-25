@@ -1,4 +1,5 @@
 import {
+  BooleanField,
   BooleanInput,
   Create,
   DateField,
@@ -18,7 +19,6 @@ import JsonDataViewer from "../JsonDataViewer"
 export const OrganizationList = props => (
   <List {...props}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
-      <DateField source="created_at" showTime />
       <TextField source="id" />
       <TextField source="name" />
       <TextField source="slug" />
@@ -32,6 +32,8 @@ export const OrganizationList = props => (
         />
       </ReferenceField>
       <TextField label="creator_id" source="creator_id" />
+      <BooleanField source="active" />
+      <DateField source="created_at" showTime />
     </Datagrid>
   </List>
 )
@@ -60,6 +62,7 @@ export const OrganizationEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <TextField source="id" />
+      <TextField source="ex_id" />
       <TextInput source="name" />
       <TextInput source="slug" />
       <ReferenceInput

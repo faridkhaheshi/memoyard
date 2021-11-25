@@ -16,7 +16,7 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
-export const GroupList = props => (
+export const SubjectList = props => (
   <List {...props}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
       <TextField source="id" />
@@ -34,7 +34,7 @@ export const GroupList = props => (
   </List>
 )
 
-export const GroupEdit = props => (
+export const SubjectEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <TextField source="id" />
@@ -65,7 +65,7 @@ export const GroupEdit = props => (
   </Edit>
 )
 
-export const GroupCreate = props => (
+export const SubjectCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />
