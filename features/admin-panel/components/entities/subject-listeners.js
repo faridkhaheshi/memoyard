@@ -5,6 +5,7 @@ import {
   DateField,
   Datagrid,
   Edit,
+  FunctionField,
   List,
   ReferenceField,
   ReferenceInput,
@@ -14,7 +15,7 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
-export const SubjectGroupList = props => (
+export const SubjectListenerList = props => (
   <List {...props}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
       <TextField source="id" />
@@ -26,8 +27,10 @@ export const SubjectGroupList = props => (
       >
         <TextField source="name" />
       </ReferenceField>
-      <ReferenceField label="group" source="group_id" reference="yard_groups">
-        <TextField source="name" />
+      <ReferenceField label="user" source="user_id" reference="yard_users">
+        <FunctionField
+          render={record => `${record.first_name} ${record.last_name}`}
+        />
       </ReferenceField>
       <ReferenceField
         label="organization"
@@ -41,7 +44,7 @@ export const SubjectGroupList = props => (
   </List>
 )
 
-export const SubjectGroupEdit = props => (
+export const SubjectListenerEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <TextField source="id" />
@@ -72,9 +75,11 @@ export const SubjectGroupEdit = props => (
       >
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextField source="group_id" label="group_id" />
-      <ReferenceInput label="group" source="group_id" reference="yard_groups">
-        <SelectInput optionText="name" />
+      <TextField source="user_id" label="user_id" />
+      <ReferenceInput label="user" source="user_id" reference="yard_users">
+        <SelectInput
+          optionText={record => `${record.first_name} ${record.last_name}`}
+        />
       </ReferenceInput>
       <BooleanInput source="active" />
       <DateField source="created_at" showTime />
@@ -83,7 +88,7 @@ export const SubjectGroupEdit = props => (
   </Edit>
 )
 
-export const SubjectGroupCreate = props => (
+export const SubjectListenerCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput
@@ -102,7 +107,6 @@ export const SubjectGroupCreate = props => (
       >
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextField source="subject_id" label="subject_id" />
       <ReferenceInput
         label="subject"
         source="subject_id"
@@ -110,9 +114,10 @@ export const SubjectGroupCreate = props => (
       >
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextField source="group_id" label="group_id" />
-      <ReferenceInput label="group" source="group_id" reference="yard_groups">
-        <SelectInput optionText="name" />
+      <ReferenceInput label="user" source="user_id" reference="yard_users">
+        <SelectInput
+          optionText={record => `${record.first_name} ${record.last_name}`}
+        />
       </ReferenceInput>
     </SimpleForm>
   </Create>

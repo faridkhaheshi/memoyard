@@ -13,6 +13,9 @@ import {
   SubjectGroupEdit,
   SubjectGroupList,
   SubjectList,
+  SubjectListenerCreate,
+  SubjectListenerEdit,
+  SubjectListenerList,
   UserCreate,
   UserEdit,
   UserList,
@@ -61,6 +64,13 @@ const AdminPage = () => {
           list={SubjectGroupList}
           edit={SubjectGroupEdit}
           create={SubjectGroupCreate}
+        />
+        <Resource
+          name="yard_subject_listeners"
+          options={{ label: "Subject Listeners" }}
+          list={SubjectListenerList}
+          edit={SubjectListenerEdit}
+          create={SubjectListenerCreate}
         />
       </Admin>
     </div>
