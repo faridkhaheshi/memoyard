@@ -1,12 +1,13 @@
 import { useContext, createContext, useCallback } from "react"
 import { useRouter } from "next/router"
+import FullPageCentered from "../../components/FullPageCentered"
 
 import { saveToken, removeToken, getToken } from "../../utilities/cookies"
 
 const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
 
-export const AuthContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ Component, children }) => {
   const router = useRouter()
 
   const logIn = useCallback(
@@ -30,6 +31,11 @@ export const AuthContextProvider = ({ children }) => {
     logOut,
     getToken,
   }
+
+  console.log(Component.isProtected)
+  console.log(Component.isAdminProtected)
+
+  return <FullPageCentered>Loading...</FullPageCentered>
 
   return (
     <AuthContext.Provider value={authContextValues}>

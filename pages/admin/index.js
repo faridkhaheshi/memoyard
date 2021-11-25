@@ -7,6 +7,9 @@ const AdminPage = dynamic(
   }
 )
 
-export default function AdminPanel() {
-  return <AdminPage />
-}
+const AdminPanel = () => <AdminPage />
+
+AdminPanel.isProtected = true
+AdminPanel.isAdminProtected = true
+
+export default AdminPanel
