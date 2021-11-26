@@ -1,8 +1,5 @@
-import { removeHasuraToken } from "../utilities"
-
 const logout = async authContext => {
-  authContext.logOut("", true)
-  removeHasuraToken()
+  authContext.logOut("", true, true)
 }
 
 export default logout

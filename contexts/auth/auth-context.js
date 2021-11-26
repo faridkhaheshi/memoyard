@@ -1,13 +1,16 @@
-import { useContext, createContext, useCallback } from "react"
+import { useContext, createContext, useCallback, useEffect } from "react"
 import { useRouter } from "next/router"
+import useUser from "../../hooks/use-user"
 import FullPageCentered from "../../components/FullPageCentered"
 
 import { saveToken, removeToken, getToken } from "../../utilities/cookies"
+import { removeHasuraToken } from "../../features/admin-panel/hooks/use-auth-provider/utilities"
 
 const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
 
 export const AuthContextProvider = ({ Component, children }) => {
+  const { user, isUserLoading, token, isAuthenticated } = useUser()
   const router = useRouter()
 
   const logIn = useCallback(
@@ -21,21 +24,34 @@ export const AuthContextProvider = ({ Component, children }) => {
     [router]
   )
 
-  const logOut = useCallback((ref = "/", doNotForward = false) => {
+  const logOut = useCallback((ref = "/", admin = true) => {
     removeToken()
-    if (!doNotForward) window.location.replace(ref)
+    if (admin) {
+      removeHasuraToken()
+    }
+    window.location.replace(ref)
   }, [])
 
   const authContextValues = {
     logIn,
     logOut,
     getToken,
+    user,
+    token,
+    isAuthenticated,
+    isUserLoading,
   }
 
-  console.log(Component.isProtected)
-  console.log(Component.isAdminProtected)
+  useEffect(() => {
+    if (!isAuthenticated && !isUserLoading && Component.isProtected) {
+      router.push(
+        `/login?ref=${encodeURIComponent(window.location.toString())}`
+      )
+    }
+  }, [isAuthenticated, isUserLoading, Component.isProtected, router])
 
-  return <FullPageCentered>Loading...</FullPageCentered>
+  if (Component.isProtected && !isAuthenticated)
+    return <FullPageCentered>Loading...</FullPageCentered>
 
   return (
     <AuthContext.Provider value={authContextValues}>
