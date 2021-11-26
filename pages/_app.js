@@ -10,7 +10,7 @@ import "../styles/globals.scss"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthContextProvider>
+    <AuthContextProvider Component={Component}>
       <DefaultSeo {...seoConfig} />
       <Component {...pageProps} />
     </AuthContextProvider>

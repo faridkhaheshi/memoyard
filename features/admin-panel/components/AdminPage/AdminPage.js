@@ -1,4 +1,5 @@
 import { Admin, Resource } from "react-admin"
+import { FullPageCentered } from "../../../../components"
 import { useDataProvider, useAuthProvider } from "../../hooks"
 import {
   GroupCreate,
@@ -22,11 +23,11 @@ import {
 } from "../entities"
 import styles from "./AdminPage.module.scss"
 
-const AdminPage = () => {
-  const dataProvider = useDataProvider()
-  const authProvider = useAuthProvider()
+const AdminPage = ({ hasuraToken, refreshAdminUser }) => {
+  const dataProvider = useDataProvider(hasuraToken)
+  const authProvider = useAuthProvider(hasuraToken, refreshAdminUser)
 
-  if (!dataProvider) return <p>Loading...</p>
+  if (!dataProvider) return <FullPageCentered>Loading...</FullPageCentered>
   return (
     <div className={styles.adminContainer}>
       <Admin dataProvider={dataProvider} authProvider={authProvider}>
