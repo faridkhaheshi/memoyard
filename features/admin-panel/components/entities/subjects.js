@@ -16,10 +16,20 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
+export const subjectsFilters = [
+  <TextInput
+    key="ex_id_subjects_filter"
+    label="ex_id"
+    source="ex_id"
+    alwaysOn
+  />,
+]
+
 export const SubjectList = props => (
-  <List {...props}>
+  <List {...props} filters={subjectsFilters}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
       <TextField source="id" />
+      <TextField source="ex_id" label="ex_id" />
       <TextField source="name" />
       <ReferenceField
         label="organization"
