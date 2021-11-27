@@ -20,7 +20,7 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
-export const subjectFilters = [
+const subjectFilters = [
   <TextInput
     key="ex_id_subjects_filter"
     label="ex_id"

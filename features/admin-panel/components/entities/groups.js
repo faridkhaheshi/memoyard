@@ -89,16 +89,14 @@ export const GroupEdit = props => (
         reference="yard_subject_groups"
         target="group_id"
       >
-        <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
+        <Datagrid expand={<JsonDataViewer />}>
+          <TextField source="id" />
+          <TextField source="ex_id" label="ex_id" />
+          <BooleanField source="active" />
           <ReferenceField source="subject_id" reference="yard_subjects">
-            <DatagridRow>
-              <TextField source="id" />
-              <TextField source="ex_id" />
-              <TextField source="name" />
-              <BooleanField source="active" />
-              <EditButton />
-            </DatagridRow>
+            <TextField source="name" />
           </ReferenceField>
+          <EditButton />
         </Datagrid>
       </ReferenceManyField>
       <DateField source="created_at" showTime />
