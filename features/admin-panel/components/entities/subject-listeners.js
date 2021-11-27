@@ -12,13 +12,39 @@ import {
   SelectInput,
   SimpleForm,
   TextField,
+  TextInput,
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
+const subjectListenerFilters = [
+  <TextInput
+    key="ex_id_subject_listener_filter"
+    label="ex_id"
+    source="ex_id"
+    alwaysOn
+  />,
+  <TextInput
+    key="org_id_subject_listener_filter"
+    label="org_id"
+    source="org_id"
+    alwaysOn
+  />,
+  <ReferenceInput
+    key="org_subject_listener_filter"
+    label="organization"
+    source="org_id"
+    reference="yard_organizations"
+    alwaysOn
+  >
+    <SelectInput source="name" />
+  </ReferenceInput>,
+]
+
 export const SubjectListenerList = props => (
-  <List {...props}>
+  <List {...props} filters={subjectListenerFilters}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
       <TextField source="id" />
+      <TextField source="ex_id" />
       <BooleanField source="active" />
       <ReferenceField
         label="subject"
@@ -39,6 +65,7 @@ export const SubjectListenerList = props => (
       >
         <TextField source="name" />
       </ReferenceField>
+      <TextField source="org_id" label="org_id" />
       <DateField source="created_at" showTime />
     </Datagrid>
   </List>

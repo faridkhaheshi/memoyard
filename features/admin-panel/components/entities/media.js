@@ -2,10 +2,8 @@ import {
   BooleanField,
   BooleanInput,
   ChipField,
-  Create,
   DateField,
   Datagrid,
-  DeleteButton,
   Edit,
   EditButton,
   FunctionField,
@@ -21,8 +19,23 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
-export const mediaFilters = [
+const mediaFilters = [
   <TextInput key="ex_id_media_filter" label="ex_id" source="ex_id" alwaysOn />,
+  <TextInput
+    key="org_id_media_filter"
+    label="org_id"
+    source="org_id"
+    alwaysOn
+  />,
+  <ReferenceInput
+    key="org_media_filter"
+    label="organization"
+    source="org_id"
+    reference="yard_organizations"
+    alwaysOn
+  >
+    <SelectInput source="name" />
+  </ReferenceInput>,
 ]
 
 export const MediaList = props => (
@@ -58,6 +71,7 @@ export const MediaList = props => (
       <TextField source="media_type" />
       <TextField source="file_type" />
       <BooleanField source="active" />
+      <TextField source="org_id" label="org_id" />
       <DateField source="created_at" showTime />
     </Datagrid>
   </List>
