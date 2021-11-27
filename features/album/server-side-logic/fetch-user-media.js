@@ -4,6 +4,8 @@ const { baseUrl } = config
 
 const fetchUserMedia = async ({ params, req, query }) => {
   const { slug, tag, tagType } = query
+
+  if (!req.headers.cookie) return { props: {} }
   const reqHeaders = {
     method: "GET",
     headers: req ? { cookie: req.headers.cookie } : undefined,

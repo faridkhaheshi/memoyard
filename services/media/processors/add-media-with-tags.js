@@ -10,7 +10,6 @@ const addMediaWithTags = async ({
     userExId,
     orgExId,
   },
-  media,
   tags = [],
 }) => {
   const results = await db
@@ -32,7 +31,7 @@ const addMediaWithTags = async ({
       (SELECT id FROM yard.organizations WHERE ex_id::text=:orgExId),
       :originalFileName,
       :originalFilelSize,
-      :mediaType::media_type,
+      (SELECT name FROM yard.media_types WHERE name=:mediaType::text),
       :fileType,
       :fileUrl
     )
@@ -71,7 +70,7 @@ const addMediaWithTags = async ({
         (SELECT id FROM yard.users WHERE ex_id::text=:userExId),
         (SELECT id FROM yard.organizations WHERE ex_id::text=:orgExId),
         :mediaId,
-        :mediaTagType::media_tag_type,
+        (SELECT name FROM yard.media_tag_types mtt WHERE mtt.name=:mediaTagType::text),
         (SELECT id FROM yard.groups WHERE ex_id::text=:groupExId),
         (SELECT id FROM yard.subjects WHERE ex_id::text=:subjectExId)
       )
