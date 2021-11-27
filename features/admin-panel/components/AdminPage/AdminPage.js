@@ -5,6 +5,10 @@ import {
   GroupCreate,
   GroupEdit,
   GroupList,
+  MediaEdit,
+  MediaList,
+  MediaTagEdit,
+  MediaTagsList,
   OrganizationCreate,
   OrganizationEdit,
   OrganizationList,
@@ -72,6 +76,18 @@ const AdminPage = ({ hasuraToken, refreshAdminUser }) => {
           list={SubjectListenerList}
           edit={SubjectListenerEdit}
           create={SubjectListenerCreate}
+        />
+        <Resource
+          name="yard_media"
+          options={{ label: "Media" }}
+          list={MediaList}
+          edit={MediaEdit}
+        />
+        <Resource
+          name="yard_media_tags"
+          options={{ label: "Media Tags" }}
+          list={MediaTagsList}
+          edit={MediaTagEdit}
         />
       </Admin>
     </div>
