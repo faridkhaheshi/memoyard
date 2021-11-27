@@ -6,4 +6,12 @@
   &.success {
     background-color: v.$success !important;
   }
+  &.error {
+    background-color: v.$error-red !important;
+  }
+}
+
+.errorMessage {
+  color: v.$error-red;
+  padding: 10px;
 }
