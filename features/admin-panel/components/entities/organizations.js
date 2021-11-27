@@ -20,7 +20,7 @@ import {
 } from "react-admin"
 import JsonDataViewer from "../JsonDataViewer"
 
-export const organizationsFilters = [
+export const organizationFilters = [
   <TextInput
     key="ex_id_organizations_filter"
     label="ex_id"
@@ -30,7 +30,7 @@ export const organizationsFilters = [
 ]
 
 export const OrganizationList = props => (
-  <List {...props} filters={organizationsFilters}>
+  <List {...props} filters={organizationFilters}>
     <Datagrid rowClick="edit" expand={<JsonDataViewer />}>
       <TextField source="id" />
       <TextField source="ex_id" label="ex_id" />
