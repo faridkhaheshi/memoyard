@@ -139,19 +139,19 @@ const findUserMedia = async ({
           END
     )
     SELECT
-      m.ex_id,
-      m.original_file_size,
-      m.media_type,
-      m.file_type,
-      m.file_url,
-      m.created_at,
-      m.updated_at,
+      tm.ex_id,
+      tm.original_file_size,
+      tm.media_type,
+      tm.file_type,
+      tm.file_url,
+      tm.created_at,
+      tm.updated_at,
       TO_JSON(
         ARRAY_AGG(
           JSON_BUILD_OBJECT(
-            'media_tag_ex_id', mt.ex_id,
+            'media_tag_ex_id', mtt.ex_id,
             'ex_id', COALESCE(g.ex_id, s.ex_id),
-            'type', mt.media_tag_type,
+            'type', mtt.media_tag_type,
             'subject_ex_id', s.ex_id,
             'group_ex_id', g.ex_id,
             'name', COALESCE(g.name, s.name),
@@ -160,27 +160,56 @@ const findUserMedia = async ({
           )
         )
       ) tags
-    FROM  yard.media_tags mt 
-            JOIN yard.organizations o on mt.org_id=o.id
-            JOIN yard.media m on mt.media_id=m.id
-            LEFT JOIN target_groups g on mt.group_id=g.id
-            LEFT JOIN target_subjects s on mt.subject_id=s.id
-    WHERE
-      o.slug=:slug
-        AND
-      o.active=true
-        AND
-      mt.active=true
-        AND
-      m.active=true
-        AND
+    FROM
       (
-        mt.subject_id in (SELECT id FROM target_subjects)
-          OR
-        mt.group_id in (SELECT id FROM target_groups)
-      )
-    GROUP BY m.id
-    ORDER BY m.created_at DESC
+        SELECT
+          distinct m.id as id,
+          m.ex_id,
+          m.original_file_size,
+          m.media_type,
+          m.file_type,
+          m.file_url,
+          m.created_at,
+          m.updated_at
+        FROM  yard.media_tags mt 
+                JOIN yard.organizations o on mt.org_id=o.id
+                JOIN yard.media m on mt.media_id=m.id
+        WHERE
+          o.slug=:slug
+            AND
+          o.active=true
+            AND
+          mt.active=true
+            AND
+          m.active=true
+            AND
+          (
+            mt.subject_id in (SELECT id FROM target_subjects)
+              OR
+            mt.group_id in (SELECT id FROM target_groups)
+          )
+        GROUP BY 
+          m.id,m.ex_id,
+          m.original_file_size,
+          m.media_type,
+          m.file_type,
+          m.file_url,
+          m.created_at,
+          m.updated_at
+      ) tm
+        JOIN yard.media_tags mtt on tm.id=mtt.media_id
+        LEFT JOIN yard.groups g on mtt.group_id=g.id
+        LEFT JOIN yard.subjects s on mtt.subject_id=s.id
+    GROUP BY
+      tm.id,
+      tm.ex_id,
+      tm.original_file_size,
+      tm.media_type,
+      tm.file_type,
+      tm.file_url,
+      tm.created_at,
+      tm.updated_at
+    ORDER BY tm.created_at DESC
   `,
     { slug, userExId, tag, tagType }
   )
