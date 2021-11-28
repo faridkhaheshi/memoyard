@@ -1,21 +1,13 @@
 import { useState } from "react"
-import { useTheme } from "@mui/material/styles"
 import Box from "@mui/material/Box"
 import CssBaseline from "@mui/material/CssBaseline"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
-import IconButton from "@mui/material/IconButton"
-import Typography from "@mui/material/Typography"
-import Drawer from "@mui/material/Drawer"
-import MenuIcon from "@mui/icons-material/Menu"
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
-import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import PanelTopBar from "./PanelTopBar"
+import PanelMain from "./PanelMain"
+import PanelDrawer from "./PanelDrawer"
 
 const DRAWER_WIDTH = 240
 
-const PanelLayout = () => {
-  const theme = useTheme()
+const PanelLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true)
 
   const openDrawer = () => setIsOpen(true)
@@ -28,29 +20,16 @@ const PanelLayout = () => {
         heading="dashboard"
         openDrawer={openDrawer}
         isDrawerOpen={isOpen}
+        drawerWidth={DRAWER_WIDTH}
       />
-      <Drawer
-        sx={{
-          width: DRAWER_WIDTH,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: DRAWER_WIDTH,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={isOpen}
-      >
-        <IconButton onClick={closeDrawer}>
-          {theme.direction === "ltr" ? (
-            <ChevronLeftIcon />
-          ) : (
-            <ChevronRightIcon />
-          )}
-        </IconButton>
-      </Drawer>
-      <div>Main</div>
+      <PanelDrawer
+        drawerWidth={DRAWER_WIDTH}
+        isOpen={isOpen}
+        closeDrawer={closeDrawer}
+      />
+      <PanelMain drawerWidth={DRAWER_WIDTH} isDrawerOpen={isOpen}>
+        {children}
+      </PanelMain>
     </Box>
   )
 }
