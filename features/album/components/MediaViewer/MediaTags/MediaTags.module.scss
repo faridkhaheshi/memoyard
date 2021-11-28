@@ -1,0 +1,22 @@
+@use "../../../../../styles/variables" as v;
+
+.tagsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0px 5px 10px 5px;
+  .tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 10px;
+    background-color: v.$media-viewer-tag-color;
+    border: 1px solid v.$media-viewer-tag-color;
+    color: white;
+    border-radius: 10px;
+    margin: 0 5px;
+    font-size: 0.7rem;
+  }
+}

@@ -20,6 +20,7 @@ const AlbumsViewer = () => {
             fileType={m.file_type}
             mediaExId={m.ex_id}
             createdAt={m.created_at}
+            tags={m.tags}
           />
         ))}
       </main>
