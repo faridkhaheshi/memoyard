@@ -1,19 +1,32 @@
 import { DefaultSeo } from "next-seo"
-// import { config } from "@fortawesome/fontawesome-svg-core"
+import { ThemeProvider } from "@mui/material/styles"
+import CssBaseline from "@mui/material/CssBaseline"
+import { CacheProvider } from "@emotion/react"
 import { AuthContextProvider } from "../contexts/auth"
 import seoConfig from "../next-seo.config"
 
-// import "@fortawesome/fontawesome-svg-core/styles.css"
+import createEmotionCache from "../styles/create-emotion-cache"
+import theme from "../styles/theme"
+
 import "../styles/globals.scss"
 
-// config.autoAddCss = false
+const clientSideEmotionCache = createEmotionCache()
 
-function MyApp({ Component, pageProps }) {
+function MyApp({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}) {
   return (
-    <AuthContextProvider Component={Component}>
-      <DefaultSeo {...seoConfig} />
-      <Component {...pageProps} />
-    </AuthContextProvider>
+    <CacheProvider value={emotionCache}>
+      <AuthContextProvider Component={Component}>
+        <DefaultSeo {...seoConfig} />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AuthContextProvider>
+    </CacheProvider>
   )
 }
 
