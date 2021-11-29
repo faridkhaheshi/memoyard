@@ -1,43 +1,25 @@
-import { useTheme } from "@mui/material/styles"
-import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import MenuIcon from "@mui/icons-material/Menu"
+import StyledAppBar from "./StyledAppBar"
+import { usePanelContext } from "../../../contexts"
 
-const PanelTopBar = ({
-  openDrawer,
-  isDrawerOpen = false,
-  heading = "Heading",
-  drawerWidth,
-}) => {
-  const theme = useTheme()
+const PanelTopBar = ({ heading = "Dashboard" }) => {
+  const { isDrawerOpen, openDrawer, drawerWidth } = usePanelContext()
 
   return (
-    <AppBar
+    <StyledAppBar
       position="fixed"
-      open={isDrawerOpen}
-      style={{
-        transition: theme.transitions.create(["margin", "width"], {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        ...(isDrawerOpen && {
-          width: `calc(100% - ${drawerWidth}px)`,
-          marginLeft: `${drawerWidth}px`,
-          transition: theme.transitions.create(["margin", "width"], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-          }),
-        }),
-      }}
+      isDrawerOpen={isDrawerOpen}
+      drawerWidth={drawerWidth}
     >
       <Toolbar>
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          edge="start"
           onClick={openDrawer}
+          edge="start"
           sx={{ mr: 2, ...(isDrawerOpen && { display: "none" }) }}
         >
           <MenuIcon />
@@ -46,7 +28,7 @@ const PanelTopBar = ({
           {heading}
         </Typography>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   )
 }
 

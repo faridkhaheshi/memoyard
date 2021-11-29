@@ -1,37 +1,13 @@
-import { useTheme } from "@mui/material/styles"
+import { usePanelContext } from "../../../contexts"
+import StyledMain from "./StyledMain"
 
-const PanelMain = ({ children, drawerWidth, isDrawerOpen = false }) => {
-  const theme = useTheme()
+const PanelMain = ({ children }) => {
+  const { drawerWidth, isDrawerOpen } = usePanelContext()
+
   return (
-    <main
-      style={{
-        flexGrow: 1,
-        padding: theme.spacing(3),
-        transition: theme.transitions.create("margin", {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: `-${drawerWidth}px`,
-        ...(isDrawerOpen && {
-          marginLeft: 0,
-          transition: theme.transitions.create("margin", {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-          }),
-        }),
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: theme.spacing(0, 1),
-          ...theme.mixins.toolbar,
-          justifyContent: "flex-end",
-        }}
-      />
+    <StyledMain drawerWidth={drawerWidth} isDrawerOpen={isDrawerOpen}>
       {children}
-    </main>
+    </StyledMain>
   )
 }
 
