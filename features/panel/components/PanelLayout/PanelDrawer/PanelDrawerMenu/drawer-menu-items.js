@@ -9,7 +9,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard"
 import PermMediaIcon from "@mui/icons-material/PermMedia"
 
 const drawerMenuItems = [
-  { text: "Dashboard", Icon: DashboardIcon, href: "" },
+  { text: "Dashboard", Icon: DashboardIcon, href: "/" },
   { text: "Children", Icon: ChildCareIcon, href: "/children" },
   { text: "Groups", Icon: GroupsIcon, href: "/groups" },
   { text: "Staff", Icon: BabyChangingStationIcon, href: "/staff" },

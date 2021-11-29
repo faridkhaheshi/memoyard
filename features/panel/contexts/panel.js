@@ -9,7 +9,7 @@ export const PanelContextProvider = ({
   drawerWidth,
   initialIsDrawerOpen = true,
   initialOrg,
-  slug,
+  slug = { slug },
 }) => {
   const { organization, isOrgLoading, orgError, hasOrgInfo } =
     useOrganization(slug)

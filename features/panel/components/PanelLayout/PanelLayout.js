@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import Box from "@mui/material/Box"
 import CssBaseline from "@mui/material/CssBaseline"
 import PanelTopBar from "./PanelTopBar"
@@ -8,12 +9,13 @@ import { PanelContextProvider } from "./../../contexts"
 
 const DRAWER_WIDTH = 240
 
-const PanelLayout = ({ children, organization, slug }) => {
+const PanelLayout = ({ children, organization }) => {
+  const router = useRouter()
   return (
     <PanelContextProvider
       drawerWidth={DRAWER_WIDTH}
       initialOrg={organization}
-      slug={slug}
+      slug={router.query.slug}
     >
       <Box sx={{ display: "flex" }}>
         <CssBaseline />

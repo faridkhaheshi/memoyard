@@ -24,7 +24,6 @@ const fetchUserOrganizationInfo = async ({ req, query }) => {
   return {
     props: {
       organization: organizations.length > 0 ? organizations[0] : null,
-      slug,
     },
   }
 }

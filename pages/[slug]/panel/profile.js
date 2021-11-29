@@ -1,15 +1,14 @@
-import Typography from "@mui/material/Typography"
 import { PanelLayout, fetchUserOrganizationInfo } from "../../../features/panel"
 
-const PanelPage = ({ organization }) => (
+const PanelProfilePage = ({ organization }) => (
   <PanelLayout organization={organization}>
-    <h1>Dashboard</h1>
+    <h1>Profile</h1>
     <p>Will be available soon</p>
   </PanelLayout>
 )
 
-PanelPage.isProtected = true
+PanelProfilePage.isProtected = true
 
-export default PanelPage
+export default PanelProfilePage
 
 export const getServerSideProps = fetchUserOrganizationInfo

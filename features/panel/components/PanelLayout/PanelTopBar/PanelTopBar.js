@@ -26,7 +26,7 @@ const PanelTopBar = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          {`${organization?.name} Dashboard`}
+          {organization?.name}
         </Typography>
       </Toolbar>
     </StyledAppBar>
