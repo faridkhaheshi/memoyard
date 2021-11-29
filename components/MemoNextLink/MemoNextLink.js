@@ -21,8 +21,6 @@ export const NextLinkComposed = forwardRef(function NextLinkComposed(
     ...other
   } = props
 
-  console.log(props)
-
   return (
     <NextLink
       href={to}
