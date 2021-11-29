@@ -5,8 +5,9 @@ import MenuIcon from "@mui/icons-material/Menu"
 import StyledAppBar from "./StyledAppBar"
 import { usePanelContext } from "../../../contexts"
 
-const PanelTopBar = ({ heading = "Dashboard" }) => {
-  const { isDrawerOpen, openDrawer, drawerWidth } = usePanelContext()
+const PanelTopBar = () => {
+  const { isDrawerOpen, openDrawer, drawerWidth, organization } =
+    usePanelContext()
 
   return (
     <StyledAppBar
@@ -25,7 +26,7 @@ const PanelTopBar = ({ heading = "Dashboard" }) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          {heading}
+          {`${organization?.name} Dashboard`}
         </Typography>
       </Toolbar>
     </StyledAppBar>

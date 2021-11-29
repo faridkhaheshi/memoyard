@@ -1,7 +1,8 @@
 import { styled } from "@mui/material/styles"
 
 const StyledMain = styled("main", {
-  shouldForwardProp: prop => prop !== "open",
+  shouldForwardProp: prop =>
+    ["isDrawerOpen", "drawerWidth"].indexOf(prop) === -1,
 })(({ theme, isDrawerOpen, drawerWidth }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),

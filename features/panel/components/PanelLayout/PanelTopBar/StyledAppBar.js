@@ -2,7 +2,8 @@ import AppBar from "@mui/material/AppBar"
 import { styled } from "@mui/material/styles"
 
 const StyledAppBar = styled(AppBar, {
-  shouldForwardProp: prop => prop !== "open",
+  shouldForwardProp: prop =>
+    ["isDrawerOpen", "drawerWidth"].indexOf(prop) === -1,
 })(({ theme, isDrawerOpen, drawerWidth }) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,

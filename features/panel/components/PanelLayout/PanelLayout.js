@@ -8,9 +8,13 @@ import { PanelContextProvider } from "./../../contexts"
 
 const DRAWER_WIDTH = 240
 
-const PanelLayout = ({ children }) => {
+const PanelLayout = ({ children, organization, slug }) => {
   return (
-    <PanelContextProvider drawerWidth={DRAWER_WIDTH}>
+    <PanelContextProvider
+      drawerWidth={DRAWER_WIDTH}
+      initialOrg={organization}
+      slug={slug}
+    >
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <PanelTopBar />
