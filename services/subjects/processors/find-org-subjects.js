@@ -14,8 +14,6 @@ const findOrgSubjects = async ({ userExId, orgSlug }) => {
         JOIN yard.organizations o ON s.org_id=o.id
         JOIN yard.users u ON o.creator_id=u.id
     WHERE
-      s.active=true
-        AND
       o.slug=:orgSlug
         AND
       u.ex_id::text=:userExId

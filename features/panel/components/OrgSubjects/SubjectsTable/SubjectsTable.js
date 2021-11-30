@@ -1,4 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid"
+import useCellUpdate from "../../../hooks/use-cell-update"
 
 const columns = [
   {
@@ -6,16 +7,18 @@ const columns = [
     headerName: "active",
     description: "Shows the current status of the child",
     type: "boolean",
+    editable: true,
   },
   {
     field: "name",
     headerName: "Name",
     description: "Name of the child",
     flex: 1,
+    editable: true,
   },
   {
     field: "join_date",
-    headerName: "Joining Dtae",
+    headerName: "Joining Date",
     description: "Shows the date that the child was added",
     type: "dateTime",
     flex: 0.5,
@@ -24,16 +27,18 @@ const columns = [
 ]
 
 const SubjectsTable = ({ subjects }) => {
+  const handleCellUpdate = useCellUpdate("/api/subjects/")
+
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 600, width: "100%" }}>
       <DataGrid
         rows={subjects}
         columns={columns}
         getRowId={row => row.ex_id}
+        onCellEditCommit={handleCellUpdate}
         pageSize={10}
         rowsPerPageOptions={[10, 50, 100]}
         disableSelectionOnClick
-        checkboxSelection
       />
     </div>
   )
