@@ -27,19 +27,21 @@ const columns = [
 ]
 
 const SubjectsTable = ({ subjects }) => {
-  const handleCellUpdate = useCellUpdate("/api/subjects/")
+  const handleCellUpdate = useCellUpdate("/api/subjects")
 
   return (
-    <div style={{ height: 600, width: "100%" }}>
-      <DataGrid
-        rows={subjects}
-        columns={columns}
-        getRowId={row => row.ex_id}
-        onCellEditCommit={handleCellUpdate}
-        pageSize={10}
-        rowsPerPageOptions={[10, 50, 100]}
-        disableSelectionOnClick
-      />
+    <div style={{ display: "flex", height: "100%" }}>
+      <div style={{ flexGrow: 1 }}>
+        <DataGrid
+          rows={subjects}
+          columns={columns}
+          getRowId={row => row.ex_id}
+          onCellEditCommit={handleCellUpdate}
+          pageSize={10}
+          rowsPerPageOptions={[10, 50, 100]}
+          disableSelectionOnClick
+        />
+      </div>
     </div>
   )
 }

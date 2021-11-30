@@ -1,0 +1,42 @@
+import { useState } from "react"
+
+import TextField from "@mui/material/TextField"
+import LoadingButton from "@mui/lab/LoadingButton"
+import { usePanelContext } from "../../contexts/panel"
+import useAssetCreate from "../../hooks/use-asset-create"
+
+const SubjectAdder = () => {
+  const { organization, slug } = usePanelContext()
+  const [name, setName] = useState("")
+
+  const { handleSubmit } = useAssetCreate("/api/subjects", {
+    body: { name },
+    slug,
+  })
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        margin: "20px 0",
+      }}
+    >
+      <TextField
+        sx={{ marginRight: "20px" }}
+        value={name}
+        onChange={e => setName(e.target.value)}
+        required
+        id="filled-required"
+        label="Name"
+        placeholder="type name of the child"
+        variant="filled"
+      />
+      <LoadingButton variant="contained" onClick={handleSubmit}>{`ADD ${
+        name.length === 0 ? "a new child" : name
+      }`}</LoadingButton>
+    </div>
+  )
+}
+
+export default SubjectAdder

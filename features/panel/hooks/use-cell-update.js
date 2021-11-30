@@ -7,7 +7,7 @@ const useCellUpdate = baseApiPath => {
       try {
         const { id, field, value } = updatedData
         const updateBody = { [field]: value }
-        const updatedSubject = await callApi(`${baseApiPath}${id}`, {
+        const updatedSubject = await callApi(`${baseApiPath}/${id}`, {
           method: "PUT",
           body: updateBody,
         })
