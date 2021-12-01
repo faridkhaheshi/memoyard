@@ -4,6 +4,8 @@ const StyledMain = styled("main", {
   shouldForwardProp: prop =>
     ["isDrawerOpen", "drawerWidth"].indexOf(prop) === -1,
 })(({ theme, isDrawerOpen, drawerWidth }) => ({
+  display: "flex",
+  flexDirection: "column",
   flexGrow: 1,
   padding: theme.spacing(3),
   transition: theme.transitions.create("margin", {

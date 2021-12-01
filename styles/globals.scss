@@ -5,8 +5,8 @@
 
 html,
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
+  // min-height: 100vh;
+  // overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -18,11 +18,13 @@ body {
 }
 
 body {
+  // min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
   #__next {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: stretch;
+    // height: 100%;
+    // background-color: green;
+    // flex-grow: 1;
   }
   a {
     // color: inherit;

@@ -5,13 +5,20 @@ import LoadingButton from "@mui/lab/LoadingButton"
 import { usePanelContext } from "../../contexts/panel"
 import useAssetCreate from "../../hooks/use-asset-create"
 
-const SubjectAdder = () => {
-  const { organization, slug } = usePanelContext()
+const SubjectAdder = ({ refresh }) => {
+  const { slug } = usePanelContext()
   const [name, setName] = useState("")
 
-  const { handleSubmit } = useAssetCreate("/api/subjects", {
-    body: { name },
-    slug,
+  const { handleSubmit } = useAssetCreate({
+    baseApiPath: "/api/subjects",
+    body: {
+      orgSlug: slug,
+      subjectInfo: { name },
+    },
+    onSuccess: () => {
+      setName("")
+      refresh()
+    },
   })
 
   return (

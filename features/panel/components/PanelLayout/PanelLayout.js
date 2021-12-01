@@ -17,7 +17,12 @@ const PanelLayout = ({ children, organization }) => {
       initialOrg={organization}
       slug={router.query.slug}
     >
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+        }}
+      >
         <CssBaseline />
         <PanelTopBar />
         <PanelDrawer />

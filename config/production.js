@@ -21,6 +21,9 @@ module.exports = {
   admin: {
     hasuraGraphUrl: `${process.env.NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT}/v1/graphql`,
   },
+  panel: {
+    maxSubjectPerOrg: 50,
+  },
   google: {
     // gaTrackingId: "UA-150353421-6",
     // authClientId:

@@ -7,16 +7,17 @@ import { useOrgSubjects } from "../../hooks"
 
 const OrgSubjects = () => {
   const { slug } = usePanelContext()
-  const { subjects, isSubjectInfoLoading } = useOrgSubjects(slug)
+  const { subjects, isSubjectInfoLoading, refreshSubjectsInfo } =
+    useOrgSubjects(slug)
 
   if (isSubjectInfoLoading)
     return <Typography variant="p">Loading...</Typography>
 
   return (
-    <>
-      <SubjectAdder />
+    <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+      <SubjectAdder refresh={refreshSubjectsInfo} />
       <SubjectsTable subjects={subjects} />
-    </>
+    </div>
   )
 }
 
