@@ -11,13 +11,13 @@ const fetcher = (...args) =>
 const useOrgGroups = slug => {
   const { data, error } = useSWR(`${API_BASE_PATH}${slug}`, fetcher)
 
-  const regreshGroupInfo = useCallback(() => {
+  const refreshGroupInfo = useCallback(() => {
     mutate(`${API_BASE_PATH}${slug}`)
   }, [slug])
 
   return {
     groups: data,
-    regreshGroupInfo,
+    refreshGroupInfo,
     isGroupInfoLoading: !error && !data,
     groupsError: error,
     hasGroupsInfo: !!data,

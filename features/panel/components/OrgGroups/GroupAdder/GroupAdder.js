@@ -2,16 +2,15 @@ import { useState } from "react"
 
 import TextField from "@mui/material/TextField"
 import LoadingButton from "@mui/lab/LoadingButton"
-import { usePanelContext } from "../../contexts/panel"
-import useAssetCreate from "../../hooks/use-asset-create"
-import MemoError from "../../../../components/MemoError"
+import { usePanelContext } from "../../../contexts/panel"
+import { useAssetCreate } from "../../../hooks"
+import MemoError from "../../../../../components/MemoError"
 
-const SubjectAdder = ({ refresh }) => {
+const GroupAdder = ({ refresh }) => {
   const { slug } = usePanelContext()
   const [name, setName] = useState("")
-
   const { handleSubmit, isLoading, errorMessage } = useAssetCreate({
-    baseApiPath: "/api/subjects",
+    baseApiPath: "/api/groups",
     body: {
       orgSlug: slug,
       subjectInfo: { name },
@@ -37,13 +36,13 @@ const SubjectAdder = ({ refresh }) => {
           value={name}
           onChange={e => setName(e.target.value)}
           required
-          id="new-child-name"
+          id="new-group-name"
           label="Name"
-          placeholder="enter name of the child"
+          placeholder="enter group name"
           variant="filled"
         />
         <LoadingButton variant="contained" loading={isLoading}>{`ADD ${
-          name.length === 0 ? "a new child" : name
+          name.length === 0 ? "a new group" : name
         }`}</LoadingButton>
       </form>
       <MemoError errorMessage={errorMessage} style={{ marginBottom: 10 }} />
@@ -51,4 +50,4 @@ const SubjectAdder = ({ refresh }) => {
   )
 }
 
-export default SubjectAdder
+export default GroupAdder
