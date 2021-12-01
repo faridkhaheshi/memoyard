@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import useCellUpdate from "../../../hooks/use-cell-update"
+import convertToLocalTime from "../../../../../utilities/date/convert-to-local-time"
 
 const DEFAULT_PAGE_SIZE = 10
 const PAGE_SIZE_OPTIONS = [10, 20, 50]
@@ -26,7 +27,10 @@ const columns = [
     description: "Shows the date that the child was added",
     type: "dateTime",
     flex: 0.5,
-    valueGetter: params => new Date(params.getValue(params.id, "created_at")),
+    valueGetter: params =>
+      convertToLocalTime(
+        params.getValue(params.id, "created_at")
+      ).toLocaleString(),
   },
 ]
 
