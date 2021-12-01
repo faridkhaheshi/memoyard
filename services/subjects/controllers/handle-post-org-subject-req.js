@@ -14,7 +14,7 @@ const handlePostOrgSubjectReq = async (req, res) => {
       user: { ex_id: userExId },
     } = req
     const orgSubjects = await findOrgSubjects({ userExId, orgSlug })
-    if (orgSubjects.length >= maxSubjectPerOrg)
+    if (orgSubjects.length >= maxSubjectsPerOrg)
       throw new PaymentRequiredError("Max subjects per organization reached")
     const subject = await addSubjectToOrg({ orgSlug, subjectInfo, userExId })
     return res.json({ done: true, subject })
