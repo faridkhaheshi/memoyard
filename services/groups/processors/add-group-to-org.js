@@ -1,14 +1,10 @@
 import db from "../../../adapters/db"
 
-const addSubjectToOrg = async ({
-  orgSlug,
-  subjectInfo: { name },
-  userExId,
-}) => {
+const addGroupToOrg = async ({ orgSlug, groupInfo: { name }, userExId }) => {
   const { records } = await db.query(
     `
     INSERT INTO
-      yard.subjects (
+      yard.groups (
         name,
         org_id,
         creator_id
@@ -39,4 +35,4 @@ const addSubjectToOrg = async ({
   return records[0]
 }
 
-export default addSubjectToOrg
+export default addGroupToOrg

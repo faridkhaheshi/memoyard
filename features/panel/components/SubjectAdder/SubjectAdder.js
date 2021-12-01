@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import LoadingButton from "@mui/lab/LoadingButton"
 import { usePanelContext } from "../../contexts/panel"
@@ -24,9 +25,10 @@ const SubjectAdder = ({ refresh }) => {
 
   return (
     <>
-      <form
+      <Box
+        component="form"
         onSubmit={handleSubmit}
-        style={{
+        sx={{
           display: "flex",
           flexDirection: "row",
           margin: "20px 0",
@@ -42,10 +44,12 @@ const SubjectAdder = ({ refresh }) => {
           placeholder="enter name of the child"
           variant="filled"
         />
-        <LoadingButton variant="contained" loading={isLoading}>{`ADD ${
-          name.length === 0 ? "a new child" : name
-        }`}</LoadingButton>
-      </form>
+        <LoadingButton
+          type="submit"
+          variant="contained"
+          loading={isLoading}
+        >{`ADD ${name.length === 0 ? "a new child" : name}`}</LoadingButton>
+      </Box>
       <MemoError errorMessage={errorMessage} style={{ marginBottom: 10 }} />
     </>
   )

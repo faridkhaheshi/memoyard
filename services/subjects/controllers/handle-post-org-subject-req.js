@@ -4,7 +4,7 @@ import addSubjectToOrg from "../processors/add-subject-to-org"
 import config from "../../../config"
 
 const {
-  panel: { maxSubjectPerOrg },
+  panel: { maxSubjectsPerOrg },
 } = config
 
 const handlePostOrgSubjectReq = async (req, res) => {

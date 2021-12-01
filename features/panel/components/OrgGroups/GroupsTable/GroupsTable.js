@@ -23,7 +23,7 @@ const columns = [
   },
   {
     field: "join_date",
-    headerName: "Joining Date",
+    headerName: "Creation Time",
     description: "Shows the date that the group was added",
     type: "dateTime",
     flex: 0.5,
