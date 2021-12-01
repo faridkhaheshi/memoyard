@@ -1,19 +1,41 @@
+import Router from "next/router"
 import { DefaultSeo } from "next-seo"
-// import { config } from "@fortawesome/fontawesome-svg-core"
+import { ThemeProvider } from "@mui/material/styles"
+import CssBaseline from "@mui/material/CssBaseline"
+import { CacheProvider } from "@emotion/react"
+import NProgress from "nprogress"
+
 import { AuthContextProvider } from "../contexts/auth"
+
 import seoConfig from "../next-seo.config"
 
-// import "@fortawesome/fontawesome-svg-core/styles.css"
+import createEmotionCache from "../styles/create-emotion-cache"
+import theme from "../styles/theme"
+
 import "../styles/globals.scss"
+import "nprogress/nprogress.css"
 
-// config.autoAddCss = false
+const clientSideEmotionCache = createEmotionCache()
 
-function MyApp({ Component, pageProps }) {
+Router.events.on("routeChangeStart", () => NProgress.start())
+Router.events.on("routeChangeComplete", () => NProgress.done())
+Router.events.on("routeChangeError", () => NProgress.done())
+
+function MyApp({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}) {
   return (
-    <AuthContextProvider Component={Component}>
-      <DefaultSeo {...seoConfig} />
-      <Component {...pageProps} />
-    </AuthContextProvider>
+    <CacheProvider value={emotionCache}>
+      <AuthContextProvider Component={Component}>
+        <DefaultSeo {...seoConfig} />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AuthContextProvider>
+    </CacheProvider>
   )
 }
 
