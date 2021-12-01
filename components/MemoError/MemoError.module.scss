@@ -1,0 +1,6 @@
+@use "../../styles/variables" as v;
+
+.errorMessage {
+  font-weight: bold;
+  color: v.$error-red;
+}
