@@ -1,9 +1,14 @@
+import Typography from "@mui/material/Typography"
+
 import { PanelLayout, fetchUserOrganizationInfo } from "../../../features/panel"
+import ProfileEditCard from "../../../features/panel/components/ProfileEditCard"
 
 const PanelProfilePage = ({ organization }) => (
   <PanelLayout organization={organization}>
-    <h1>Profile</h1>
-    <p>Will be available soon</p>
+    <Typography variant="h4" component="h1" sx={{ marginBottom: "40px" }}>
+      Profile
+    </Typography>
+    <ProfileEditCard />
   </PanelLayout>
 )
 

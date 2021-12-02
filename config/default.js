@@ -24,6 +24,7 @@ module.exports = {
     maxSubjectsPerOrg: 50,
     maxGroupsPerOrg: 10,
   },
+  supportedCountries: ["CA", "US"],
   google: {
     // gaTrackingId: "UA-150353421-6",
     // authClientId:
