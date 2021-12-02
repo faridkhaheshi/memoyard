@@ -5,10 +5,11 @@ import ProfileEditCard from "../../../features/panel/components/ProfileEditCard"
 
 const PanelProfilePage = ({ organization }) => (
   <PanelLayout organization={organization}>
-    <Typography variant="h4" component="h1" sx={{ marginBottom: "40px" }}>
+    <Typography variant="h4" component="h1">
       Profile
     </Typography>
-    <ProfileEditCard />
+    <Typography variant="p">Under Construction</Typography>
+    {/* <ProfileEditCard /> */}
   </PanelLayout>
 )
 

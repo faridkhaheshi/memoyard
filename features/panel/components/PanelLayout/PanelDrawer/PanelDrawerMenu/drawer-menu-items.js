@@ -14,9 +14,9 @@ const drawerMenuItems = [
   { text: "Parents", Icon: FamilyRestroomIcon, href: "/parents" },
   { text: "Groups", Icon: GroupsIcon, href: "/groups" },
   { text: "Staff", Icon: BabyChangingStationIcon, href: "/staff" },
-  { text: "Media", Icon: PermMediaIcon, href: "/media" },
-  { text: "School Info", Icon: HouseIcon, href: "/school-info" },
-  { text: "Profile", Icon: ManageAccountsIcon, href: "/profile" },
+  // { text: "Media", Icon: PermMediaIcon, href: "/media" },
+  // { text: "School Info", Icon: HouseIcon, href: "/school-info" },
+  // { text: "Profile", Icon: ManageAccountsIcon, href: "/profile" },
   { text: "Log Out", Icon: LogoutIcon, onClick: "logOut" },
 ]
 
