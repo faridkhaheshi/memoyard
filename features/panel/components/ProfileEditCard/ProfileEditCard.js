@@ -19,6 +19,7 @@ const ProfileEditCard = () => {
     selectedCountryCode: null,
     selectedProvinceCode: null,
   })
+  console.log(state)
 
   const { data: countries } = useSWRImmutable(
     "/api/countries",
@@ -33,7 +34,8 @@ const ProfileEditCard = () => {
   )
 
   useEffect(() => {
-    if (countries && !state.selectedCountryCode) {
+    if (countries && !state.selectedCountryCode && state.updatedUser.country) {
+      console.log("updating selectedCountryCode")
       dispatch({
         type: "update-selected-country-code",
         payload: countries.find(c => c.name === state.updatedUser.country)[
@@ -49,7 +51,7 @@ const ProfileEditCard = () => {
   ])
 
   useEffect(() => {
-    if (states && !state.selectedProvinceCode) {
+    if (states && !state.selectedProvinceCode && !!state.updatedUser.province) {
       console.log("updating selectedProvinceCode")
       dispatch({
         type: "update-selected-province-code",

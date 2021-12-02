@@ -17,7 +17,7 @@ const MemoCountrySelector = ({ sx, id, value, onChange }) => {
   )
 
   const handleChange = useCallback(
-    e => e => {
+    e => {
       const { name, isoCode: code } = countries.find(
         c => c.name === e.target.value
       )
