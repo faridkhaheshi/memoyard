@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import useSWR, { mutate } from "swr"
+import { usePanelContext } from "../contexts/panel"
 
 const API_BASE_PATH = "/api/groups?orgSlug="
 
@@ -8,8 +9,12 @@ const fetcher = (...args) =>
     .then(res => res.json())
     .then(res => res.groups)
 
-const useOrgGroups = slug => {
-  const { data, error } = useSWR(`${API_BASE_PATH}${slug}`, fetcher)
+const useOrgGroups = () => {
+  const { slug } = usePanelContext()
+  const { data, error } = useSWR(
+    slug ? `${API_BASE_PATH}${slug}` : null,
+    fetcher
+  )
 
   const refreshGroupInfo = useCallback(() => {
     mutate(`${API_BASE_PATH}${slug}`)

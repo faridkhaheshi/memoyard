@@ -1,9 +1,12 @@
+import Typography from "@mui/material/Typography"
 import { PanelLayout, fetchUserOrganizationInfo } from "../../../features/panel"
 
 const PanelShoolInfoPage = ({ organization }) => (
   <PanelLayout organization={organization}>
-    <h1>School Info</h1>
-    <p>Will be available soon</p>
+    <Typography variant="h4" component="h1">
+      School Info
+    </Typography>
+    <Typography variant="p">Under Construction</Typography>
   </PanelLayout>
 )
 

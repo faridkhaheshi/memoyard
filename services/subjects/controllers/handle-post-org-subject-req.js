@@ -1,6 +1,6 @@
 import { PaymentRequiredError } from "restify-errors"
 import findOrgSubjects from "../processors/find-org-subjects"
-import addSubjectToOrg from "../processors/add-subject-to-org"
+import addSubjectToGroup from "../processors/add-subject-to-group"
 import config from "../../../config"
 
 const {
@@ -10,13 +10,23 @@ const {
 const handlePostOrgSubjectReq = async (req, res) => {
   try {
     const {
-      body: { orgSlug, subjectInfo },
+      body: { orgSlug, subjectInfo, groupExId },
       user: { ex_id: userExId },
     } = req
     const orgSubjects = await findOrgSubjects({ userExId, orgSlug })
     if (orgSubjects.length >= maxSubjectsPerOrg)
-      throw new PaymentRequiredError("Max subjects per organization reached")
-    const subject = await addSubjectToOrg({ orgSlug, subjectInfo, userExId })
+      throw new PaymentRequiredError(
+        "Maximum subjects per organization reached"
+      )
+
+    const subject = await addSubjectToGroup({
+      orgSlug,
+      subjectInfo,
+      groupExId,
+      userExId,
+    })
+    delete subject.id
+
     return res.json({ done: true, subject })
   } catch (err) {
     return res

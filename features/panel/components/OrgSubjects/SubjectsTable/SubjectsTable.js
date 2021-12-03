@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { DataGrid } from "@mui/x-data-grid"
+import Chip from "@mui/material/Chip"
 import useCellUpdate from "../../../hooks/use-cell-update"
 import convertToLocalTime from "../../../../../utilities/date/convert-to-local-time"
 
@@ -22,6 +23,21 @@ const columns = [
     editable: true,
   },
   {
+    field: "groups",
+    headerName: "Class",
+    flex: 1,
+    renderCell: params =>
+      params.value.map(g => (
+        <Chip
+          key={g.ex_id}
+          label={g.name}
+          color="primary"
+          variant="outlined"
+          sx={{ marginRight: 1 }}
+        />
+      )),
+  },
+  {
     field: "join_date",
     headerName: "Joining Date",
     description: "Shows the date that the child was added",
@@ -35,6 +51,7 @@ const columns = [
 ]
 
 const SubjectsTable = ({ subjects }) => {
+  console.log(subjects)
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
   const handleCellUpdate = useCellUpdate("/api/subjects")
 
