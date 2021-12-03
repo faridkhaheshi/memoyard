@@ -1,5 +1,5 @@
 import { BadRequestError } from "restify-errors"
-import findOrgSubjects from "../processors/find-org-subjects"
+import findOrgSubjectsWithGroups from "../processors/find-org-subjects-with-groups"
 
 const handleGetOrgSubjects = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ const handleGetOrgSubjects = async (req, res) => {
       query: { orgSlug },
     } = req
     if (!orgSlug) throw new BadRequestError("some required info missing")
-    const subjects = await findOrgSubjects({ userExId, orgSlug })
+    const subjects = await findOrgSubjectsWithGroups({ userExId, orgSlug })
     return res.json({ done: true, subjects })
   } catch (err) {
     return res

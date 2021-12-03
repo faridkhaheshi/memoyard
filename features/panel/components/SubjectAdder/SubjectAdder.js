@@ -39,7 +39,7 @@ const SubjectAdder = ({ refresh }) => {
         }}
       >
         <TextField
-          sx={{ marginRight: "20px" }}
+          sx={{ marginRight: "10px" }}
           value={name}
           onChange={e => setName(e.target.value)}
           required
@@ -49,7 +49,8 @@ const SubjectAdder = ({ refresh }) => {
           variant="filled"
         />
         <GroupSelector
-          sx={{ minWidth: 300, margin: "0 10px" }}
+          required
+          sx={{ minWidth: 300, marginRight: "10px" }}
           id="new-child-group"
           value={groupExId}
           onChange={e => setGroupExId(e.target.value)}
