@@ -1,4 +1,7 @@
 import { useContext, createContext, useCallback, useState } from "react"
+import { useRouter } from "next/router"
+import Box from "@mui/material/Box"
+import CircularProgress from "@mui/material/CircularProgress"
 import useOrganization from "../../../hooks/use-organization/use-organization"
 
 const PanelContext = createContext()
@@ -8,9 +11,10 @@ export const PanelContextProvider = ({
   children,
   drawerWidth,
   initialIsDrawerOpen = true,
-  initialOrg,
-  slug = { slug },
 }) => {
+  const {
+    query: { slug },
+  } = useRouter()
   const { organization, isOrgLoading, orgError, hasOrgInfo } =
     useOrganization(slug)
   const [isDrawerOpen, setIsDrawerOpen] = useState(initialIsDrawerOpen)
@@ -24,12 +28,26 @@ export const PanelContextProvider = ({
   const panelContextValues = {
     closeDrawer,
     drawerWidth,
-    initialOrg,
     isDrawerOpen,
     openDrawer,
-    organization: isOrgLoading ? initialOrg : organization,
+    organization,
     slug,
   }
+
+  if (isOrgLoading)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    )
 
   return (
     <PanelContext.Provider value={panelContextValues}>
