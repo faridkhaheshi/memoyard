@@ -1,12 +1,12 @@
 import PanelLayout from "../../../features/panel/components/PanelLayout"
 
-const PanelParentsPage = () => (
+const PanelTeachersPage = () => (
   <PanelLayout>
-    <h1>Parents</h1>
+    <h1>Teachers</h1>
     <p>Will be available soon</p>
   </PanelLayout>
 )
 
-PanelParentsPage.isProtected = true
+PanelTeachersPage.isProtected = true
 
-export default PanelParentsPage
+export default PanelTeachersPage

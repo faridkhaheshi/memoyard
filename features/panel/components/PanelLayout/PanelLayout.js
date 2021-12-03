@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import Box from "@mui/material/Box"
 import CssBaseline from "@mui/material/CssBaseline"
 import PanelTopBar from "./PanelTopBar"
@@ -9,30 +8,23 @@ import { PanelContextProvider } from "./../../contexts"
 
 const DRAWER_WIDTH = 240
 
-const PanelLayout = ({ children, organization }) => {
-  const router = useRouter()
-  return (
-    <PanelContextProvider
-      drawerWidth={DRAWER_WIDTH}
-      initialOrg={organization}
-      slug={router.query.slug}
+const PanelLayout = ({ children }) => (
+  <PanelContextProvider drawerWidth={DRAWER_WIDTH}>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+      }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          minHeight: "100vh",
-        }}
-      >
-        <CssBaseline />
-        <PanelTopBar />
-        <PanelDrawer />
-        <PanelMain>
-          <PanelDrawerHeader />
-          {children}
-        </PanelMain>
-      </Box>
-    </PanelContextProvider>
-  )
-}
+      <CssBaseline />
+      <PanelTopBar />
+      <PanelDrawer />
+      <PanelMain>
+        <PanelDrawerHeader />
+        {children}
+      </PanelMain>
+    </Box>
+  </PanelContextProvider>
+)
 
 export default PanelLayout
