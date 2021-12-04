@@ -45,6 +45,8 @@ const findOrgSubjectsWithGroupsAndListeners = async ({ userExId, orgSlug }) => {
                   'ex_id', u.ex_id,
                   'first_name', u.first_name,
                   'last_name', u.last_name,
+                  'email', u.email,
+                  'mobile', u.mobile,
                   'active', u.active,
                   'created_at', u.created_at,
                   'subject_listener_ex_id', sl.ex_id
