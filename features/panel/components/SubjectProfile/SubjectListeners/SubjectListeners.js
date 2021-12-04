@@ -1,17 +1,19 @@
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 
-import SubjectListenersTable from "./SubjectListenersTable"
+import SubjectListenersTable from "./SubjectListenerTable"
 import SubjectListenerAdder from "./SubjectListenerAdder"
+import { useSubjectContext } from "../../../contexts/subject"
 
-const SubjectListeners = ({ subject, listeners }) => {
+const SubjectListeners = () => {
+  const { subject } = useSubjectContext()
   return (
     <Paper elevation={4} sx={{ padding: 2 }}>
       <Typography color="text.secondary" mb={4}>
         {`${subject?.name}'s Parents`}
       </Typography>
-      <SubjectListenersTable subject={subject} listeners={listeners} />
-      <SubjectListenerAdder sx={{ marginTop: 2 }} />
+      <SubjectListenersTable />
+      <SubjectListenerAdder />
     </Paper>
   )
 }

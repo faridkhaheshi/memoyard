@@ -1,6 +1,7 @@
 import { useCallback } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import Typography from "@mui/material/Typography"
+import { useSubjectContext } from "../../../../contexts/subject"
 
 const columns = [
   {
@@ -33,7 +34,11 @@ const columns = [
   },
 ]
 
-const SubjectListenersTable = ({ subject, listeners = [] }) => {
+const SubjectListenersTable = () => {
+  const {
+    subject,
+    subject: { listeners },
+  } = useSubjectContext()
   const handleSelectionModelChange = useCallback(selectionModel => {
     console.log(selectionModel)
   }, [])

@@ -10,8 +10,10 @@ import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
 import GroupSelector from "../../OrgSubjects/GroupSelector"
+import { useSubjectContext } from "../../../contexts/subject"
 
-const SubjectEditForm = ({ subject }) => {
+const SubjectEditForm = () => {
+  const { subject } = useSubjectContext()
   const [name, setName] = useState(subject?.name || "")
   const [active, setActive] = useState(subject?.active || false)
   const [groupExId, setGroupExId] = useState(
@@ -43,11 +45,6 @@ const SubjectEditForm = ({ subject }) => {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            "&>*": {
-              marginRight: 2,
-              marginTop: 2,
-              maxWidth: "400px",
-            },
           }}
         >
           <TextField
@@ -56,16 +53,32 @@ const SubjectEditForm = ({ subject }) => {
             onChange={e => setName(e.target.value)}
             id="kid-name"
             label="Name"
-            sx={{ flexGrow: 1 }}
+            sx={{
+              flexGrow: 1,
+              marginRight: 2,
+              marginTop: 1,
+              maxWidth: "400px",
+            }}
           />
           <GroupSelector
             id="kid-group"
             required
             value={groupExId}
             onChange={e => setGroupExId(e.target.value)}
-            sx={{ flexGrow: 1 }}
+            sx={{
+              flexGrow: 1,
+              marginRight: 2,
+              marginTop: 1,
+              maxWidth: "400px",
+            }}
           />
           <FormControlLabel
+            sx={{
+              flexGrow: 1,
+              marginRight: 2,
+              marginTop: 1,
+              maxWidth: "400px",
+            }}
             control={
               <Checkbox
                 id="kid-active"
