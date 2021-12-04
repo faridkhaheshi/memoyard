@@ -1,6 +1,6 @@
 import db from "../../../adapters/db"
 
-const findOrgSubjectsWithGroups = async ({ userExId, orgSlug }) => {
+const findOrgSubjectsWithGroupsAndListeners = async ({ userExId, orgSlug }) => {
   const { records: subjects } = await db.query(
     `
     SELECT
@@ -35,7 +35,35 @@ const findOrgSubjectsWithGroups = async ({ userExId, orgSlug }) => {
           sg.active = true
             AND
           g.active = true
-      ) AS groups
+      ) AS groups,
+      (
+        SELECT 
+          COALESCE(
+            TO_JSON(
+              ARRAY_AGG(
+                JSON_BUILD_OBJECT(
+                  'ex_id', u.ex_id,
+                  'first_name', u.first_name,
+                  'last_name', u.last_name,
+                  'active', u.active,
+                  'created_at', u.created_at,
+                  'subject_listener_ex_id', sl.ex_id
+                )
+                ORDER BY sl.created_at ASC
+              ) FILTER (where u.id IS NOT NULL)
+            ),
+            '[]'::JSON
+          )
+        FROM
+          yard.subject_listeners sl
+              JOIN yard.users u ON sl.user_id=u.id
+        WHERE
+          sl.subject_id=s.id
+            AND
+          sl.active = true
+            AND
+          u.active = true
+      ) AS listeners
     FROM
       yard.subjects s
         JOIN yard.organizations o ON s.org_id=o.id
@@ -53,10 +81,11 @@ const findOrgSubjectsWithGroups = async ({ userExId, orgSlug }) => {
     { userExId, orgSlug }
   )
 
-  return subjects.map(({ groups, ...others }) => ({
+  return subjects.map(({ groups, listeners, ...others }) => ({
     ...others,
     groups: JSON.parse(groups),
+    listeners: JSON.parse(listeners),
   }))
 }
 
-export default findOrgSubjectsWithGroups
+export default findOrgSubjectsWithGroupsAndListeners
