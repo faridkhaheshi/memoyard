@@ -17,7 +17,7 @@ const PanelKidPage = () => {
       <Typography variant="h4" component="h1" sx={{ marginBottom: "10px" }}>
         {subject?.name}
       </Typography>
-      <SubjectProfile subject={subject} />
+      {subject && <SubjectProfile subject={subject} />}
     </PanelLayout>
   )
 }

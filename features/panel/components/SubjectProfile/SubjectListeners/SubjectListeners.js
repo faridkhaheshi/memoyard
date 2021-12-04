@@ -10,7 +10,7 @@ const SubjectListeners = ({ subject, listeners }) => {
       <Typography color="text.secondary" mb={4}>
         {`${subject?.name}'s Parents`}
       </Typography>
-      <SubjectListenersTable listeners={listeners} />
+      <SubjectListenersTable subject={subject} listeners={listeners} />
       <SubjectListenerAdder sx={{ marginTop: 2 }} />
     </Paper>
   )

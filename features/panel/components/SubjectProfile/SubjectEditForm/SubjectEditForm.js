@@ -35,7 +35,7 @@ const SubjectEditForm = ({ subject }) => {
           "&>*": { margin: "8px 0" },
         }}
       >
-        <Typography color="text.secondary" mb={4}>
+        <Typography color="text.secondary" mb={2}>
           {`${subject?.name}'s info`}
         </Typography>
         <Box
@@ -46,7 +46,6 @@ const SubjectEditForm = ({ subject }) => {
             "&>*": {
               marginRight: 2,
               marginTop: 2,
-              minWidth: "200px",
               maxWidth: "400px",
             },
           }}
@@ -57,16 +56,19 @@ const SubjectEditForm = ({ subject }) => {
             onChange={e => setName(e.target.value)}
             id="kid-name"
             label="Name"
+            sx={{ flexGrow: 1 }}
           />
           <GroupSelector
-            id="child-group"
+            id="kid-group"
             required
             value={groupExId}
             onChange={e => setGroupExId(e.target.value)}
+            sx={{ flexGrow: 1 }}
           />
           <FormControlLabel
             control={
               <Checkbox
+                id="kid-active"
                 checked={active}
                 onChange={e => setActive(e.target.checked)}
               />

@@ -23,7 +23,7 @@ const SubjectListenerAdder = ({ sx = {} }) => {
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            "&>*": { maxWidth: "400px", marginRight: 2, marginTop: 2 },
+            "&>*": { maxWidth: "400px", marginRight: 3, marginTop: 2 },
           }}
         >
           <TextField
@@ -46,7 +46,7 @@ const SubjectListenerAdder = ({ sx = {} }) => {
             display: "flex",
             alignItems: "center",
             flexWrap: "wrap",
-            "&>*": { maxWidth: "400px", marginRight: 2, marginTop: 2 },
+            "&>*": { maxWidth: "400px", marginRight: 3, marginTop: 2 },
           }}
         >
           <TextField

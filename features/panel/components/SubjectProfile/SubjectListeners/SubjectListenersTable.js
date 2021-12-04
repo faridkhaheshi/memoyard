@@ -33,7 +33,7 @@ const columns = [
   },
 ]
 
-const SubjectListenersTable = ({ subject, listeners }) => {
+const SubjectListenersTable = ({ subject, listeners = [] }) => {
   const handleSelectionModelChange = useCallback(selectionModel => {
     console.log(selectionModel)
   }, [])
