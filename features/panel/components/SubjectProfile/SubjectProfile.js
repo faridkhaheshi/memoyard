@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import SubjectEditForm from "./SubjectEditForm"
+import SubjectEditor from "./SubjectEditor"
 import SubjectListeners from "./SubjectListeners"
 import { useSubjectContext } from "../../contexts/subject"
 
@@ -19,7 +19,7 @@ const SubjectProfile = () => {
           "&>*": { margin: "8px 0" },
         }}
       >
-        <SubjectEditForm />
+        <SubjectEditor />
         <SubjectListeners />
       </Box>
     </>

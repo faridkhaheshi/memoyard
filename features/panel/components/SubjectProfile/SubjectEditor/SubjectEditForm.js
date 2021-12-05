@@ -1,4 +1,3 @@
-import { useState, useCallback } from "react"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import Checkbox from "@mui/material/Checkbox"
@@ -10,26 +9,23 @@ import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
 import GroupSelector from "../../OrgSubjects/GroupSelector"
+
 import { useSubjectContext } from "../../../contexts/subject"
 
-const SubjectEditForm = () => {
+const SubjectEditForm = ({
+  name,
+  onNameChange,
+  active,
+  onActiveChange,
+  groupExId,
+  onGroupExIdChange,
+  onCancel,
+  onSubmit,
+  hasChanged = false,
+}) => {
   const { subject } = useSubjectContext()
-  const [name, setName] = useState(subject?.name || "")
-  const [active, setActive] = useState(subject?.active || false)
-  const [groupExId, setGroupExId] = useState(
-    (subject?.groups || []).length === 0 ? "" : subject?.groups[0].ex_id
-  )
-
-  const resetForm = useCallback(() => {
-    setName(subject?.name)
-    setActive(subject?.active)
-    setGroupExId(
-      (subject?.groups || []).length === 0 ? "" : subject?.groups[0].ex_id
-    )
-  }, [setName, subject, setActive, setGroupExId])
-
   return (
-    <Paper elevation={4} component="form">
+    <Paper elevation={4} component="form" onSubmit={onSubmit}>
       <CardContent
         sx={{
           display: "flex",
@@ -50,7 +46,7 @@ const SubjectEditForm = () => {
           <TextField
             required
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={onNameChange}
             id="kid-name"
             label="Name"
             sx={{
@@ -64,7 +60,7 @@ const SubjectEditForm = () => {
             id="kid-group"
             required
             value={groupExId}
-            onChange={e => setGroupExId(e.target.value)}
+            onChange={onGroupExIdChange}
             sx={{
               flexGrow: 1,
               marginRight: 2,
@@ -83,23 +79,25 @@ const SubjectEditForm = () => {
               <Checkbox
                 id="kid-active"
                 checked={active}
-                onChange={e => setActive(e.target.checked)}
+                onChange={onActiveChange}
               />
             }
             label="Active"
           />
         </Box>
       </CardContent>
-      <CardActions
-        sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
-      >
-        <Button variant="text" onClick={resetForm} color="inherit">
-          Cancel
-        </Button>
-        <LoadingButton type="submit" variant="outlined">
-          Save Changes
-        </LoadingButton>
-      </CardActions>
+      {hasChanged && (
+        <CardActions
+          sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
+        >
+          <Button variant="text" onClick={onCancel} color="inherit">
+            Cancel
+          </Button>
+          <LoadingButton type="submit" variant="outlined">
+            Save Changes
+          </LoadingButton>
+        </CardActions>
+      )}
     </Paper>
   )
 }

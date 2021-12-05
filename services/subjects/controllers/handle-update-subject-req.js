@@ -5,12 +5,13 @@ const handleUpdateSubjectReq = async (req, res) => {
     const {
       query: { subjectExId },
       user: { ex_id: userExId },
-      body: update,
+      body: { name, active, groupExId },
     } = req
     const subject = await updateOrgSubject({
       subjectExId,
-      update,
+      update: { name, active },
       userExId,
+      groupExId,
     })
     return res.json({
       done: true,

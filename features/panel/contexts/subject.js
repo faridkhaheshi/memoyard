@@ -24,6 +24,7 @@ export const SubjectContextProvider = ({ children }) => {
   const subjectContextValues = {
     orgSlug,
     subject,
+    subjectExId,
     refreshSubjectsInfo,
   }
 
