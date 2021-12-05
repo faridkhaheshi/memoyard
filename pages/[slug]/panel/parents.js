@@ -1,9 +1,12 @@
+import Typography from "@mui/material/Typography"
 import PanelLayout from "../../../features/panel/components/PanelLayout"
 
 const PanelParentsPage = () => (
   <PanelLayout>
-    <h1>Parents</h1>
-    <p>Will be available soon</p>
+    <Typography variant="h4" component="h1" sx={{ marginBottom: "10px" }}>
+      Parents
+    </Typography>
+    <Typography component="p">Under Construction</Typography>
   </PanelLayout>
 )
 
