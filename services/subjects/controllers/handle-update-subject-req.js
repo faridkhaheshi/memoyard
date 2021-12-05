@@ -13,6 +13,7 @@ const handleUpdateSubjectReq = async (req, res) => {
       userExId,
       groupExId,
     })
+    delete subject.id
     return res.json({
       done: true,
       subject,

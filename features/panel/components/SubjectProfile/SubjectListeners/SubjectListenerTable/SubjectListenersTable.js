@@ -2,8 +2,16 @@ import { useCallback } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import Typography from "@mui/material/Typography"
 import { useSubjectContext } from "../../../../contexts/subject"
+import useCellUpdate from "../../../../hooks/use-cell-update"
 
 const columns = [
+  {
+    field: "active",
+    headerName: "active",
+    description: "Shows the current status of the parent",
+    type: "boolean",
+    editable: true,
+  },
   {
     field: "first_name",
     headerName: "First Name",
@@ -31,9 +39,9 @@ const SubjectListenersTable = () => {
     subject,
     subject: { listeners },
   } = useSubjectContext()
-  const handleSelectionModelChange = useCallback(selectionModel => {
-    console.log(selectionModel)
-  }, [])
+
+  const handleCellUpdate = useCellUpdate(`/api/subject_listeners`)
+
   if (listeners.length === 0)
     return (
       <Typography>
@@ -43,16 +51,12 @@ const SubjectListenersTable = () => {
   return (
     <DataGrid
       autoHeight
-      checkboxSelection
       disableSelectionOnClick
       hideFooter
-      components={{
-        Toolbar: SubjectListerensTableToolbar,
-      }}
       rows={listeners}
       columns={columns}
       getRowId={row => row.subject_listener_ex_id}
-      onSelectionModelChange={handleSelectionModelChange}
+      onCellEditCommit={handleCellUpdate}
     />
   )
 }

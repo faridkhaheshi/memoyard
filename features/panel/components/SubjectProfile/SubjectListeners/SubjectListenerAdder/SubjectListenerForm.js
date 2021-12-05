@@ -67,6 +67,7 @@ const SubjectListenerForm = ({
         }}
       >
         <TextField
+          required
           variant="standard"
           id="parent-email"
           label="E-mail"
