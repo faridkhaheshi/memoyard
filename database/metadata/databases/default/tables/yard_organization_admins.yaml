@@ -1,3 +1,21 @@
 table:
   name: organization_admins
   schema: yard
+object_relationships:
+- name: organization
+  using:
+    foreign_key_constraint_on: org_id
+- name: user
+  using:
+    foreign_key_constraint_on: creator_id
+- name: userByUserId
+  using:
+    foreign_key_constraint_on: user_id
+array_relationships:
+- name: admin_groups
+  using:
+    foreign_key_constraint_on:
+      column: admin_id
+      table:
+        name: admin_groups
+        schema: yard

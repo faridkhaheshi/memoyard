@@ -1,5 +1,6 @@
 import PanelLayout from "../../../../features/panel/components/PanelLayout"
 import Typography from "@mui/material/Typography"
+import OrgAdmins from "../../../../features/panel/components/OrgAdmins"
 
 const PanelTeachersPage = () => {
   return (
@@ -15,6 +16,7 @@ const PanelTeachersPage = () => {
         every kid in their classes. So by adding new teachers you are
         authorizing them to post to the specific classes you specify.
       </Typography>
+      <OrgAdmins />
     </PanelLayout>
   )
 }
