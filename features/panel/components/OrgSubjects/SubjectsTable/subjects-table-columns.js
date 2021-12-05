@@ -29,6 +29,7 @@ const subjectTableColumns = [
           label={g.name}
           color="primary"
           variant="outlined"
+          size="small"
           sx={{ marginRight: 1 }}
         />
       )),
@@ -44,6 +45,7 @@ const subjectTableColumns = [
           label={`${p.first_name || ""} ${p.last_name || ""}`}
           color="primary"
           variant="outlined"
+          size="small"
           sx={{ marginRight: 1 }}
         />
       )),

@@ -10,8 +10,8 @@ import PermMediaIcon from "@mui/icons-material/PermMedia"
 
 const drawerMenuItems = [
   { text: "Dashboard", Icon: DashboardIcon, href: "/" },
-  { text: "Kids", Icon: ChildCareIcon, href: "/kids" },
   { text: "Classes", Icon: GroupsIcon, href: "/classes" },
+  { text: "Kids", Icon: ChildCareIcon, href: "/kids" },
   { text: "Teachers", Icon: BabyChangingStationIcon, href: "/teachers" },
   // { text: "Parents", Icon: FamilyRestroomIcon, href: "/parents" },
   // { text: "Media", Icon: PermMediaIcon, href: "/media" },
