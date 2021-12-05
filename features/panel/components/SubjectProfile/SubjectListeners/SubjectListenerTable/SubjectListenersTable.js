@@ -22,14 +22,6 @@ const columns = [
     field: "email",
     headerName: "E-mail",
     description: "Email address of the parent",
-    editable: true,
-    flex: 1,
-  },
-  {
-    field: "mobile",
-    headerName: "Mobile",
-    description: "Mobile number of the parent",
-    editable: true,
     flex: 1,
   },
 ]
