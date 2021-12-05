@@ -26,7 +26,7 @@ const AdminAdder = () => {
         lastName,
         email,
       },
-      selectedGroups,
+      groups: selectedGroups,
     },
     onSuccess: result => {
       console.log(result)
