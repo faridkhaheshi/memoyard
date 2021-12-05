@@ -1,7 +1,12 @@
 import { useCallback, useState } from "react"
 import callApi from "../../../utilities/call-api"
 
-const useAssetCreate = ({ baseApiPath, body, onSuccess = () => ({}) }) => {
+const useAssetCreate = ({
+  baseApiPath,
+  method = "POST",
+  body,
+  onSuccess = () => ({}),
+}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
@@ -11,7 +16,7 @@ const useAssetCreate = ({ baseApiPath, body, onSuccess = () => ({}) }) => {
         e.preventDefault()
         setIsLoading(true)
         const resource = await callApi(baseApiPath, {
-          method: "POST",
+          method,
           body,
         })
         onSuccess(resource)
@@ -22,7 +27,7 @@ const useAssetCreate = ({ baseApiPath, body, onSuccess = () => ({}) }) => {
         setIsLoading(false)
       }
     },
-    [body, baseApiPath, onSuccess]
+    [body, baseApiPath, onSuccess, method]
   )
   return { handleSubmit, errorMessage, isLoading }
 }

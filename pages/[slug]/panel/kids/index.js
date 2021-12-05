@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography"
-import PanelLayout from "../../../features/panel/components/PanelLayout"
-import OrgSubjects from "../../../features/panel/components/OrgSubjects"
+import PanelLayout from "../../../../features/panel/components/PanelLayout"
+import OrgSubjects from "../../../../features/panel/components/OrgSubjects"
 
 const PanelKidsPage = () => (
   <PanelLayout>
