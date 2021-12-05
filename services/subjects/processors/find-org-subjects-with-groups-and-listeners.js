@@ -43,12 +43,12 @@ const findOrgSubjectsWithGroupsAndListeners = async ({ userExId, orgSlug }) => {
               ARRAY_AGG(
                 JSON_BUILD_OBJECT(
                   'ex_id', u.ex_id,
-                  'first_name', u.first_name,
-                  'last_name', u.last_name,
+                  'first_name', sl.first_name,
+                  'last_name', sl.last_name,
                   'email', u.email,
                   'mobile', u.mobile,
-                  'active', u.active,
-                  'created_at', u.created_at,
+                  'active', sl.active,
+                  'created_at', sl.created_at,
                   'subject_listener_ex_id', sl.ex_id
                 )
                 ORDER BY sl.created_at ASC

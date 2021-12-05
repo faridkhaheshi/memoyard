@@ -12,7 +12,7 @@ export const SubjectContextProvider = ({ children }) => {
     query: { slug: orgSlug, subjectExId },
   } = useRouter()
   const [subject, setSubject] = useState(null)
-  const { subjects } = useOrgSubjects(orgSlug)
+  const { subjects, refreshSubjectsInfo } = useOrgSubjects(orgSlug)
 
   useEffect(() => {
     if (!!subjects) {
@@ -24,6 +24,7 @@ export const SubjectContextProvider = ({ children }) => {
   const subjectContextValues = {
     orgSlug,
     subject,
+    refreshSubjectsInfo,
   }
 
   if (!subject)

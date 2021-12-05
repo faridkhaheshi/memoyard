@@ -1,8 +1,5 @@
 import { BadRequestError } from "restify-errors"
-import {
-  findOrgSubjectsWithGroupsAndListeners,
-  findOrgSubjectsWithGroups,
-} from "../processors"
+import { findOrgSubjectsWithGroupsAndListeners } from "../processors"
 
 const handleGetOrgSubjects = async (req, res) => {
   try {

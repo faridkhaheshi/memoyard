@@ -1,17 +1,23 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import SubjectListenerForm from "./SubjectListenerForm"
 import useAssetCreate from "../../../../hooks/use-asset-create"
 import { useSubjectContext } from "../../../../contexts/subject"
 
-const SubjectListenerAdder = ({ sx = {} }) => {
+const SubjectListenerAdder = () => {
   const {
     subject: { ex_id: subjectExId },
     orgSlug,
+    refreshSubjectsInfo,
   } = useSubjectContext()
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
-  const [mobile, setMobile] = useState("")
+
+  const clearForm = useCallback(() => {
+    setFirstName("")
+    setLastName("")
+    setEmail("")
+  }, [])
 
   const { handleSubmit, isLoading, errorMessage } = useAssetCreate({
     baseApiPath: "/api/subject_listeners",
@@ -20,16 +26,13 @@ const SubjectListenerAdder = ({ sx = {} }) => {
         firstName,
         lastName,
         email,
-        mobile,
       },
       orgSlug,
       subjectExId,
     },
-    onSuccess: result => {
-      console.log(resulg)
-      // setName("")
-      // setGroupExId("")
-      // refresh()
+    onSuccess: () => {
+      clearForm()
+      refreshSubjectsInfo()
     },
   })
 
@@ -42,9 +45,9 @@ const SubjectListenerAdder = ({ sx = {} }) => {
       onLastNameChange={e => setLastName(e.target.value)}
       email={email}
       onEmailChange={e => setEmail(e.target.value)}
-      mobile={mobile}
-      onMobileChange={e => setMobile(e.target.value)}
       onSubmit={handleSubmit}
+      onCancel={clearForm}
+      isLoading={isLoading}
     />
   )
 }

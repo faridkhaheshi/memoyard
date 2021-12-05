@@ -22,9 +22,9 @@ const SubjectListenerForm = ({
   onLastNameChange,
   email,
   onEmailChange,
-  mobile,
-  onMobileChange,
   onSubmit,
+  onCancel,
+  isLoading = false,
 }) => (
   <Card variant="outlined" sx={sx} component="form" onSubmit={onSubmit}>
     <CardContent
@@ -75,24 +75,17 @@ const SubjectListenerForm = ({
           value={email}
           onChange={onEmailChange}
         />
-        <TextField
-          variant="standard"
-          id="parent-mobile"
-          label="Mobile"
-          placeholder="mobile number of the parent"
-          sx={textFieldStyles}
-          value={mobile}
-          onChange={onMobileChange}
-        />
       </Box>
     </CardContent>
     <CardActions
       sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
     >
-      <Button variant="text" color="inherit">
-        Cancel
-      </Button>
-      <LoadingButton variant="outlined" type="submit">
+      {!isLoading && (
+        <Button variant="text" color="inherit" onClick={onCancel}>
+          Cancel
+        </Button>
+      )}
+      <LoadingButton variant="outlined" type="submit" loading={isLoading}>
         Add Parent
       </LoadingButton>
     </CardActions>
