@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { DataGrid } from "@mui/x-data-grid"
+import Typography from "@mui/material/Typography"
 import adminsTableColumns from "./admins-table-columns"
 
 const DEFAULT_PAGE_SIZE = 10
@@ -7,6 +8,14 @@ const PAGE_SIZE_OPTIONS = [10, 20, 50]
 
 const AdminsTable = ({ admins }) => {
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
+
+  if (admins.length === 0)
+    return (
+      <Typography component="p" mb={4}>
+        You have no teachers in your school. Use the following form to add
+        teachers.
+      </Typography>
+    )
 
   return (
     <div style={{ display: "flex", flexGrow: 1, flexDirection: "column" }}>
