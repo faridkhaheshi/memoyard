@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import SubjectsTable from "./SubjectsTable"
 import SubjectAdder from "../SubjectAdder"
@@ -14,10 +15,10 @@ const OrgSubjects = () => {
     return <Typography variant="p">Loading...</Typography>
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+    <Box style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
       <SubjectAdder refresh={refreshSubjectsInfo} />
       <SubjectsTable subjects={subjects} />
-    </div>
+    </Box>
   )
 }
 

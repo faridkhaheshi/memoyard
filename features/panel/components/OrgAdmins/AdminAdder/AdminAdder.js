@@ -28,8 +28,8 @@ const AdminAdder = () => {
       },
       groups: selectedGroups,
     },
-    onSuccess: result => {
-      console.log(result)
+    onSuccess: () => {
+      resetForm()
     },
   })
 

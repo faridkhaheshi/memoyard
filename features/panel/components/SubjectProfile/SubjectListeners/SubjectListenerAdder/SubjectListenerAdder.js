@@ -20,7 +20,7 @@ const SubjectListenerAdder = () => {
   }, [])
 
   const { handleSubmit, isLoading, errorMessage } = useAssetCreate({
-    baseApiPath: "/api/subject_listeners",
+    baseApiPath: "/api/subject-listeners",
     body: {
       subjectListenerInfo: {
         firstName,
