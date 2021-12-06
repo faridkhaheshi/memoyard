@@ -3,10 +3,10 @@ import { useState } from "react"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import LoadingButton from "@mui/lab/LoadingButton"
-import { usePanelContext } from "../../contexts/panel"
-import useAssetCreate from "../../hooks/use-asset-create"
-import MemoError from "../../../../components/MemoError"
-import GroupSelector from "../OrgSubjects/GroupSelector"
+import { usePanelContext } from "../../../contexts/panel"
+import useAssetCreate from "../../../hooks/use-asset-create"
+import MemoError from "../../../../../components/MemoError"
+import GroupSelector from "../GroupSelector"
 
 const SubjectAdder = ({ refresh }) => {
   const { slug } = usePanelContext()
@@ -45,7 +45,7 @@ const SubjectAdder = ({ refresh }) => {
           required
           id="new-child-name"
           label="Name"
-          placeholder="enter name of the child"
+          placeholder="enter name of the kid"
           variant="filled"
         />
         <GroupSelector
@@ -59,7 +59,7 @@ const SubjectAdder = ({ refresh }) => {
           type="submit"
           variant="contained"
           loading={isLoading}
-        >{`ADD ${name.length === 0 ? "a new child" : name}`}</LoadingButton>
+        >{`ADD ${name.length === 0 ? "a new kid" : name}`}</LoadingButton>
       </Box>
       <MemoError errorMessage={errorMessage} style={{ marginBottom: 10 }} />
     </>
