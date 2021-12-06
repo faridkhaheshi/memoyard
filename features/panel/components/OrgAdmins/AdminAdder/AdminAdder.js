@@ -3,7 +3,7 @@ import { usePanelContext } from "../../../contexts/panel"
 import useAssetCreate from "../../../hooks/use-asset-create"
 import AdminAdderForm from "./AdminAdderForm"
 
-const AdminAdder = () => {
+const AdminAdder = ({ refresh, sx = {} }) => {
   const { slug } = usePanelContext()
   const [selectedGroups, setSelectedGroups] = useState([])
   const [firstName, setFirstName] = useState("")
@@ -30,11 +30,13 @@ const AdminAdder = () => {
     },
     onSuccess: () => {
       resetForm()
+      refresh()
     },
   })
 
   return (
     <AdminAdderForm
+      sx={sx}
       selectedGroups={selectedGroups}
       onChangeSelectedGroups={setSelectedGroups}
       firstName={firstName}

@@ -16,6 +16,7 @@ const textFieldStyles = {
 }
 
 const AdminAdderForm = ({
+  sx = {},
   selectedGroups,
   onChangeSelectedGroups,
   firstName,
@@ -28,7 +29,7 @@ const AdminAdderForm = ({
   onCancel,
   isLoading = false,
 }) => (
-  <Paper elevation={4} component="form" onSubmit={onSubmit}>
+  <Paper elevation={4} component="form" onSubmit={onSubmit} sx={sx}>
     <CardContent>
       <Typography color="text.secondary" mb={2}>
         Add new teacher

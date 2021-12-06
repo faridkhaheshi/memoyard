@@ -1,7 +1,6 @@
 import Chip from "@mui/material/Chip"
-import Button from "@mui/material/Button"
 import convertToLocalTime from "../../../../../utilities/date/convert-to-local-time"
-import MemoNextLink from "../../../../../components/MemoNextLink"
+import PanelTableEditButton from "../../PanelTableEditButton"
 
 const subjectTableColumns = [
   {
@@ -66,11 +65,7 @@ const subjectTableColumns = [
     headerName: "actions",
     type: "",
     renderCell: function EditRowButton(params) {
-      return (
-        <MemoNextLink href={`/fantasy/panel/kids/${params.id}`}>
-          Edit
-        </MemoNextLink>
-      )
+      return <PanelTableEditButton resourceName="kids" id={params.id} />
     },
   },
 ]
