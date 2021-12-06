@@ -1,44 +1,44 @@
 import { useState, useCallback } from "react"
-import SubjectListenerForm from "./SubjectListenerForm"
-import useAssetCreate from "../../../../hooks/use-asset-create"
-import { useSubjectContext } from "../../../../contexts/subject"
+import { usePanelContext } from "../../../contexts/panel"
+import useAssetCreate from "../../../hooks/use-asset-create"
+import AdminAdderForm from "./AdminAdderForm"
 
-const SubjectListenerAdder = () => {
-  const {
-    subject: { ex_id: subjectExId },
-    orgSlug,
-    refreshSubjectsInfo,
-  } = useSubjectContext()
+const AdminAdder = ({ refresh, sx = {} }) => {
+  const { slug } = usePanelContext()
+  const [selectedGroups, setSelectedGroups] = useState([])
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
 
-  const clearForm = useCallback(() => {
+  const resetForm = useCallback(() => {
     setFirstName("")
     setLastName("")
     setEmail("")
+    setSelectedGroups([])
   }, [])
 
   const { handleSubmit, isLoading, errorMessage } = useAssetCreate({
-    baseApiPath: "/api/subject-listeners",
+    baseApiPath: "/api/organization-admins",
     body: {
-      subjectListenerInfo: {
+      orgSlug: slug,
+      adminInfo: {
         firstName,
         lastName,
         email,
       },
-      orgSlug,
-      subjectExId,
+      groups: selectedGroups,
     },
     onSuccess: () => {
-      clearForm()
-      refreshSubjectsInfo()
+      resetForm()
+      refresh()
     },
   })
 
   return (
-    <SubjectListenerForm
-      sx={{ marginTop: 2 }}
+    <AdminAdderForm
+      sx={sx}
+      selectedGroups={selectedGroups}
+      onChangeSelectedGroups={setSelectedGroups}
       firstName={firstName}
       onFirstNameChange={e => setFirstName(e.target.value)}
       lastName={lastName}
@@ -46,10 +46,10 @@ const SubjectListenerAdder = () => {
       email={email}
       onEmailChange={e => setEmail(e.target.value)}
       onSubmit={handleSubmit}
-      onCancel={clearForm}
       isLoading={isLoading}
+      onCancel={resetForm}
     />
   )
 }
 
-export default SubjectListenerAdder
+export default AdminAdder

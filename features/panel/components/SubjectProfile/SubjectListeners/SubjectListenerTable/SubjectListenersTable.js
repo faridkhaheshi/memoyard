@@ -1,4 +1,3 @@
-import { useCallback } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import Typography from "@mui/material/Typography"
 import { useSubjectContext } from "../../../../contexts/subject"
@@ -40,7 +39,7 @@ const SubjectListenersTable = () => {
     subject: { listeners },
   } = useSubjectContext()
 
-  const handleCellUpdate = useCellUpdate(`/api/subject_listeners`)
+  const handleCellUpdate = useCellUpdate(`/api/subject-listeners`)
 
   if (listeners.length === 0)
     return (

@@ -10,7 +10,7 @@ const PanelClassesPage = () => (
     <Typography variant="p">
       These are the classes that you have in your school.
     </Typography>
-    <Typography variant="p" sx={{ marginBottom: "40px" }}>
+    <Typography variant="p" sx={{ marginBottom: "10px" }}>
       You can define classes like &quot;preschool&quot;, &quot;toddlers&quot; or
       &quot;infants&quot;.
     </Typography>
