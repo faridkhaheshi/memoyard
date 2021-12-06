@@ -18,7 +18,7 @@ const AdminAdder = ({ refresh, sx = {} }) => {
   }, [])
 
   const { handleSubmit, isLoading, errorMessage } = useAssetCreate({
-    baseApiPath: "/api/organization_admins",
+    baseApiPath: "/api/organization-admins",
     body: {
       orgSlug: slug,
       adminInfo: {

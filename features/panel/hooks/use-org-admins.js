@@ -10,12 +10,12 @@ const fetcher = (...args) =>
 const useOrgAdmins = () => {
   const { slug } = usePanelContext()
   const { data, error } = useSWR(
-    slug ? `/api/organization_admins?orgSlug=${slug}` : null,
+    slug ? `/api/organization-admins?orgSlug=${slug}` : null,
     fetcher
   )
 
   const refreshAdminsInfo = useCallback(() => {
-    mutate(`/api/organization_admins?orgSlug=${slug}`)
+    mutate(`/api/organization-admins?orgSlug=${slug}`)
   }, [slug])
 
   return {
