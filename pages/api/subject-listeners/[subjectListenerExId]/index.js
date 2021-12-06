@@ -1,5 +1,5 @@
 import { protectApiRoute } from "../../../../services/auth/controllers"
-import { handleUpdateSubjectListenerReq } from "../../../../services/subject_listeners/controllers"
+import { handleUpdateSubjectListenerReq } from "../../../../services/subject-listeners/controllers"
 
 export default function handler(req, res) {
   const { method } = req

@@ -8,7 +8,7 @@ const handlePostSubjectListenerReq = async (req, res) => {
       user: { ex_id: userExId },
     } = req
     if (!orgSlug || !subjectExId || !subjectListenerInfo)
-      throw new BadRequestError("some required fields missing")
+      throw new BadRequestError("some required fields are missing")
 
     const listener = await addListenerToSubjectByContactInfo({
       userExId,

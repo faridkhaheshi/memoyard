@@ -1,5 +1,5 @@
 import { protectApiRoute } from "../../../services/auth/controllers"
-import handlePostSubjectListenerReq from "../../../services/subject_listeners/controllers/handle-post-subject-listener-req"
+import handlePostSubjectListenerReq from "../../../services/subject-listeners/controllers/handle-post-subject-listener-req"
 
 export default function handler(req, res) {
   const { method } = req

@@ -2,6 +2,9 @@ import { Admin, Resource } from "react-admin"
 import { FullPageCentered } from "../../../../components"
 import { useDataProvider, useAuthProvider } from "../../hooks"
 import {
+  AdminGroupEdit,
+  AdminGroupList,
+  AdminGroupCreate,
   GroupCreate,
   GroupEdit,
   GroupList,
@@ -9,6 +12,9 @@ import {
   MediaList,
   MediaTagEdit,
   MediaTagsList,
+  OrganizationAdminCreate,
+  OrganizationAdminEdit,
+  OrganizationAdminList,
   OrganizationCreate,
   OrganizationEdit,
   OrganizationList,
@@ -76,6 +82,20 @@ const AdminPage = ({ hasuraToken, refreshAdminUser }) => {
           list={SubjectListenerList}
           edit={SubjectListenerEdit}
           create={SubjectListenerCreate}
+        />
+        <Resource
+          name="yard_organization_admins"
+          options={{ label: "Organization Admins" }}
+          list={OrganizationAdminList}
+          create={OrganizationAdminCreate}
+          edit={OrganizationAdminEdit}
+        />
+        <Resource
+          name="yard_admin_groups"
+          options={{ label: "Admin Groups" }}
+          list={AdminGroupList}
+          create={AdminGroupCreate}
+          edit={AdminGroupEdit}
         />
         <Resource
           name="yard_media"
