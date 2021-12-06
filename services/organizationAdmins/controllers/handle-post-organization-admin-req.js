@@ -17,6 +17,8 @@ const handlePostOrganizationAdminReq = async (req, res) => {
       groups,
       adminInfo,
     })
+
+    delete organizationAdmin.id
     return res.json({
       done: true,
       organizationAdmin,
