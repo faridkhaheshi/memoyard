@@ -3,9 +3,11 @@ import Box from "@mui/material/Box"
 import AdminAdder from "./AdminAdder"
 import AdminsTable from "./AdminsTable"
 import useOrgAdmins from "../../hooks/use-org-admins"
+import { usePanelContext } from "../../contexts/panel"
 
 const OrgAdmins = () => {
-  const { admins, isAdminInfoLoading, refreshAdminsInfo } = useOrgAdmins()
+  const { slug } = usePanelContext()
+  const { admins, isAdminInfoLoading, refreshAdminsInfo } = useOrgAdmins(slug)
 
   if (isAdminInfoLoading) return <Typography variant="p">Loading...</Typography>
 
