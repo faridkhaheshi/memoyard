@@ -40,14 +40,14 @@ const GroupAdder = ({ refresh }) => {
           required
           id="new-group-name"
           label="Name"
-          placeholder="enter group name"
+          placeholder="enter class name"
           variant="filled"
         />
         <LoadingButton
           type="submit"
           variant="contained"
           loading={isLoading}
-        >{`ADD ${name.length === 0 ? "a new group" : name}`}</LoadingButton>
+        >{`ADD ${name.length === 0 ? "a new class" : name}`}</LoadingButton>
       </Box>
       <MemoError errorMessage={errorMessage} style={{ marginBottom: 10 }} />
     </>
