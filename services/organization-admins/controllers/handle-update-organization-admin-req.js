@@ -5,11 +5,12 @@ const handleUpdateOrganizationAdminReq = async (req, res) => {
     const {
       query: { organizationAdminExId },
       user: { ex_id: userExId },
-      body: { first_name, last_name, active },
+      body: { first_name, last_name, active, groups, orgSlug },
     } = req
     const organizationAdmin = await updateOrgAdmin({
+      orgSlug,
       organizationAdminExId,
-      update: { first_name, last_name, active },
+      update: { first_name, last_name, active, groups },
       userExId,
     })
     return res.json({ done: true, organizationAdmin })
