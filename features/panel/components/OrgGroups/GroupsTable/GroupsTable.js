@@ -42,6 +42,7 @@ const GroupsTable = ({ groups }) => {
     <div style={{ display: "flex", flexGrow: 1, flexDirection: "column" }}>
       <div style={{ flexGrow: 1 }}>
         <DataGrid
+          autoHeight
           rows={groups}
           columns={columns}
           getRowId={row => row.ex_id}
