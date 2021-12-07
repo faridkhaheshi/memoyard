@@ -1,5 +1,7 @@
 import Box from "@mui/material/Box"
 import CardContent from "@mui/material/CardContent"
+import CardActions from "@mui/material/CardActions"
+import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 
 const KidsInfo = () => {
@@ -36,7 +38,38 @@ const KidsInfo = () => {
           kids
         </Typography>
       </Box>
-      <CardContent sx={{ flexGrow: 1 }}>Some info</CardContent>
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <CardContent
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            flexGrow: 1,
+          }}
+        >
+          <Typography variant="body1">
+            When you send a photo/video for a kid, only parents of that kid has
+            access to that photo/video.
+          </Typography>
+        </CardContent>
+        <CardActions
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            padding: 2,
+          }}
+        >
+          <Button variant="text">Manage Kids</Button>
+        </CardActions>
+      </Box>
     </Box>
   )
 }
