@@ -1,11 +1,14 @@
 import Typography from "@mui/material/Typography"
 import PanelLayout from "../../../features/panel/components/PanelLayout"
+import Dashboard from "../../../features/panel/components/Dashboard"
 
 const PanelPage = () => {
   return (
     <PanelLayout>
-      <h1>Dashboard</h1>
-      <p>Will be available soon</p>
+      <Typography variant="h4" component="h1" sx={{ marginBottom: "40px" }}>
+        Dashboard
+      </Typography>
+      <Dashboard />
     </PanelLayout>
   )
 }
