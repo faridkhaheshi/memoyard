@@ -4,7 +4,7 @@ import { useAdmin } from "../../../contexts/admin"
 import useAssetUpdate from "../../../hooks/use-asset-update"
 
 const AdminEditor = ({ sx = {} }) => {
-  const { admin, refreshAdminsInfo } = useAdmin()
+  const { admin, refreshAdminsInfo, orgSlug } = useAdmin()
   const [firstName, setFirstName] = useState(admin.first_name || "")
   const [lastName, setLastName] = useState(admin.last_name || "")
   const [selectedGroups, setSelectedGroups] = useState(
@@ -23,6 +23,7 @@ const AdminEditor = ({ sx = {} }) => {
       first_name: firstName,
       last_name: lastName,
       groups: selectedGroups,
+      orgSlug,
     },
     onSuccess: refreshAdminsInfo,
   })

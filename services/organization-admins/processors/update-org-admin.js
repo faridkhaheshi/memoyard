@@ -4,7 +4,7 @@ const updateOrgAdmin = async ({
   organizationAdminExId,
   update: { first_name = null, last_name = null, active = null, groups = null },
   userExId,
-  orgSlug,
+  orgSlug = "",
 }) => {
   const results = await db
     .transaction()
@@ -21,8 +21,6 @@ const updateOrgAdmin = async ({
           u.ex_id::text=:userExId
             AND
           oa.ex_id::text=:organizationAdminExId
-            AND
-          o.slug=:orgSlug
             AND
           o.active=true
             AND
