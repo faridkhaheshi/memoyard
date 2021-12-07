@@ -1,11 +1,17 @@
+import Typography from "@mui/material/Typography"
+import AdminEditor from "./AdminEditor"
+
 import { useAdmin } from "../../contexts/admin"
 
 const AdminProfile = () => {
   const { admin } = useAdmin()
   return (
-    <div>
-      <pre>{JSON.stringify(admin, null, 2)}</pre>
-    </div>
+    <>
+      <Typography variant="h4" component="h1" sx={{ marginBottom: "40px" }}>
+        {`${admin.first_name || ""} ${admin.last_name || ""}`}
+      </Typography>
+      <AdminEditor />
+    </>
   )
 }
 

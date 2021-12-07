@@ -24,15 +24,19 @@ const AdminAdderForm = ({
   lastName,
   onLastNameChange,
   email,
-  onEmailChange,
+  onEmailChange = () => ({}),
+  disableEmailChange = false,
   onSubmit,
   onCancel,
   isLoading = false,
+  submitText = "Add Teacher",
+  hideActions = false,
+  titleText = "Add new teacher",
 }) => (
   <Paper elevation={4} component="form" onSubmit={onSubmit} sx={sx}>
     <CardContent>
       <Typography color="text.secondary" mb={2}>
-        Add new teacher
+        {titleText}
       </Typography>
       <Box
         sx={{
@@ -67,7 +71,7 @@ const AdminAdderForm = ({
         }}
       >
         <TextField
-          required
+          disabled={disableEmailChange}
           variant="standard"
           id="teacher-email"
           label="E-mail"
@@ -82,18 +86,20 @@ const AdminAdderForm = ({
         onChangeSelectedGroups={onChangeSelectedGroups}
       />
     </CardContent>
-    <CardActions
-      sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
-    >
-      {!isLoading && (
-        <Button variant="text" color="inherit" onClick={onCancel}>
-          Cancel
-        </Button>
-      )}
-      <LoadingButton type="submit" variant="outlined" loading={isLoading}>
-        Add Teacher
-      </LoadingButton>
-    </CardActions>
+    {!hideActions && (
+      <CardActions
+        sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
+      >
+        {!isLoading && (
+          <Button variant="text" color="inherit" onClick={onCancel}>
+            Cancel
+          </Button>
+        )}
+        <LoadingButton type="submit" variant="outlined" loading={isLoading}>
+          {submitText}
+        </LoadingButton>
+      </CardActions>
+    )}
   </Paper>
 )
 
