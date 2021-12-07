@@ -1,16 +1,14 @@
 import { useCallback } from "react"
 import useSWR, { mutate } from "swr"
-import { usePanelContext } from "../contexts/panel"
 
 const fetcher = (...args) =>
   fetch(...args)
     .then(res => res.json())
     .then(res => res.organizationAdmins)
 
-const useOrgAdmins = () => {
-  const { slug } = usePanelContext()
+const useOrgAdmins = slug => {
   const { data, error } = useSWR(
-    slug ? `/api/organization-admins?orgSlug=${slug}` : null,
+    `/api/organization-admins?orgSlug=${slug}`,
     fetcher
   )
 

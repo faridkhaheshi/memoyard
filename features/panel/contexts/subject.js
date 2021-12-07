@@ -1,7 +1,6 @@
 import { useContext, createContext, useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import Box from "@mui/material/Box"
-import CircularProgress from "@mui/material/CircularProgress"
+import FullPagePanelLoader from "../components/FullPagePanelLoader"
 import useOrgSubjects from "../hooks/use-org-subjects"
 
 const SubjectContext = createContext()
@@ -28,20 +27,7 @@ export const SubjectContextProvider = ({ children }) => {
     refreshSubjectsInfo,
   }
 
-  if (!subject)
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          minHeight: "100vh",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    )
+  if (!subject) return <FullPagePanelLoader />
 
   return (
     <SubjectContext.Provider value={subjectContextValues}>
