@@ -22,7 +22,6 @@ const NumberedDashboardRow = ({
       }}
     >
       <Typography
-        alignCenter
         variant="body1"
         component="h2"
         sx={{
@@ -32,12 +31,7 @@ const NumberedDashboardRow = ({
           alignItems: "center",
         }}
       >
-        <Typography
-          alignCenter
-          variant="h2"
-          component="span"
-          sx={{ margin: 0 }}
-        >
+        <Typography variant="h2" component="span" sx={{ margin: 0 }}>
           {headingNumber}
         </Typography>
         {headingText}

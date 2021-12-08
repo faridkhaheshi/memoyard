@@ -30,7 +30,7 @@ const AlbumInfo = () => {
       <CardActions
         sx={{ display: "flex", justifyContent: "flex-end", padding: 2 }}
       >
-        <Button variant="text" color="inherit" onClick={copy} disable={copied}>
+        <Button variant="text" color="inherit" onClick={copy} disabled={copied}>
           {!copied ? "Copy Link" : "Copied"}
         </Button>
         <Button

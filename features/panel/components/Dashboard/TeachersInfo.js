@@ -1,11 +1,11 @@
 import NumberedDashboardRow from "./NumberedDashboardRow"
 import { usePanelContext } from "../../contexts/panel"
 
-const TeachersInfo = () => {
+const TeachersInfo = ({ teachersCount = 0 }) => {
   const { slug } = usePanelContext()
   return (
     <NumberedDashboardRow
-      headingNumber={12}
+      headingNumber={teachersCount}
       headingText="teachers"
       description={
         <>
