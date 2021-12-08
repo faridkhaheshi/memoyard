@@ -9,7 +9,9 @@ const StyledPapar = styled(Paper)(({ theme }) => ({
 
 const GridCard = ({ children, ...otherProps }) => (
   <Grid item {...otherProps}>
-    <StyledPapar elevation={4}>{children}</StyledPapar>
+    <StyledPapar elevation={4} sx={{ height: "100%" }}>
+      {children}
+    </StyledPapar>
   </Grid>
 )
 
