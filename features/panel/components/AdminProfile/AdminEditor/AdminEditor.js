@@ -41,6 +41,7 @@ const AdminEditor = ({ sx = {} }) => {
       email={admin.email}
       onSubmit={handleSubmit}
       onCancel={resetForm}
+      isLoading={isLoading}
       submitText="Save Changes"
       titleText="Edit Teacher's Info"
       hideActions={

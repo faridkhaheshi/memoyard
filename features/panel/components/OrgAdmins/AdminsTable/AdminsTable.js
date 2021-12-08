@@ -21,7 +21,12 @@ const AdminsTable = ({ admins }) => {
     )
 
   return (
-    <div style={{ display: "flex", flexGrow: 1, flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div style={{ flexGrow: 1 }}>
         <DataGrid
           autoHeight
