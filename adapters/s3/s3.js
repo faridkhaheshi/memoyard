@@ -1,7 +1,7 @@
 import S3 from "aws-sdk/clients/s3"
 import { Credentials } from "aws-sdk"
 
-const access = new Credentials({
+export const access = new Credentials({
   accessKeyId: process.env.MEM_AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.MEM_AWS_ACCESS_KEY_SECRET,
 })
