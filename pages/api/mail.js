@@ -3,7 +3,7 @@ import { sendEmail } from "../../adapters/ses"
 export default async function handler(req, res) {
   try {
     // const result = await sendEmail({
-    //   to: "farid.khaheshi@gmail.com",
+    //   to: "services.farid.khaheshi@gmail.com",
     //   text: "Hello Farid",
     //   subject: "Welcome to memoyard!",
     // })

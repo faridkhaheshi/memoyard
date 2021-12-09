@@ -9,5 +9,6 @@
 - "!include yard_subject_groups.yaml"
 - "!include yard_subject_listeners.yaml"
 - "!include yard_subjects.yaml"
+- "!include yard_tickets.yaml"
 - "!include yard_user_types.yaml"
 - "!include yard_users.yaml"

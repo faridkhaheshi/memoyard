@@ -2,6 +2,13 @@ table:
   name: users
   schema: yard
 object_relationships:
+- name: ticket
+  using:
+    foreign_key_constraint_on:
+      column: user_id
+      table:
+        name: tickets
+        schema: yard
 - name: userTypeByUserType
   using:
     foreign_key_constraint_on: user_type
