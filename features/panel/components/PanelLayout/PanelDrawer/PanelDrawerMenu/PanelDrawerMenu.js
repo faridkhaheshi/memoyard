@@ -15,7 +15,7 @@ const PanelDrawerMenu = () => {
   const { slug } = usePanelContext()
   const { logOut } = useAuth()
   const availableMethods = {
-    logOut: logOut.bind(null, "/"),
+    logOut: logOut.bind(null, `/${slug}`),
   }
   return (
     <List>
