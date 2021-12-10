@@ -1,22 +1,12 @@
-import {
-  UnauthorizedError,
-  BadRequestError,
-  NotFoundError,
-} from "restify-errors"
-import { findUserByEmail } from "../../users/processors"
+import { BadRequestError } from "restify-errors"
+import { spendTicket } from "../../tickets/processors"
 
-const checkLoginInfo = async ({ email, password }) => {
-  if (!email || !password)
+const checkLoginInfo = async ({ email, password, ticket }) => {
+  if (!email || (!password && !ticket))
     throw new BadRequestError("some required info are missing")
   const normalizedEmail = email.toLowerCase()
-  if (normalizedEmail !== "farid.khaheshi@gmail.com")
-    throw new BadRequestError(
-      "User is not supported yet. Thanks for your interest"
-    )
-  if (password !== process.env.FIRST_USER_PASSWORD)
-    throw new UnauthorizedError("Password is wrong")
-  const user = await findUserByEmail(normalizedEmail)
-  if (!user) throw new NotFoundError("User not found")
+
+  const user = await spendTicket({ userEmail: normalizedEmail, ticket })
   return user
 }
 
