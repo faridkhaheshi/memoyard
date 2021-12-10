@@ -13,6 +13,8 @@ const spendTicket = async ({ userEmail, ticket }) => {
       WHERE
         t.user_id = u.id
           AND
+        t.code=:ticket
+          AND
         u.email=:userEmail
           AND
         u.active=true
