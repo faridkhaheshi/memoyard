@@ -34,6 +34,6 @@ module.exports = {
     // recaptchaSiteKey: "6LdnRRoaAAAAAEEvlCuwfHFrXdx-IWNPqv2p6IFZ",
   },
   email: {
-    fromAddress: "dev@memoyard.com",
+    fromAddress: "postman@memoyard.com",
   },
 }
