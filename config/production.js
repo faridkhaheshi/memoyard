@@ -33,4 +33,7 @@ module.exports = {
     // authScopes: "profile email",
     // recaptchaSiteKey: "6LdnRRoaAAAAAEEvlCuwfHFrXdx-IWNPqv2p6IFZ",
   },
+  email: {
+    fromAddress: "dev@memoyard.com",
+  },
 }

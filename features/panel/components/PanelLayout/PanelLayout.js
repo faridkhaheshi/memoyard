@@ -16,7 +16,6 @@ const PanelLayout = ({ children }) => (
         minHeight: "100vh",
       }}
     >
-      <CssBaseline />
       <PanelTopBar />
       <PanelDrawer />
       <PanelMain>

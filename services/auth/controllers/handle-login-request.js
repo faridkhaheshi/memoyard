@@ -1,19 +1,13 @@
+import catchControllerErrors from "../../utilities/catch-controller-errors"
 import { checkLoginInfo, logInUser } from "../processors"
 
 const handleLoginRequest = async (req, res) => {
-  try {
-    const {
-      body: { email, password },
-    } = req
-    const user = await checkLoginInfo({ email, password })
-    delete user.id
-    const token = await logInUser(user)
-    return res.json({ token })
-  } catch (err) {
-    return res
-      .status(500)
-      .json({ error: { message: err.message || "something went wrong" } })
-  }
+  const {
+    body: { email, password, ticket },
+  } = req
+  const user = await checkLoginInfo({ email, password, ticket })
+  const token = await logInUser(user)
+  return res.json({ token })
 }
 
-export default handleLoginRequest
+export default catchControllerErrors(handleLoginRequest)

@@ -3,6 +3,19 @@
 .card {
   padding: 20px;
 
+  .headerContainer {
+    margin-bottom: 32px;
+    button {
+      color: v.$light-text-color;
+      background: none;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        color: v.$sky-blue;
+      }
+    }
+  }
+
   .loginFormContainer {
     display: flex;
     flex-direction: column;
@@ -13,7 +26,17 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
     }
     .errorMessage {
       font-weight: bold;
