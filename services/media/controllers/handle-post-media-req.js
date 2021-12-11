@@ -1,4 +1,4 @@
-import { checkUserAccessToOrganization } from "../../organizations/processors"
+import { getOrgInfoForAdmin } from "../../organizations/processors"
 import { checkUserAccessToTags } from "../../tags/processors"
 import { addMediaWithTags } from "../processors"
 
@@ -15,10 +15,11 @@ const handlePostMediaReq = async (req, res) => {
         tags = [],
       },
       user,
+      user: { ex_id: userExId },
     } = req
 
     const [theOrg, internalTags] = await Promise.all([
-      checkUserAccessToOrganization({ user, organization }),
+      getOrgInfoForAdmin({ userExId, orgSlug: organization.slug }),
       checkUserAccessToTags({ user, organization, tags }),
     ])
 
