@@ -28,6 +28,7 @@ const LoginWithTicketValidationForm = ({ email, goBack }) => {
         <div className={styles.inputsContainer}>
           <MemoInput
             required
+            label="Code:"
             type="number"
             name="ticket"
             id="ticket-input"
