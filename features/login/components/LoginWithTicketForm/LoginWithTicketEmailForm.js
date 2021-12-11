@@ -26,6 +26,7 @@ const LoginWithTicketEmailForm = ({
         <div className={styles.inputsContainer}>
           <MemoInput
             required
+            label="Email:"
             type="email"
             name="email"
             id="email-input"
