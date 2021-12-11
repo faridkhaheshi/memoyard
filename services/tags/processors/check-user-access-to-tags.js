@@ -1,8 +1,8 @@
 import { NotAuthorizedError } from "restify-errors"
-import findUserTagsByUserExId from "./find-user-tags-by-user-ex-id"
+import { findUserObservableTags } from "."
 
 const checkUserAccessToTags = async ({ user, organization, tags }) => {
-  const userTags = await findUserTagsByUserExId({
+  const userTags = await findUserObservableTags({
     userExId: user.ex_id,
     slug: organization.slug,
   })

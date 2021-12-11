@@ -1,4 +1,4 @@
-import { checkUserAccessToOrganization } from "../../organizations/processors"
+import { getOrgInfoForAdmin } from "../../organizations/processors"
 import { checkUserAccessToTags } from "../../tags/processors"
 import { allowMediaView, createUploadUrls } from "../processors"
 
@@ -6,10 +6,11 @@ const handleMediaUploadPermissionReq = async (req, res) => {
   try {
     const {
       user,
+      user: { ex_id: userExId },
       body: { organization, files },
     } = req
     const [theOrg] = await Promise.all([
-      checkUserAccessToOrganization({ user, organization }),
+      getOrgInfoForAdmin({ userExId, orgSlug: organization.slug }),
       checkUserAccessToTags({
         user,
         organization,

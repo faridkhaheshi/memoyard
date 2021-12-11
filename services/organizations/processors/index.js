@@ -2,3 +2,4 @@ export { default as findUserOrganizationsByUserExId } from "./find-user-organiza
 export { default as findOrganizationBySlug } from "./find-organization-by-slug"
 export { default as checkUserAccessToOrganization } from "./check-user-access-to-organization"
 export { default as getOrganizationStatsBySlug } from "./get-organization-stats-by-slug"
+export { default as getOrgInfoForAdmin } from "./get-org-info-for-admin"
