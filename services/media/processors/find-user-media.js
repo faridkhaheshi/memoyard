@@ -89,6 +89,55 @@ const findUserMedia = async ({
                   ELSE 0
               END
     ),
+    admin_groups AS (
+      SELECT
+        g.id,
+        g.ex_id,
+        g.name,
+        g.creator_id,
+        g.org_id
+      FROM
+        yard.groups g
+          JOIN yard.admin_groups ag ON g.id=ag.group_id
+          JOIN yard.organization_admins oa ON ag.admin_id=oa.id
+          JOIN yard.users u ON oa.user_id=u.id
+          JOIN yard.organizations o ON oa.org_id=o.id
+      WHERE
+        u.ex_id::text=:userExId
+          AND
+        u.active=true
+          AND
+        g.active=true
+          AND
+        ag.active=true
+          AND
+        oa.active=true
+          AND
+        o.active=true
+          AND
+        1 = 
+          CASE
+            WHEN :slug::text IS NULL THEN 1
+            WHEN :slug::text=o.slug THEN 1
+            ELSE 0
+          END
+    ),
+    admin_subjects AS (
+      SELECT
+        s.id,
+        s.ex_id,
+        s.name,
+        s.creator_id,
+        s.org_id
+      FROM
+        yard.subjects s
+          JOIN yard.subject_groups sg ON sg.subject_id=s.id
+          JOIN admin_groups ag ON ag.id=sg.group_id
+      WHERE
+        s.active=true
+          AND
+        sg.active=true
+    ),
     user_organization_groups as (
       select
           g.id,
@@ -110,6 +159,8 @@ const findUserMedia = async ({
           SELECT * FROM user_organization_groups uog
             UNION 
           SELECT * FROM user_subjects_groups usg
+            UNION
+          SELECT * FROM admin_groups ag
         ) ug
       WHERE
         1=
@@ -128,6 +179,8 @@ const findUserMedia = async ({
           SELECT * FROM user_organization_subjects uos
             UNION 
           SELECT * FROM user_subjects us
+            UNION
+          SELECT * FROM admin_subjects ads
         ) us
       WHERE
         1=
