@@ -16,29 +16,38 @@ const OrganizationContactCard = ({ organization }) => (
       flexDirection: "column",
       width: "100%",
       height: "100%",
-      overflow: "scroll",
+      overflow: "hidden",
       backgroundColor: "#9C528B",
       borderRadius: "12px",
       color: "white",
     }}
   >
-    <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
+    <Box sx={{ padding: "40px 8px 0px 8px" }}>
       <Typography
         gutterBottom
         variant="h4"
         component="h1"
         align="center"
-        sx={{ margin: "20px 0 20px 0" }}
+        sx={{ marginBottom: "40px" }}
       >
         {organization.name}
       </Typography>
-      <hr style={{ width: "100%" }} />
+      <hr />
+    </Box>
+    <CardContent
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        overflow: "scroll",
+        flexGrow: 1,
+      }}
+    >
       <Box
         sx={{
           flexGrow: 1,
           display: "flex",
           flexDirection: "column",
-          padding: "32px 0 0 0",
+          padding: 0,
         }}
       >
         <Typography gutterBottom align="justify">
@@ -59,7 +68,9 @@ const OrganizationContactCard = ({ organization }) => (
       sx={{
         display: "flex",
         justifyContent: "center",
-        margin: "0 0 16px 0",
+        padding: 0,
+        margin: 0,
+        minHeight: "64px",
       }}
     >
       <Button
