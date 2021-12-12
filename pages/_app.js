@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
 import { CacheProvider } from "@emotion/react"
 import NProgress from "nprogress"
-
+import PanelLayout from "../features/panel/components/PanelLayout"
 import { AuthContextProvider } from "../contexts/auth"
 
 import seoConfig from "../next-seo.config"
@@ -32,7 +32,9 @@ function MyApp({
         <DefaultSeo {...seoConfig} />
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Component {...pageProps} />
+          <PanelLayout show={Component.isPanelPage}>
+            <Component {...pageProps} />
+          </PanelLayout>
         </ThemeProvider>
       </AuthContextProvider>
     </CacheProvider>
