@@ -1,11 +1,21 @@
-import { NextSeo } from "next-seo"
-import FullPageCentered from "../../../../components/FullPageCentered"
+import Box from "@mui/material/Box"
+import CircularProgress from "@mui/material/CircularProgress"
 
 const OrganizationHomeLoading = () => (
-  <FullPageCentered bgColor="skyBlue">
-    <NextSeo title="Memoyard | Loading" />
-    Loading...
-  </FullPageCentered>
+  <Box
+    sx={{
+      height: "100%",
+      flex: 1,
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 1,
+    }}
+  >
+    <CircularProgress />
+  </Box>
 )
 
 export default OrganizationHomeLoading
