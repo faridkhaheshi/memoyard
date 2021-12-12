@@ -12,6 +12,7 @@ const OrganizationFooter = ({ slug }) => (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: "white",
     }}
     component="footer"
   >
