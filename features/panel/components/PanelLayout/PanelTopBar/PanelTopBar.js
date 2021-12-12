@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography"
 import MenuIcon from "@mui/icons-material/Menu"
 import StyledAppBar from "./StyledAppBar"
 import MemoNextLink from "../../../../../components/MemoNextLink"
+import UserInfo from "../../../../show-user-info/components/UserInfo/UserInfo"
 import { usePanelContext } from "../../../contexts"
 
 const PanelTopBar = () => {
@@ -32,6 +33,7 @@ const PanelTopBar = () => {
           noWrap
           component="div"
           sx={{
+            flexGrow: 1,
             "& a": { color: "inherit", "&:hover": { textDecoration: "none" } },
           }}
         >
@@ -39,6 +41,7 @@ const PanelTopBar = () => {
             {organization?.name}
           </MemoNextLink>
         </Typography>
+        <UserInfo />
       </Toolbar>
     </StyledAppBar>
   )
