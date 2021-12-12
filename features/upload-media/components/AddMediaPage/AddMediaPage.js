@@ -7,7 +7,7 @@ import useTags from "../../../../hooks/use-tags"
 import UploadButton from "../UploadButton/UploadButton"
 import AddButton from "../AddButton"
 
-import styles from "./AddMediaPage.module.scss"
+import MemoNextLink from "../../../../components/MemoNextLink"
 
 const AddMediaPage = ({ organization }) => {
   const [files, dispatch] = useReducer(mediaReducer, [])
@@ -24,7 +24,13 @@ const AddMediaPage = ({ organization }) => {
   return (
     <FullPageCentered maxWidth>
       <p>
-        Add new photos/videos to <strong>{organization.name}</strong>
+        Add new photos/videos to{" "}
+        <MemoNextLink
+          href={`/${organization.slug}`}
+          sx={{ textDecoration: "none" }}
+        >
+          <strong>{organization.name}</strong>
+        </MemoNextLink>
       </p>
       <GeneralTagSelector
         hide={files.length <= 1 || !showControls}

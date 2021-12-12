@@ -64,7 +64,7 @@ const OrganizationContactCard = ({ organization }) => (
       <Button
         size="large"
         variant="outlined"
-        href="/"
+        href={`/${organization.slug}/album`}
         sx={{ color: "white", borderColor: "white" }}
       >
         Visit Album

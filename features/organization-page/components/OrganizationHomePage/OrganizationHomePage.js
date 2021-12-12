@@ -22,7 +22,7 @@ const OrganizationHomePage = ({ organization, loading = false }) => {
     >
       <NextSeo title={organization.name} />
       <OrganizationContactCard organization={organization} />
-      <OrganizationFooter />
+      <OrganizationFooter slug={organization.slug} />
     </Box>
   )
 }
