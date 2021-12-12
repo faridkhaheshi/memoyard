@@ -4,11 +4,12 @@ import Paper from "@mui/material/Paper"
 const FixedAspectRatioPaper = ({
   children,
   width = "100%",
-  maxWidth = "100vh",
+  maxWidth = "100vw",
+  minWidth = "250px",
   heightToWidthRatio = "100%",
   ...otherProps
 }) => (
-  <Box sx={{ width, maxWidth }}>
+  <Box sx={{ width, maxWidth, minWidth }}>
     <Box
       sx={{
         width: "100%",

@@ -9,6 +9,7 @@ const OrganizationContactCard = ({ organization }) => (
   <FixedAspectRatioPaper
     heightToWidthRatio="150%"
     width="40vh"
+    maxWidth="95vw"
     elevation={12}
     sx={{
       display: "flex",
@@ -27,7 +28,7 @@ const OrganizationContactCard = ({ organization }) => (
         variant="h4"
         component="h1"
         align="center"
-        sx={{ margin: "64px 0 64px 0" }}
+        sx={{ margin: "20px 0 20px 0" }}
       >
         {organization.name}
       </Typography>
