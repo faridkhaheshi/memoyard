@@ -1,6 +1,19 @@
 @use "../../../../styles/variables" as v;
 
 .cardContainer {
+  background-color: red;
+  border-radius: 15px;
+  color: white;
+  height: 100%;
+  padding: 30px 30px 10px 30px;
+  hr {
+    color: white;
+    width: 100%;
+    border: 1px solid white;
+  }
+  a {
+    color: blue;
+  }
   .title {
     align-self: center;
   }

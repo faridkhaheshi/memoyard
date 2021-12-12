@@ -30,10 +30,11 @@ function MyApp({
     <CacheProvider value={emotionCache}>
       <AuthContextProvider Component={Component}>
         <DefaultSeo {...seoConfig} />
-        <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+        {/* <ThemeProvider theme={theme}>
           <CssBaseline />
           <Component {...pageProps} />
-        </ThemeProvider>
+        </ThemeProvider> */}
       </AuthContextProvider>
     </CacheProvider>
   )

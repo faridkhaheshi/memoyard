@@ -1,27 +1,29 @@
 import { NextSeo } from "next-seo"
-import CenteredForm from "../../../../components/CenteredForm"
-import FullPageCentered from "../../../../components/FullPageCentered"
-import OrganizationActions from "../OrganizationActions"
+import Box from "@mui/material/Box"
 import OrganizationHomeLoading from "../OrganizationHomeLoading"
-
-import styles from "./OrganizationHomePage.module.scss"
+import OrganizationFooter from "../OrganizationFooter"
+import OrganizationContactCard from "../OrganizationContactCard/OrganizationContactCard"
 
 const OrganizationHomePage = ({ organization, loading = false }) => {
   if (loading) return <OrganizationHomeLoading />
 
   return (
-    <FullPageCentered bgColor="skyBlue">
+    <Box
+      sx={{
+        height: "100%",
+        flex: 1,
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 1,
+      }}
+    >
       <NextSeo title={organization.name} />
-      <CenteredForm className={styles.cardContainer}>
-        <h2 className={styles.title}>{organization.name}</h2>
-        <p>Welcome!</p>
-        <p>
-          Here, you can add photos and videos. Parents will receive an email
-          with a link to their personal albums.
-        </p>
-        <OrganizationActions organization={organization} />
-      </CenteredForm>
-    </FullPageCentered>
+      <OrganizationContactCard organization={organization} />
+      <OrganizationFooter />
+    </Box>
   )
 }
 
