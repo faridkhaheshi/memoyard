@@ -2,7 +2,7 @@ import Box from "@mui/material/Box"
 import UserMenu from "../../../show-user-info/components/UserMenu"
 import OrganizationFooterLinks from "./OrganizationFooterLinks"
 
-const OrganizationFooter = ({ slug }) => (
+const OrganizationFooter = () => (
   <Box
     sx={{
       position: "fixed",
@@ -18,7 +18,7 @@ const OrganizationFooter = ({ slug }) => (
     }}
     component="footer"
   >
-    <OrganizationFooterLinks slug={slug} />
+    <OrganizationFooterLinks />
     <UserMenu />
   </Box>
 )
