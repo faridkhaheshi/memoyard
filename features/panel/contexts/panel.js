@@ -10,7 +10,7 @@ export const usePanelContext = () => useContext(PanelContext)
 export const PanelContextProvider = ({
   children,
   drawerWidth,
-  initialIsDrawerOpen = true,
+  initialIsDrawerOpen = false,
 }) => {
   const {
     query: { slug },

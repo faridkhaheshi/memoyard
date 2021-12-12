@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"
-import MemoNextLink from "../../../../components/MemoNextLink"
-import createFooterLinks from "./create-footer-links"
+import UserMenu from "../../../show-user-info/components/UserMenu"
+import OrganizationFooterLinks from "./OrganizationFooterLinks"
 
 const OrganizationFooter = ({ slug }) => (
   <Box
@@ -10,44 +10,16 @@ const OrganizationFooter = ({ slug }) => (
       bottom: 0,
       width: "100%",
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "space-between",
       alignItems: "center",
       backgroundColor: "white",
+      padding: "8px 16px",
+      color: "gray",
     }}
     component="footer"
   >
-    <Box
-      component="ul"
-      sx={{
-        display: "flex",
-        listStyle: "none",
-        paddingLeft: 0,
-        padding: 1,
-        margin: 0,
-        "&>li": {
-          "&:not(:last-child)": {
-            "&::after": {
-              content: '"|"',
-              margin: "0 8px",
-              color: "gray",
-            },
-          },
-        },
-        "& a": {
-          textDecoration: "none",
-          color: "gray",
-          "&:hover": {
-            color: "black",
-          },
-        },
-      }}
-    >
-      {createFooterLinks(slug).map(({ key, title, href }) => (
-        <li key={key}>
-          <MemoNextLink href={href}>{title}</MemoNextLink>
-        </li>
-      ))}
-    </Box>
+    <OrganizationFooterLinks slug={slug} />
+    <UserMenu />
   </Box>
 )
 

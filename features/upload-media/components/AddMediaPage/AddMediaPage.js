@@ -6,7 +6,7 @@ import mediaReducer from "./media-reducer"
 import useTags from "../../../../hooks/use-tags"
 import UploadButton from "../UploadButton/UploadButton"
 import AddButton from "../AddButton"
-
+import OrganizationFooter from "../../../organization-page/components/OrganizationFooter/OrganizationFooter"
 import MemoNextLink from "../../../../components/MemoNextLink"
 
 const AddMediaPage = ({ organization }) => {
@@ -65,6 +65,8 @@ const AddMediaPage = ({ organization }) => {
         dispatch={dispatch}
         hide={!showControls}
       />
+      <div style={{ height: 50 }} />
+      <OrganizationFooter />
     </FullPageCentered>
   )
 }
