@@ -3,6 +3,7 @@ import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import MenuIcon from "@mui/icons-material/Menu"
 import StyledAppBar from "./StyledAppBar"
+import MemoNextLink from "../../../../../components/MemoNextLink"
 import { usePanelContext } from "../../../contexts"
 
 const PanelTopBar = () => {
@@ -25,8 +26,18 @@ const PanelTopBar = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          {organization?.name}
+
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{
+            "& a": { color: "inherit", "&:hover": { textDecoration: "none" } },
+          }}
+        >
+          <MemoNextLink href={`/${organization.slug}`}>
+            {organization?.name}
+          </MemoNextLink>
         </Typography>
       </Toolbar>
     </StyledAppBar>

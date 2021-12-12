@@ -48,7 +48,7 @@ const OrganizationContactCard = ({ organization }) => (
       <Typography
         variant="caption"
         component="small"
-        sx={{ color: "rgba(255,255,255, 0.6)" }}
+        sx={{ color: "rgba(255,255,255, 0.9)" }}
       >
         * All photos and videos are shared privately. Only parents of the
         children can access them.
