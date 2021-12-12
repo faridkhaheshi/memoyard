@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper"
 
 const FixedAspectRatioPaper = ({
   children,
+  sx = {},
   width = "100%",
   maxWidth = "100vw",
   minWidth = "250px",
@@ -27,7 +28,19 @@ const FixedAspectRatioPaper = ({
           height: "100%",
         }}
       >
-        <Paper {...otherProps}>{children}</Paper>
+        <Paper
+          {...otherProps}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            height: "100%",
+            overflow: "hidden",
+            ...sx,
+          }}
+        >
+          {children}
+        </Paper>
       </Box>
     </Box>
   </Box>
