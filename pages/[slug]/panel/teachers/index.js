@@ -1,10 +1,12 @@
 import PanelLayout from "../../../../features/panel/components/PanelLayout"
 import Typography from "@mui/material/Typography"
 import OrgAdmins from "../../../../features/panel/components/OrgAdmins"
+import NavBranch from "../../../../features/breadcrumbs/components/NavBranch"
 
 const PanelTeachersPage = () => {
   return (
     <PanelLayout>
+      <NavBranch links={[{ type: "text", title: "Teachers" }]} />
       <Typography variant="h4" component="h1" sx={{ marginBottom: "10px" }}>
         Teachers
       </Typography>

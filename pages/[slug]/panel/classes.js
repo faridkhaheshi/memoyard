@@ -1,9 +1,11 @@
 import Typography from "@mui/material/Typography"
 import OrgGroups from "../../../features/panel/components/OrgGroups"
 import PanelLayout from "../../../features/panel/components/PanelLayout"
+import NavBranch from "../../../features/breadcrumbs/components/NavBranch"
 
 const PanelClassesPage = () => (
   <PanelLayout>
+    <NavBranch links={[{ type: "text", title: "Classes" }]} />
     <Typography variant="h4" component="h1" sx={{ marginBottom: "10px" }}>
       Classes
     </Typography>
