@@ -4,6 +4,7 @@ import Button from "@mui/material/Button"
 import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import FixedAspectRatioPaper from "../../../../components/FixedAspectRatioPaper"
+import MemoNextLink from "../../../../components/MemoNextLink"
 
 const OrganizationContactCard = ({ organization }) => (
   <FixedAspectRatioPaper
@@ -76,6 +77,7 @@ const OrganizationContactCard = ({ organization }) => (
       <Button
         size="large"
         variant="outlined"
+        component={MemoNextLink}
         href={`/${organization.slug}/album`}
         sx={{ color: "white", borderColor: "white" }}
       >
