@@ -3,7 +3,7 @@ import MemoPaper from "../../../../components/MemoPaper"
 
 const MemoyardInfoCard = () => (
   <MemoPaper
-    bgColor="#4E0250"
+    bgColor="#ED254E"
     width="50vh"
     component="main"
     title="Memoyard"

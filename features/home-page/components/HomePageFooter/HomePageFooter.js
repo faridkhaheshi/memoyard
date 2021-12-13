@@ -18,7 +18,7 @@ const HomePageFooter = () => (
     component="footer"
   >
     <Typography variant="caption">
-      Made with ❤️ by a father in Hamilton, Canada
+      Made with ❤️ &nbsp;by a father in Hamilton, Canada
     </Typography>
   </Box>
 )
