@@ -9,7 +9,8 @@ const handlePostTicketReq = async (req, res) => {
     body: { email },
   } = req
   if (!email) throw new BadRequestError("Some required fields are missing")
-  const ticket = await generateTicketForUser({ email })
+  const normalizedEmail = email.toLowerCase()
+  const ticket = await generateTicketForUser({ email: normalizedEmail })
   if (config.env === "development")
     console.log(`ticket code: ${ticket.code} for email ${email}`)
   await sendEmail({

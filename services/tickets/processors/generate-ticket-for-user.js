@@ -1,11 +1,18 @@
 import moment from "moment"
 import generateRandomCode from "../utilities/generate-random-code"
 import db from "../../../adapters/db"
+import config from "../../../config"
+
+const {
+  demo: { demoAccounts, demoAccountsTicket },
+} = config
 
 const EXPIRE_IN_HOURS = 2
 
 const generateTicketForUser = async ({ email }) => {
-  const code = generateRandomCode({ length: 6 })
+  const code = demoAccounts.includes(email)
+    ? demoAccountsTicket
+    : generateRandomCode({ length: 6 })
   const expiresAt = moment().add(EXPIRE_IN_HOURS, "hours").unix()
   const { records } = await db.query(
     `
