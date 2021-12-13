@@ -35,4 +35,15 @@ module.exports = {
   email: {
     fromAddress: "Memoyard Postman DEV <dev@memoyard.com>",
   },
+  demo: {
+    demoAccounts: [
+      "demoadmin@memoyard.com",
+      "demoteacher1@memoyard.com",
+      "demoteacher2@memoyard.com",
+      "demoteacher3@memoyard.com",
+      "demoparent1@memoyard.com",
+      "demoparent2@memoyard.com",
+    ],
+    demoAccountsTicket: "123456",
+  },
 }
