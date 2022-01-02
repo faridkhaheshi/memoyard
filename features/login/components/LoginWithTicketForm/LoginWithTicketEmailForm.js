@@ -3,6 +3,7 @@ import MemoError from "../../../../components/MemoError"
 import { useTicket } from "../../hooks"
 
 import styles from "../LoginForm/LoginForm.module.scss"
+import DemoGuideForEmail from "./DemoGuideForEmail"
 
 const LoginWithTicketEmailForm = ({
   email,
@@ -36,6 +37,7 @@ const LoginWithTicketEmailForm = ({
             onChange={e => setEmail(e.target.value)}
           />
           <MemoError errorMessage={sendingErrorMessage} />
+          <DemoGuideForEmail />
         </div>
         <MemoInput
           value="Receive a login code"
