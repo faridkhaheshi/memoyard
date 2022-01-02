@@ -1,6 +1,8 @@
 import { useState } from "react"
 import MemoInput from "../../../../components/MemoInput"
 import MemoError from "../../../../components/MemoError"
+import DemoGuideForCode from "./DemoGuideForCode"
+
 import { useTicket } from "../../hooks"
 
 import styles from "../LoginForm/LoginForm.module.scss"
@@ -38,6 +40,7 @@ const LoginWithTicketValidationForm = ({ email, goBack }) => {
             onChange={e => setTicket(e.target.value)}
           />
           <MemoError errorMessage={validationErrorMessage} />
+          <DemoGuideForCode />
         </div>
         <MemoInput
           value="Log in"
